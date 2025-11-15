@@ -1,2 +1,2 @@
 # webd173
-ecommerce website
+css style guide
