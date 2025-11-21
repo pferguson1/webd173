@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Bootstrap 4 - Payment Form</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/bss-overrides.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/Bootstrap-4---Payment-Form.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+
+  <body>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-lg-7 mx-auto">
+          <div class="bg-white rounded-lg shadow-sm p-5">
+            <!-- Order Summary -->
+            <div class="order-summary mb-4">
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 20px;
+                "
+              >
+                <h2 style="margin: 0">Order Summary</h2>
+                <a
+                  href="../cart.html"
+                  style="
+                    background: transparent;
+                    color: #5383d3;
+                    border: 2px solid #5383d3;
+                    border-radius: 5px;
+                    padding: 10px 20px;
+                    text-decoration: none;
+                    font-weight: 600;
+                    transition: all 0.3s;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 8px;
+                  "
+                  onmouseover="this.style.background='#5383d3'; this.style.color='white';"
+                  onmouseout="this.style.background='transparent'; this.style.color='#5383d3';"
+                >
+                  <i class="fa fa-arrow-left"></i> Back to Cart
+                </a>
+              </div>
+              <div class="order-items" id="orderItems">
+                <!-- Cart items will be loaded here -->
+              </div>
+              <div class="order-totals">
+                <div class="total-row subtotal">
+                  <span>Subtotal:</span>
+                  <span id="subtotalAmount">$0.00</span>
+                </div>
+                <div class="total-row shipping">
+                  <span>Shipping:</span>
+                  <span id="shippingAmount">$0.00</span>
+                </div>
+                <div class="total-row tax">
+                  <span>Tax (0%):</span>
+                  <span id="taxAmount">$0.00</span>
+                </div>
+                <div class="total-row grand-total">
+                  <span>Total Amount:</span>
+                  <span id="totalAmount">$0.00</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Payment Section Header -->
+            <div
+              style="
+                border-top: 3px solid #5383d3;
+                padding-top: 30px;
+                margin-top: 30px;
+              "
+            >
+              <h2
+                style="
+                  text-align: center;
+                  margin-bottom: 20px;
+                  color: #333;
+                  font-weight: 600;
+                "
+              >
+                Payment Information
+              </h2>
+            </div>
+
+            <!-- Credit card form tabs -->
+            <ul
+              role="tablist"
+              class="nav bg-light nav-pills rounded-pill nav-fill mb-3"
+            >
+              <li class="nav-item">
+                <a
+                  data-toggle="pill"
+                  href="#nav-tab-card"
+                  class="nav-link active rounded-pill"
+                >
+                  <i class="fa fa-credit-card"></i>
+                  Credit Card
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  data-toggle="pill"
+                  href="#nav-tab-paypal"
+                  class="nav-link rounded-pill"
+                >
+                  <i class="fa fa-paypal"></i>
+                  Paypal
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  data-toggle="pill"
+                  href="#nav-tab-bank"
+                  class="nav-link rounded-pill"
+                >
+                  <i class="fa fa-university"></i>
+                  Bank Transfer
+                </a>
+              </li>
+            </ul>
+            <!-- End -->
+
+            <!-- Credit card form content -->
+            <div class="tab-content">
+              <!-- credit card info-->
+              <div id="nav-tab-card" class="tab-pane show active">
+                <form role="form">
+                  <div class="form-group">
+                    <label for="username">Full name (on the card)</label>
+                    <input
+                      type="text"
+                      name="username"
+                      placeholder="Jeff Doe"
+                      required
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="cardNumber">Card number</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        name="cardNumber"
+                        placeholder="Your card number"
+                        class="form-control"
+                        required
+                      />
+                      <div class="input-group-append">
+                        <span class="input-group-text text-muted">
+                          <i class="fa fa-cc-visa mx-1"></i>
+                          <i class="fa fa-cc-amex mx-1"></i>
+                          <i class="fa fa-cc-mastercard mx-1"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <label><span class="hidden-xs">Expiration</span></label>
+                        <div class="input-group">
+                          <input
+                            type="number"
+                            placeholder="MM"
+                            name=""
+                            class="form-control"
+                            required
+                          />
+                          <input
+                            type="number"
+                            placeholder="YY"
+                            name=""
+                            class="form-control"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group mb-4">
+                        <label
+                          data-toggle="tooltip"
+                          title="Three-digits code on the back of your card"
+                          >CVV
+                          <i class="fa fa-question-circle"></i>
+                        </label>
+                        <input type="text" required class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-block"
+                    style="
+                      background: #333333;
+                      border: none;
+                      border-radius: 5px;
+                      color: #fff;
+                      padding: 15px;
+                      font-size: 1.1em;
+                      font-weight: 600;
+                      margin-top: 20px;
+                      transition: background 0.3s;
+                    "
+                    onmouseover="this.style.background='#5383d3'"
+                    onmouseout="this.style.background='#333333'"
+                  >
+                    <i class="fa fa-lock"></i> Confirm Payment
+                  </button>
+                </form>
+              </div>
+              <!-- End -->
+
+              <!-- Paypal info -->
+              <div id="nav-tab-paypal" class="tab-pane fade">
+                <p>Paypal is easiest way to pay online</p>
+                <p>
+                  <button type="button" class="btn btn-primary rounded-pill">
+                    <i class="fa fa-paypal mr-2"></i> Log into my Paypal
+                  </button>
+                </p>
+                <p class="text-muted">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+              <!-- End -->
+
+              <!-- bank transfer info -->
+              <div id="nav-tab-bank" class="tab-pane fade">
+                <h6>Bank account details</h6>
+                <dl>
+                  <dt>Bank</dt>
+                  <dd>THE WORLD BANK</dd>
+                </dl>
+                <dl>
+                  <dt>Account number</dt>
+                  <dd>7775877975</dd>
+                </dl>
+                <dl>
+                  <dt>IBAN</dt>
+                  <dd>CZ7775877975656</dd>
+                </dl>
+                <p class="text-muted">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+              </div>
+              <!-- End -->
+            </div>
+            <!-- End -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Bootstrap-4---Payment-Form-script.js"></script>
+    <script>
+      // Load cart data from localStorage
+      window.onload = function () {
+        const cart = JSON.parse(localStorage.getItem("shoppingCart") || "[]");
+        const total = parseFloat(localStorage.getItem("checkoutTotal") || "0");
+
+        const orderItemsDiv = document.getElementById("orderItems");
+        const subtotalSpan = document.getElementById("subtotalAmount");
+        const shippingSpan = document.getElementById("shippingAmount");
+        const taxSpan = document.getElementById("taxAmount");
+        const totalAmountSpan = document.getElementById("totalAmount");
+
+        if (cart.length > 0) {
+          orderItemsDiv.innerHTML = cart
+            .map(
+              (item) => `
+                    <div class="order-item">
+                        <img src="../${item.image}" alt="${
+                item.name
+              }" class="order-item-image" />
+                        <div class="order-item-details">
+                            <div class="order-item-name">${item.name}</div>
+                            <div class="order-item-price">$${item.price.toFixed(
+                              2
+                            )} each</div>
+                            <div class="order-item-quantity">Quantity: ${
+                              item.quantity
+                            }</div>
+                        </div>
+                        <div class="order-item-total">$${(
+                          item.price * item.quantity
+                        ).toFixed(2)}</div>
+                    </div>
+                `
+            )
+            .join("");
+
+          // Calculate totals
+          const shipping = 0.0; // Free shipping for now
+          const tax = 0.0; // No tax for now
+
+          subtotalSpan.textContent = "$" + total.toFixed(2);
+          shippingSpan.textContent = "$" + shipping.toFixed(2);
+          taxSpan.textContent = "$" + tax.toFixed(2);
+          totalAmountSpan.textContent =
+            "$" + (total + shipping + tax).toFixed(2);
+        } else {
+          orderItemsDiv.innerHTML = `
+            <div class="empty-order">
+              <i class="fa fa-shopping-cart"></i>
+              <h3>No items in cart</h3>
+              <p>Your cart is empty. Add some items to checkout.</p>
+              <a href="../products.html" class="btn-secondary">Continue Shopping</a>
+            </div>
+          `;
+          subtotalSpan.textContent = "$0.00";
+          shippingSpan.textContent = "$0.00";
+          taxSpan.textContent = "$0.00";
+          totalAmountSpan.textContent = "$0.00";
+        }
+      };
+
+      // Handle form submission
+      document
+        .querySelector("#nav-tab-card form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Payment processed successfully! (This is a demo)");
+          // Clear cart after successful payment
+          localStorage.removeItem("shoppingCart");
+          localStorage.removeItem("checkoutTotal");
+          // Redirect back to cart or confirmation page
+          setTimeout(() => {
+            window.location.href = "../cart.html";
+          }, 1500);
+        });
+    </script>
+  </body>
+</html>
