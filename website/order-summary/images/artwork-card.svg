@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360" viewBox="0 0 600 360">
-  <rect width="600" height="360" rx="12" fill="#f4f4f4"/>
-  <rect x="24" y="24" width="552" height="220" rx="8" fill="#d8e7ff"/>
-  <rect x="24" y="256" width="180" height="80" rx="6" fill="#ffffff" stroke="#e6e6e6"/>
-  <text x="220" y="290" font-family="Segoe UI, Roboto, Arial" font-size="20" fill="#111">Artwork Title</text>
-  <text x="220" y="318" font-family="Segoe UI, Roboto, Arial" font-size="14" fill="#666">Artist Name</text>
-</svg>
