@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Products - ArtShop Inc.</title>
+    <link rel="stylesheet" href="./website_files/bootstrap.min.css" />
+    <link rel="stylesheet" href="./website_files/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="./website_files/styles.min.css" />
+    <link rel="stylesheet" href="./website_files/all.min.css" />
+    <link rel="stylesheet" href="./website_files/font-awesome.min.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
+
+      body {
+        font-family: "Manrope", sans-serif;
+        background: #f8f9fa;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Footer Styling */
+      footer {
+        box-sizing: border-box;
+        text-align: center;
+        background-color: #333;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+        width: 100%;
+        font: bold 16px sans-serif;
+        padding: 50px 0;
+        margin-top: auto;
+        margin-left: 0;
+        margin-right: 0;
+        bottom: 0;
+        text-decoration: none;
+        color: #fff;
+      }
+
+      /* Shopping Cart Notification Badge */
+      #cart-count {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #e14942;
+        color: white;
+        border-radius: 50%;
+        padding: 2px 6px;
+        font-size: 12px;
+        font-weight: bold;
+        min-width: 20px;
+        text-align: center;
+        display: none;
+      }
+
+      #fa-shopping-cart {
+        position: relative;
+      }
+
+      /* Product Cards Styling */
+      .product-card {
+        background: white;
+        max-width: 100%;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 6px;
+        margin-bottom: 15px;
+      }
+
+      .product-card h4 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .product-card .artist {
+        font-size: 14px;
+        color: #666;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .product-card .price {
+        font-size: 24px;
+        font-weight: 700;
+        color: #000;
+        text-align: center;
+        margin: 15px 0;
+      }
+
+      .product-card .stock-info {
+        font-size: 12px;
+        color: #666;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      .product-card .stock-info.low-stock {
+        color: #e14942;
+        font-weight: 600;
+      }
+
+      .product-card button {
+        width: 100%;
+        margin: 10px;
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        align-self: center;
+        transition: background 0.3s;
+      }
+
+      .product-card button:hover {
+        background-color: #6495ed;
+      }
+
+      .product-card button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+
+      /* Products Section */
+      .products-section {
+        max-width: 1200px;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .page-title {
+        width: 100%;
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 40px;
+      }
+
+      /* Toast Notification */
+      .toast-notification {
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: #5383d3;
+        color: white;
+        padding: 15px 25px;
+        border-radius: 5px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+        display: none;
+        animation: slideIn 0.3s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(400px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      /* Category Filter Buttons */
+      .category-filter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        width: 100%;
+        text-align: center;
+      }
+
+      .category-btn {
+        margin: 10px;
+        padding: 10px 20px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .category-btn:hover {
+        background-color: #6495ed;
+      }
+
+      .category-btn.active {
+        background-color: #6495ed;
+      }
+    </style>
+  </head>
+
+  <body data-new-gr-c-s-check-loaded="14.1127.0" data-gr-ext-installed="">
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-notification"></div>
+
+    <!-- Header -->
+
+    <header class="bg-dark rounded header">
+      <div id="header" class="#logo">
+        <div class="logo">
+          <img
+            class="rounded-circle object-fit-contain border visible #logo font-size:24px;"
+            width="188"
+            height="96"
+            id="logo"
+            src="./website_files/Artshop-Logo@1.25x.jpg"
+            alt="ArtShop Inc."
+            style="
+              background: #333333;
+              opacity: 1;
+              filter: blur(0px);
+              overflow: hidden;
+              border-width: 1px;
+            "
+          />
+        </div>
+      </div>
+      <nav id="menu" class="#nav">
+        <ul class="text-center" style="text-align: center">
+          <li class="me-2 index" id="home">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="ms-0 me-2 #about" id="about">
+            <a href="about.html">About</a>
+          </li>
+          <li class="me-2 #gallery" id="gallery">
+            <a href="gallery.html">Gallery</a>
+          </li>
+          <li id="products" class="products">
+            <a href="products.html">Products</a>
+          </li>
+          <li id="contact" class="contact">
+            <a href="contact.html">Contact</a>
+          </li>
+          <li
+            id="fa-shopping-cart"
+            class="ms-0 ps-3 me-0 pe-0 shopping-cart"
+            style="
+              padding-right: 0px;
+              padding-left: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <a
+              href="cart.html"
+              style="
+                font-size: 32px;
+                color: #ffffff !important;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <span
+                class="iconify"
+                data-icon="mdi-light:cart"
+                style="color: #ffffff; font-size: 32px; font-weight: bold"
+              ></span>
+              <span id="cart-count">0</span>
+            </a>
+          </li>
+
+          <li class="bg-dark border rounded-3 search-bar" id="search-bar">
+            <div class="search-input">
+              <form action="#" method="GET">
+                <input
+                  type="text"
+                  name="search"
+                  placeholder="Search..."
+                /><button
+                  type="submit"
+                  class="search-btn"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <span
+                    class="search-btn-icon iconify"
+                    data-icon="arcticons:pixel-search"
+                    style="
+                      color: #ffffff;
+                      font-size: 28px;
+                      font-weight: 900;
+                      filter: brightness(1.2);
+                    "
+                  ></span>
+                </button>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Products Section -->
+    <div class="products-section">
+      <h2 class="page-title">Our Artwork Collection</h2>
+      <div class="container product-catalog>
+      <h1 class="text-center mb-4">Product Catalog</h1>
+      <!-- Category Filter -->
+      <div class="category-filter">
+        <button class="category-btn" onclick="filterCategory('all')">
+          All
+        </button>
+
+        <button class="category-btn" onclick="filterCategory('Abstract')">
+          Abstract
+        </button>
+        <button class="category-btn" onclick="filterCategory('Portraits')">
+          Portraits
+        </button>
+        <button class="category-btn" onclick="filterCategory('Cartoons')">
+          Cartoons
+        </button>
+        <button class="category-btn" onclick="filterCategory('Drawing')">
+          Drawing
+        </button>
+
+        <button class="category-btn" onclick="filterCategory('Graphic')">
+          Graphic
+        </button>
+      </div>
+      <!-- Products Grid -->
+
+      <div class="row">
+        <!-- Product 1: The Warrior -->
+        <div class="col-md-4">
+          <div class="product-card" data-category="Abstract">
+            <img src="./products/images/face 7.jpg" alt="The Warrior" />
+            <h4>The Warrior</h4>
+            <p class="artist">by Phyllis Ferguson</p>
+            <p class="price">$100.00</p>
+            <p class="stock-info">In Stock: 25 available</p>
+            <button
+              onclick="addToCart('WARR001', 'The Warrior', 100.00, './products/images/face 7.jpg')"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 2: The Bushman -->
+        <div class="col-md-4">
+          <div class="product-card" data-category="Graphic">
+            <img src="./products/images/bushman.jpg" alt="The Bushman" />
+            <h4>The Bushman</h4>
+            <p class="artist">by Phyllis Ferguson</p>
+            <p class="price">$90.00</p>
+            <p class="stock-info">In Stock: 20 available</p>
+            <button
+              onclick="addToCart('BUSH001', 'The Bushman', 90.00, './products/images/bushman.jpg')"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 3: Thinking Man -->
+        <div class="col-md-4">
+          <div class="product-card" data-category="Drawing">
+            <img src="./products/images/thinking-man.jpg" alt="Thinking Man" />
+            <h4>Thinking Man</h4>
+            <p class="artist">by Phyllis Ferguson</p>
+            <p class="price">$75.00</p>
+            <p class="stock-info">In Stock: 30 available</p>
+            <button
+              onclick="addToCart('THIN001', 'Thinking Man', 75.00, './products/images/thinking-man.jpg')"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 4: Beautiful Soul -->
+        <div class="col-md-4">
+          <div class="product-card" data-category="Portraits">
+            <img src="./products/images/soul.jpg" alt="Beautiful Soul" />
+            <h4>Beautiful Soul</h4>
+            <p class="artist">by Phyllis Ferguson</p>
+            <p class="price">$100.00</p>
+            <p class="stock-info low-stock">In Stock: 15 available</p>
+            <button
+              onclick="addToCart('SOUL001', 'Beautiful Soul', 100.00, './products/images/soul.jpg')"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 5: An American Patriot -->
+        <div class="col-md-4">
+          <div class="product-card" data-category="Portraits">
+            <img
+              src="./products/images/soul-of-a-soldier.jpg"
+              alt="An American Patriot"
+            />
+            <h4>An American Patriot</h4>
+            <p class="artist">by Phyllis Ferguson</p>
+            <p class="price">$100.00</p>
+            <p class="stock-info">In Stock: 18 available</p>
+            <button
+              onclick="addToCart('PATR001', 'An American Patriot', 100.00, './products/images/soul-of-a-soldier.jpg')"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 6: The Railway Worker -->
+        <div class="col-md-4">
+          <div class="product-card" data-category="Portraits">
+            <img
+              src="./products/images/Black Japanese 21.jpg"
+              alt="The Railway Worker"
+            />
+            <h4>The Railway Worker</h4>
+            <p class="artist">by Phyllis Ferguson</p>
+            <p class="price">$100.00</p>
+            <p class="stock-info">In Stock: 22 available</p>
+            <button
+              onclick="addToCart('RAIL001', 'The Railway Worker', 100.00, './products/images/Black Japanese 21.jpg')"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 7: Woman in the Garden -->
+        <div class="col-md-4">
+          <div class="product-card" data-category="Abstract">
+            <img
+              src="./products/images/woman-in-garden.jpeg"
+              alt="Woman in the Garden"
+            />
+            <h4>Woman in the Garden</h4>
+            <p class="artist">by Phyllis Ferguson</p>
+            <p class="price">$100.00</p>
+            <p class="stock-info">In Stock: 20 available</p>
+            <button
+              onclick="addToCart('GARD001', 'Woman in the Garden', 100.00, './products/images/woman-in-garden.jpeg')"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 8: Black Goddess -->
+        <div class="col-md-4">
+          <div class="product-card" data-category="Abstract">
+            <img
+              src="./products/images/black-goddess.jpg"
+              alt="Black Goddess"
+            />
+            <h4>Black Goddess</h4>
+            <p class="artist">by Phyllis Ferguson</p>
+            <p class="price">$100.00</p>
+            <p class="stock-info">In Stock: 20 available</p>
+            <button
+              onclick="addToCart('GODD001', 'Black Goddess', 100.00, './products/images/black-goddess.jpg')"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 8: Elected Black Women -->
+        <div class="col-md-4">
+          <div class="product-card" data-category="Cartoons">
+            <img
+              src="./products/images/elected-black-women.jpg"
+              alt="Elected Black Women"
+            />
+            <h4>Elected Black Women</h4>
+            <p class="artist">by Phyllis Ferguson</p>
+            <p class="price">$50.00</p>
+            <p class="stock-info">In Stock: 20 available</p>
+            <button
+              onclick="addToCart('ELEC001', 'Elected Black Women', 50.00, './products/images/elected-black-women.jpg')"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-dark footer" style="background: #333; text-align: center">
+      <div id="footer-logo" class="footer-logo, color:white;">
+        <div class="footerlogo">
+          <h3 href="#" style="color: #ffffff">
+            Art<span
+              id="footer-logo-span"
+              class="footer-logo-span, color:#5383d3,"
+              style="color: #5383d3"
+              >Shop<span> Inc.</span></span
+            >
+          </h3>
+        </div>
+      </div>
+      <section id="footer" class="footer-nav-links" style="width: 100%">
+        <a href="index.html" style="color: #ffffff; text-decoration: none"
+          >Home</a
+        ><strong> · </strong
+        ><a href="products.html" style="color: #ffffff; text-decoration: none"
+          >Products</a
+        ><strong> · </strong
+        ><a href="pricing.html" style="color: #ffffff; text-decoration: none"
+          >Pricing</a
+        ><strong> · </strong
+        ><a href="help.html" style="color: #ffffff; text-decoration: none"
+          >Help</a
+        ><strong> · </strong
+        ><a href="faq.html" style="color: #ffffff; text-decoration: none">Faq</a
+        ><strong> · </strong
+        ><a href="contact.html" style="color: #ffffff; text-decoration: none">Contact</a>
+        <div></div>
+        <div class="row align-middle">
+          <div class="col">
+            <p
+              class="text-xl-center align-items-center, p-copyright"
+              id="p-copyright"
+              style="padding-top: 10px"
+            >
+              Copyright
+              <span>
+                ©
+                <span>
+                  2025
+                  <span>
+                    -
+                    <span>
+                      All Rights
+                      <span>
+                        Reserved&nbsp;<span>
+                          by <span> the <span>ArtShop</span></span></span
+                        ></span
+                      ></span
+                    ></span
+                  ></span
+                ></span
+              >
+            </p>
+          </div>
+        </div>
+        <div class="copyright-container"></div>
+      </section>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="./website_files/bootstrap.min.js"></script>
+
+    <script>
+      // Shopping Cart Management (using localStorage)
+      function getCart() {
+        const cart = localStorage.getItem("artshop_cart");
+        return cart ? JSON.parse(cart) : {};
+      }
+
+      function saveCart(cart) {
+        localStorage.setItem("artshop_cart", JSON.stringify(cart));
+        updateCartDisplay();
+      }
+
+      function addToCart(sku, name, price, image) {
+        const cart = getCart();
+        console.log("Current cart before adding:", cart);
+
+        if (cart[sku]) {
+          cart[sku].qty += 1;
+        } else {
+          cart[sku] = {
+            name: name,
+            price: price,
+            image: image,
+            qty: 1,
+          };
+        }
+
+        console.log("Cart after adding item:", cart);
+        saveCart(cart);
+        showToast(name + " added to cart!");
+      }
+
+      function updateCartDisplay() {
+        const cart = getCart();
+        const itemCount = Object.values(cart).reduce(
+          (sum, item) => sum + item.qty,
+          0
+        );
+
+        const cartCountElem = document.getElementById("cart-count");
+
+        if (itemCount > 0) {
+          cartCountElem.textContent = itemCount;
+          cartCountElem.style.display = "block";
+        } else {
+          cartCountElem.style.display = "none";
+        }
+      }
+
+      function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.textContent = message;
+        toast.style.display = "block";
+
+        setTimeout(() => {
+          toast.style.display = "none";
+        }, 3000);
+      }
+
+      // Initialize cart display on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        updateCartDisplay();
+      });
+
+      // Category Filter Functionality
+      function filterCategory(category) {
+        const products = document.querySelectorAll(".product-card");
+        const buttons = document.querySelectorAll(".category-btn");
+
+        // Update active button
+        buttons.forEach((btn) => btn.classList.remove("active"));
+        event.target.classList.add("active");
+
+        // Show all products if "All" is selected
+        if (category === "all") {
+          products.forEach((product) => {
+            product.parentElement.style.display = "block";
+          });
+          return;
+        }
+
+        // Filter products by data-category attribute
+        products.forEach((product) => {
+          const productCategory = product.dataset.category || "";
+
+          if (productCategory === category) {
+            product.parentElement.style.display = "block";
+          } else {
+            product.parentElement.style.display = "none";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
