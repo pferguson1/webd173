@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArtShop CSS Style Guide</title>
+    <link rel="stylesheet" href="./website_files/bootstrap.min.css" />
+    <link rel="stylesheet" href="./website_files/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="./website_files/styles.min.css" />
+    <link rel="stylesheet" href="./website_files/all.min.css" />
+    <link rel="stylesheet" href="./website_files/font-awesome.min.css" />
+     <link rel="stylesheet" href="./website_files/font-awesome.min.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
+
+      :root {
+        /* Colors */
+        --primary-color: #333333;
+        --secondary-color: #5383d3;
+        --background-color: #ffffff;
+        --text-color: #000000;
+        --accent-color: cornflowerblue;
+        --border-color: #e0e0e0;
+        --hover-color: #f4f4f4;
+
+        /* Typography */
+        --font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        --font-size-base: 16px;
+        --font-size-small: 14px;
+        --font-size-h1: 32px;
+        --font-size-h2: 24px;
+        --font-size-h3: 20px;
+        --font-size-h4: 18px;
+
+        /* Spacing */
+        --spacing-xs: 4px;
+        --spacing-sm: 8px;
+        --spacing-md: 16px;
+        --spacing-lg: 24px;
+        --spacing-xl: 32px;
+        --spacing-2xl: 48px;
+
+        /* Borders */
+        --border-radius-sm: 4px;
+        --border-radius-md: 8px;
+        --border-radius-lg: 12px;
+        --border-radius-circle: 50%;
+
+        /* Shadows */
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-family);
+        font-size: var(--font-size-base);
+        color: var(--text-color);
+        line-height: 1.6;
+        background-color: #f8f9fa;
+      }
+
+      .style-guide-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--spacing-xl);
+      }
+
+      .style-guide-header {
+        background: var(--primary-color);
+        color: white;
+        padding: var(--spacing-2xl) var(--spacing-xl);
+        margin: -var(--spacing-xl) -var(--spacing-xl) var(--spacing-2xl);
+        border-radius: var(--border-radius-md);
+      }
+
+      .style-guide-header h1 {
+        font-size: 48px;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .style-guide-header .subtitle {
+        font-size: var(--font-size-h4);
+        opacity: 0.9;
+      }
+
+      .section {
+        background: white;
+        padding: var(--spacing-xl);
+        margin-bottom: var(--spacing-xl);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-md);
+      }
+
+      .section-title {
+        font-size: var(--font-size-h2);
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--secondary-color);
+        padding-bottom: var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .subsection-title {
+        font-size: var(--font-size-h3);
+        color: var(--primary-color);
+        margin: var(--spacing-lg) 0 var(--spacing-md);
+      }
+
+      /* Color Swatches */
+      .color-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+      }
+
+      .color-swatch {
+        border-radius: var(--border-radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .color-box {
+        height: 100px;
+      }
+
+      .color-info {
+        padding: var(--spacing-sm);
+        background: #f8f9fa;
+        font-size: var(--font-size-small);
+      }
+
+      .color-name {
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .color-value {
+        font-family: "Courier New", monospace;
+        color: #666;
+      }
+
+      /* Typography Examples */
+      .typography-example {
+        margin: var(--spacing-md) 0;
+        padding: var(--spacing-md);
+        background: #f8f9fa;
+        border-left: 4px solid var(--secondary-color);
+      }
+
+      /* Button Examples */
+      .button-showcase {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: var(--border-radius-sm);
+        cursor: pointer;
+        font-family: var(--font-family);
+        font-size: var(--font-size-base);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-primary {
+        background: var(--primary-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #222;
+      }
+
+      .btn-secondary {
+        background: var(--secondary-color);
+        color: white;
+      }
+
+      .btn-secondary:hover {
+        background: #4272bb;
+      }
+
+      /* Card Examples */
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: var(--spacing-lg);
+        margin: var(--spacing-lg) 0;
+      }
+
+      .card {
+        background: white;
+        border-radius: var(--border-radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .card-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .card-body {
+        padding: var(--spacing-md);
+      }
+
+      .card-title {
+        font-size: var(--font-size-h4);
+        margin-bottom: var(--spacing-sm);
+        color: var(--primary-color);
+      }
+
+      .card-text {
+        color: #666;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .card-footer {
+        padding: var(--spacing-md);
+        background: #f8f9fa;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .price {
+        font-weight: 700;
+        font-size: var(--font-size-h4);
+        color: var(--primary-color);
+      }
+
+      /* Search Form */
+      .search-form {
+        display: flex;
+        gap: var(--spacing-sm);
+        max-width: 500px;
+        margin: var(--spacing-md) 0;
+      }
+
+      .search-input {
+        flex: 1;
+        padding: 10px 15px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-sm);
+        font-family: var(--font-family);
+        font-size: var(--font-size-base);
+      }
+
+      .search-btn {
+        padding: 10px 20px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius-sm);
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .search-btn:hover {
+        background: #222;
+      }
+
+      /* Header/Navigation */
+      .header-example {
+        background: var(--primary-color);
+        padding: var(--spacing-md) var(--spacing-lg);
+        border-radius: var(--border-radius-md);
+        margin: var(--spacing-md) 0;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: var(--spacing-lg);
+        list-style: none;
+        justify-content: center;
+      }
+
+      .nav-menu a {
+        color: white;
+        text-decoration: none;
+        padding: var(--spacing-sm) var(--spacing-md);
+        border-radius: var(--border-radius-sm);
+        transition: background 0.3s ease;
+      }
+
+      .nav-menu a:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Footer */
+      .footer-example {
+        background: var(--primary-color);
+        color: white;
+        padding: var(--spacing-xl);
+        border-radius: var(--border-radius-md);
+        margin: var(--spacing-md) 0;
+        text-align: center;
+      }
+
+      .footer-logo {
+        font-size: var(--font-size-h2);
+        margin-bottom: var(--spacing-md);
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-md);
+        flex-wrap: wrap;
+        list-style: none;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+      }
+
+      /* Code Display */
+      .code-block {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: var(--spacing-md);
+        border-radius: var(--border-radius-md);
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+        font-size: var(--font-size-small);
+        margin: var(--spacing-md) 0;
+        border-left: 4px solid var(--secondary-color);
+      }
+
+      .code-block code {
+        display: block;
+        white-space: pre;
+      }
+
+      /* Layout Grid Example */
+      .grid-example {
+        display: grid;
+        gap: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .grid-item {
+        background: #f8f9fa;
+        padding: var(--spacing-lg);
+        text-align: center;
+        border-radius: var(--border-radius-sm);
+        border: 2px dashed var(--border-color);
+      }
+
+      /* Spacing Examples */
+      .spacing-example {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        margin: var(--spacing-sm) 0;
+      }
+
+      .spacing-box {
+        background: var(--secondary-color);
+        color: white;
+        padding: var(--spacing-sm);
+        border-radius: var(--border-radius-sm);
+        font-size: var(--font-size-small);
+      }
+
+      @media (max-width: 768px) {
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+          grid-template-columns: 1fr;
+        }
+
+        .style-guide-container {
+          padding: var(--spacing-md);
+        }
+
+        .nav-menu {
+          flex-direction: column;
+          gap: var(--spacing-sm);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="style-guide-container">
+      <header class="style-guide-header">
+        <h1>ArtShop CSS Style Guide</h1>
+        <p class="subtitle">Design System & Component Documentation</p>
+      </header>
+
+      <!-- Design Tokens -->
+      <section class="section" id="design-tokens">
+        <h2 class="section-title">Design Tokens</h2>
+
+        <h3 class="subsection-title">
+          Color Palette: includes Header with primary color, Secondary button
+          styling, Link colors with accent, Card borders.
+        </h3>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="color-box" style="background: #333333"></div>
+            <div class="color-info">
+              <div class="color-name">Primary Dark</div>
+              <div class="color-value">#333333</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: #5383d3"></div>
+            <div class="color-info">
+              <div class="color-name">Secondary Blue</div>
+              <div class="color-value">#5383d3</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div
+              class="color-box"
+              style="background: #ffffff; border: 1px solid #e0e0e0"
+            ></div>
+            <div class="color-info">
+              <div class="color-name">Background</div>
+              <div class="color-value">#ffffff</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-box" style="background: cornflowerblue"></div>
+            <div class="color-info">
+              <div class="color-name">Accent</div>
+              <div class="color-value">cornflowerblue</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <code
+            >/* Define color variables in :root */ :root { --primary-color:
+            #333333; --secondary-color: #5383d3; --background-color: #ffffff;
+            --text-color: #000000; --accent-color: cornflowerblue;
+            --border-color: #e0e0e0; --hover-color: #f4f4f4; } /* Usage examples
+            */ .header { background: var(--primary-color); color:
+            var(--background-color); } .button-secondary { background:
+            var(--secondary-color); } a { color: var(--accent-color); } .card {
+            border: 1px solid var(--border-color); }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">
+          Spacing Scale: includes CSS Variable Definitions, Padding Usage,
+          Margin Usage , Gap Usage.
+        </h3>
+        <div class="spacing-example">
+          <div class="spacing-box" style="width: 4px">xs - 4px</div>
+          <div class="spacing-box" style="width: 8px">sm - 8px</div>
+          <div class="spacing-box" style="width: 16px">md - 16px</div>
+          <div class="spacing-box" style="width: 24px">lg - 24px</div>
+          <div class="spacing-box" style="width: 32px">xl - 32px</div>
+          <div class="spacing-box" style="width: 48px">2xl - 48px</div>
+        </div>
+
+        <div class="code-block">
+          <code
+            >/* Define spacing variables in :root */ :root { --spacing-xs: 4px;
+            --spacing-sm: 8px; --spacing-md: 16px; --spacing-lg: 24px;
+            --spacing-xl: 32px; --spacing-2xl: 48px; } /* Usage examples for
+            padding */ .card { padding: var(--spacing-md); } .section { padding:
+            var(--spacing-xl); } /* Usage examples for margin */ .heading {
+            margin-bottom: var(--spacing-lg); } .button { margin-top:
+            var(--spacing-sm); } /* Usage examples for gap */ .grid { gap:
+            var(--spacing-md); } .flex-container { gap: var(--spacing-lg);
+            }</code
+          >
+        </div>
+      </section>
+
+      <!-- Typography -->
+      <section class="section" id="typography">
+        <h2 class="section-title">Typography</h2>
+
+        <h3 class="subsection-title">Font Family</h3>
+        <div class="typography-example">
+          <p style="font-family: var(--font-family); font-size: 24px">
+            Manrope - The quick brown fox jumps over the lazy dog
+          </p>
+          <p style="font-size: 14px; color: #666">
+            Primary font: Manrope (weights: 400, 500, 600, 700)
+          </p>
+        </div>
+
+        <div class="code-block">
+          <code
+            >/* CSS Variable */ --font-family: "Manrope", -apple-system,
+            BlinkMacSystemFont, "Segoe UI", sans-serif; /* Usage in CSS */ body
+            { font-family: var(--font-family); } /* Import from Google Fonts */
+            @import
+            url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Headings</h3>
+        <div class="typography-example">
+          <h1 style="font-size: var(--font-size-h1); margin-bottom: 10px">
+            Heading 1 - 32px
+          </h1>
+          <h2 style="font-size: var(--font-size-h2); margin-bottom: 10px">
+            Heading 2 - 24px
+          </h2>
+          <h3 style="font-size: var(--font-size-h3); margin-bottom: 10px">
+            Heading 3 - 20px
+          </h3>
+          <h4 style="font-size: var(--font-size-h4); margin-bottom: 10px">
+            Heading 4 - 18px
+          </h4>
+        </div>
+
+        <div class="code-block">
+          <code
+            >&lt;h1 style="font-size: var(--font-size-h1);"&gt;Heading 1 -
+            32px&lt;/h1&gt; &lt;h2 style="font-size:
+            var(--font-size-h2);"&gt;Heading 2 - 24px&lt;/h2&gt; &lt;h3
+            style="font-size: var(--font-size-h3);"&gt;Heading 3 -
+            20px&lt;/h3&gt; &lt;h4 style="font-size:
+            var(--font-size-h4);"&gt;Heading 4 - 18px&lt;/h4&gt;</code
+          >
+        </div>
+
+        <h3 class="subsection-title">
+          Body Text: includes Clearer HTML, CSS Variables, Body element styling,
+          Utility classes.
+        </h3>
+        <div class="typography-example">
+          <p style="font-size: var(--font-size-base)">
+            Body text (16px) - This is the standard paragraph text used
+            throughout the website. It provides good readability with a
+            line-height of 1.6.
+          </p>
+          <p style="font-size: var(--font-size-small); color: #666">
+            Small text (14px) - Used for captions, metadata, and secondary
+            information.
+          </p>
+        </div>
+
+        <div class="code-block">
+          <code
+            >/* Body Text Styles */ &lt;p style="font-size:
+            var(--font-size-base);"&gt; Body text (16px) - Standard paragraph
+            text with readability &lt;/p&gt; &lt;p style="font-size:
+            var(--font-size-small); color: #666;"&gt; Small text (14px) -
+            Captions, metadata, and secondary information &lt;/p&gt; /* CSS
+            Variables */ --font-size-base: 16px; --font-size-small: 14px; /*
+            Apply to body element */ body { font-family: var(--font-family);
+            font-size: var(--font-size-base); line-height: 1.6; color:
+            var(--text-color); } /* Create utility classes */ .text-small {
+            font-size: var(--font-size-small); } .text-muted { color: #666;
+            }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Complete Typography Example</h3>
+        <div class="code-block">
+          <code
+            >&lt;h1&gt;Main Heading&lt;/h1&gt; &lt;h2&gt;Section
+            Heading&lt;/h2&gt; &lt;h3&gt;Subsection Heading&lt;/h3&gt;
+            &lt;h4&gt;Minor Heading&lt;/h4&gt; &lt;p&gt;Body paragraph text with
+            standard readability.&lt;/p&gt; &lt;p class="small-text"&gt;Small
+            text for captions.&lt;/p&gt;</code
+          >
+        </div>
+      </section>
+
+      <!-- Buttons -->
+      <section class="section" id="buttons">
+        <h2 class="section-title">Buttons</h2>
+
+        <h3 class="subsection-title">
+          Button Styles: includes CSS for primary, secondary, and outline
+          buttons.
+        </h3>
+        <div class="button-showcase">
+          <button class="btn btn-primary">Primary Button</button>
+          <button class="btn btn-secondary">Secondary Button</button>
+          <button
+            class="btn"
+            style="background: transparent; border: 1px solid #333"
+          >
+            Outline Button
+          </button>
+        </div>
+
+        <div class="code-block">
+          <code
+            >/* HTML */ &lt;button class="btn btn-primary"&gt;Primary
+            Button&lt;/button&gt; &lt;button class="btn
+            btn-secondary"&gt;Secondary Button&lt;/button&gt; &lt;button
+            class="btn btn-outline"&gt;Outline Button&lt;/button&gt; /* CSS */
+            .btn { padding: 10px 20px; border: none; border-radius:
+            var(--border-radius-sm); cursor: pointer; font-family:
+            var(--font-family); font-size: var(--font-size-base); transition:
+            all 0.3s ease; } .btn-primary { background: var(--primary-color);
+            color: white; } .btn-primary:hover { background: #222; }
+            .btn-secondary { background: var(--secondary-color); color: white; }
+            .btn-secondary:hover { background: #4272bb; } .btn-outline {
+            background: transparent; border: 1px solid var(--primary-color);
+            color: var(--primary-color); } .btn-outline:hover { background:
+            var(--primary-color); color: white; }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">
+          Button Sizes: includes CSS for .btn-sm, default .btn, and .btn-lg
+          classes.
+        </h3>
+        <div class="button-showcase">
+          <button
+            class="btn btn-primary"
+            style="padding: 6px 12px; font-size: 14px"
+          >
+            Small
+          </button>
+          <button class="btn btn-primary">Medium (Default)</button>
+          <button
+            class="btn btn-primary"
+            style="padding: 14px 28px; font-size: 18px"
+          >
+            Large
+          </button>
+        </div>
+
+        <div class="code-block">
+          <code
+            >/* HTML */ &lt;button class="btn btn-primary
+            btn-sm"&gt;Small&lt;/button&gt; &lt;button class="btn
+            btn-primary"&gt;Medium (Default)&lt;/button&gt; &lt;button
+            class="btn btn-primary btn-lg"&gt;Large&lt;/button&gt; /* CSS */
+            .btn-sm { padding: 6px 12px; font-size: 14px; } .btn { padding: 10px
+            20px; font-size: 16px; } .btn-lg { padding: 14px 28px; font-size:
+            18px; }</code
+          >
+        </div>
+      </section>
+
+      <!-- Cards -->
+      <section class="section" id="cards">
+        <h2 class="section-title">Cards</h2>
+
+        <h3 class="subsection-title">
+          Card Components: includes CSS Styles for .card, .card-img, .card-body,
+          .card-title, .card-text, .card-footer, and .price.
+        </h3>
+        <div class="card-grid">
+          <div class="card">
+            <img
+              src="./website_files/face 7.jpg"
+              alt="Artwork"
+              class="card-img"
+            />
+            <div class="card-body">
+              <h4 class="card-title">The Warrior</h4>
+              <p class="card-text">Phyllis Ferguson</p>
+              <p class="card-text">Description of Artwork...</p>
+            </div>
+            <div class="card-footer">
+              <span class="price">$100.00</span>
+              <button
+                class="btn btn-primary"
+                style="padding: 6px 12px; font-size: 14px"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="./website_files/bushman.jpg"
+              alt="Artwork"
+              class="card-img"
+            />
+            <div class="card-body">
+              <h4 class="card-title">The Bushman</h4>
+              <p class="card-text">Phyllis Ferguson</p>
+              <p class="card-text">Description of Artwork...</p>
+            </div>
+            <div class="card-footer">
+              <span class="price">$90.00</span>
+              <button
+                class="btn btn-primary"
+                style="padding: 6px 12px; font-size: 14px"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="./website_files/thinking-man.jpg"
+              alt="Artwork"
+              class="card-img"
+            />
+            <div class="card-body">
+              <h4 class="card-title">Thinking Man</h4>
+              <p class="card-text">Phyllis Ferguson</p>
+              <p class="card-text">Description of Artwork...</p>
+            </div>
+            <div class="card-footer">
+              <span class="price">$75.00</span>
+              <button
+                class="btn btn-primary"
+                style="padding: 6px 12px; font-size: 14px"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <code
+            >/* HTML Structure */ &lt;div class="card"&gt; &lt;img
+            src="artwork.jpg" alt="Artwork" class="card-img"&gt; &lt;div
+            class="card-body"&gt; &lt;h4 class="card-title"&gt;The
+            Warrior&lt;/h4&gt; &lt;p class="card-text"&gt;Phyllis
+            Ferguson&lt;/p&gt; &lt;p class="card-text"&gt;Description of
+            Artwork...&lt;/p&gt; &lt;/div&gt; &lt;div class="card-footer"&gt;
+            &lt;span class="price"&gt;$100.00&lt;/span&gt; &lt;button class="btn
+            btn-primary btn-sm"&gt;Add to Cart&lt;/button&gt; &lt;/div&gt;
+            &lt;/div&gt; /* CSS */ .card { background: white; border-radius:
+            var(--border-radius-md); overflow: hidden; box-shadow:
+            var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s
+            ease; } .card:hover { transform: translateY(-4px); box-shadow:
+            var(--shadow-lg); } .card-img { width: 100%; height: 200px;
+            object-fit: cover; } .card-body { padding: var(--spacing-md); }
+            .card-title { font-size: var(--font-size-h4); margin-bottom:
+            var(--spacing-sm); color: var(--primary-color); } .card-text {
+            color: #666; margin-bottom: var(--spacing-md); } .card-footer {
+            padding: var(--spacing-md); background: #f8f9fa; display: flex;
+            justify-content: space-between; align-items: center; } .price {
+            font-weight: 700; font-size: var(--font-size-h4); color:
+            var(--primary-color); } /* Card Grid Layout */ .card-grid { display:
+            grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing-lg); }</code
+          >
+        </div>
+      </section>
+
+      <!-- Forms -->
+      <section class="section" id="forms">
+        <h2 class="section-title">Forms & Search</h2>
+
+        <h3 class="subsection-title">Search Form</h3>
+        <form class="search-form">
+          <input type="text" class="search-input" placeholder="Search..." />
+          <button type="submit" class="search-btn">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </form>
+
+        <div class="code-block">
+          <code
+            >&lt;form class="search-form"&gt; &lt;input type="text"
+            class="search-input" placeholder="Search..."&gt; &lt;button
+            type="submit" class="search-btn"&gt;Search&lt;/button&gt;
+            &lt;/form&gt;</code
+          >
+        </div>
+      </section>
+
+      <!-- Header/Navigation -->
+      <section class="section" id="header">
+        <h2 class="section-title">Header & Navigation</h2>
+
+        <div class="header-example">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <h3 style="color: white; margin: 0">ArtShop Inc.</h3>
+            <nav>
+              <ul class="nav-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <code
+            >&lt;header class="header"&gt; &lt;div class="header-content"&gt;
+            &lt;h1 class="logo"&gt;ArtShop Inc.&lt;/h1&gt; &lt;nav&gt; &lt;a
+            href="#"&gt;Home&lt;/a&gt; &lt;a href="#"&gt;Products&lt;/a&gt;
+            &lt;/nav&gt; &lt;/div&gt; &lt;/header&gt;</code
+          >
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <section class="section" id="footer">
+        <h2 class="section-title">Footer</h2>
+
+        <div class="footer-example">
+          <div class="footer-logo">
+            Art<span style="color: var(--secondary-color)">Shop</span> Inc.
+          </div>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <p style="margin-top: 20px; opacity: 0.8">
+            Copyright © 2025 - All Rights Reserved by the ArtShop
+          </p>
+        </div>
+
+        <div class="code-block">
+          <code
+            >&lt;footer class="footer"&gt; &lt;h3&gt;ArtShop Inc.&lt;/h3&gt;
+            &lt;nav&gt; &lt;a href="#"&gt;Home&lt;/a&gt; &lt;a
+            href="#"&gt;Products&lt;/a&gt; &lt;/nav&gt; &lt;p&gt;Copyright ©
+            2025&lt;/p&gt; &lt;/footer&gt;</code
+          >
+        </div>
+      </section>
+
+      <!-- Layout Grid -->
+      <section class="section" id="layout">
+        <h2 class="section-title">Layout Grid</h2>
+
+        <h3 class="subsection-title">2 Column Grid</h3>
+        <div class="grid-example grid-2">
+          <div class="grid-item">Column 1</div>
+          <div class="grid-item">Column 2</div>
+        </div>
+
+        <h3 class="subsection-title">3 Column Grid</h3>
+        <div class="grid-example grid-3">
+          <div class="grid-item">Column 1</div>
+          <div class="grid-item">Column 2</div>
+          <div class="grid-item">Column 3</div>
+        </div>
+
+        <h3 class="subsection-title">4 Column Grid</h3>
+        <div class="grid-example grid-4">
+          <div class="grid-item">1</div>
+          <div class="grid-item">2</div>
+          <div class="grid-item">3</div>
+          <div class="grid-item">4</div>
+        </div>
+
+        <div class="code-block">
+          <code
+            >&lt;div class="grid-3"&gt; &lt;div&gt;Column 1&lt;/div&gt;
+            &lt;div&gt;Column 2&lt;/div&gt; &lt;div&gt;Column 3&lt;/div&gt;
+            &lt;/div&gt;</code
+          >
+        </div>
+      </section>
+
+      <!-- Shadows & Effects -->
+      <section class="section" id="effects">
+        <h2 class="section-title">Shadows & Effects</h2>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 24px 0;
+          "
+        >
+          <div
+            style="
+              padding: 32px;
+              background: white;
+              border-radius: 8px;
+              box-shadow: var(--shadow-sm);
+              text-align: center;
+            "
+          >
+            <p>Small Shadow</p>
+            <code>--shadow-sm</code>
+          </div>
+          <div
+            style="
+              padding: 32px;
+              background: white;
+              border-radius: 8px;
+              box-shadow: var(--shadow-md);
+              text-align: center;
+            "
+          >
+            <p>Medium Shadow</p>
+            <code>--shadow-md</code>
+          </div>
+          <div
+            style="
+              padding: 32px;
+              background: white;
+              border-radius: 8px;
+              box-shadow: var(--shadow-lg);
+              text-align: center;
+            "
+          >
+            <p>Large Shadow</p>
+            <code>--shadow-lg</code>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <code
+            >/* Define shadow variables in :root */ :root { --shadow-sm: 0 1px
+            3px rgba(0, 0, 0, 0.1); --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1); } /* Usage examples */
+            .card { box-shadow: var(--shadow-sm); } .card:hover { box-shadow:
+            var(--shadow-lg); } .section { box-shadow: var(--shadow-md); } /*
+            Border Radius Variables */ :root { --border-radius-sm: 4px;
+            --border-radius-md: 8px; --border-radius-lg: 12px;
+            --border-radius-circle: 50%; } /* Border Radius Usage */ .btn {
+            border-radius: var(--border-radius-sm); } .card { border-radius:
+            var(--border-radius-md); } .avatar { border-radius:
+            var(--border-radius-circle); } /* Transition Effects */ .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease; } .card:hover
+            { transform: translateY(-4px); box-shadow: var(--shadow-lg); } .btn
+            { transition: all 0.3s ease; } .btn:hover { transform: scale(1.05);
+            }</code
+          >
+        </div>
+      </section>
+
+      <!-- Usage Guidelines -->
+      <section class="section" id="guidelines">
+        <h2 class="section-title">Usage Guidelines & Best Practices</h2>
+
+        <h3 class="subsection-title">Design Tokens (CSS Variables)</h3>
+        <p style="margin-bottom: var(--spacing-md)">
+          <strong>Why use CSS variables?</strong> Design tokens ensure
+          consistency across your entire project. When you need to update a
+          color or spacing value, you only change it in one place (the :root),
+          and it updates everywhere automatically.
+        </p>
+        <div class="code-block">
+          <code
+            >/* Good - Using CSS variables */ .header { background:
+            var(--primary-color); padding: var(--spacing-lg); } /* Avoid -
+            Hardcoded values */ .header { background: #333333; padding: 24px;
+            }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Color Palette & Accessibility</h3>
+        <p style="margin-bottom: var(--spacing-md)">
+          <strong>Maintain brand consistency:</strong> Always use colors from
+          the defined palette. Ensure proper contrast ratios for text
+          readability (WCAG AA requires 4.5:1 for normal text, 3:1 for large
+          text). Dark text (#333) on white backgrounds and white text on dark
+          backgrounds meet these requirements.
+        </p>
+        <ul
+          style="
+            line-height: 2;
+            padding-left: 24px;
+            margin-bottom: var(--spacing-lg);
+            list-style-type: disc;
+            color: #333;
+          "
+        >
+          <li>
+            <strong>Primary Dark (#333333):</strong> Headers, navigation, main
+            buttons
+          </li>
+          <li>
+            <strong>Secondary Blue (#5383d3):</strong> Links, accents, secondary
+            actions
+          </li>
+          <li>
+            <strong>Background (#ffffff):</strong> Page backgrounds, card
+            surfaces
+          </li>
+          <li>
+            <strong>Text Colors:</strong> Use #000 for primary text, #666 for
+            secondary text
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Spacing & Layout Consistency</h3>
+        <p style="margin-bottom: var(--spacing-md)">
+          <strong>Follow the spacing scale:</strong> Using consistent spacing
+          creates visual rhythm and improves the overall design. Never use
+          arbitrary pixel values—always reference the spacing variables.
+        </p>
+        <div class="code-block">
+          <code
+            >/* Spacing hierarchy */ xs (4px) - Tight spacing between related
+            elements sm (8px) - Small gaps, inline elements md (16px) - Standard
+            spacing for most components lg (24px) - Section spacing, card
+            padding xl (32px) - Major section separation 2xl (48px) - Large
+            section breaks, hero spacing /* Example usage */ .card { padding:
+            var(--spacing-md); margin-bottom: var(--spacing-lg); } .section {
+            padding: var(--spacing-xl) 0; }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Typography Hierarchy</h3>
+        <p style="margin-bottom: var(--spacing-md)">
+          <strong>Use proper heading structure:</strong> Maintain semantic HTML
+          with correct heading hierarchy. This improves SEO and accessibility
+          for screen readers.</p>
+        <ul
+          style="
+            line-height: 2;
+            padding-left: 24px;
+            margin-bottom: 0;
+            list-style-type: disc;
+            color: #333;
+          "
+        >
+          <li><strong>H1 (32px):</strong> One per page - main page title</li>
+          <li><strong>H2 (24px):</strong> Major section headings</li>
+          <li><strong>H3 (20px):</strong> Subsection headings</li>
+          <li><strong>H4 (18px):</strong> Minor headings, card titles</li>
+          <li><strong>Body (16px):</strong> Standard paragraph text</li>
+          <li>
+            <strong>Small (14px):</strong> Captions, metadata, secondary info 
+          </li>
+          
+        </ul>
+
+        <div class="code-block">
+          <code>/* Typography Hierarchy CSS */
+
+/* Define typography variables in :root */
+:root {
+  --font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-size-h1: 32px;
+  --font-size-h2: 24px;
+  --font-size-h3: 20px;
+  --font-size-h4: 18px;
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+}
+
+/* Heading styles with semantic HTML */
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-lg);
+  color: var(--primary-color);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-color);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-color);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-color);
+}
+
+/* Body text */
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+/* Small text utility */
+.text-small {
+  font-size: var(--font-size-small);
+  color: #666;
+}
+
+/* HTML Example */
+&lt;h1&gt;Main Page Title&lt;/h1&gt;
+&lt;h2&gt;Major Section Heading&lt;/h2&gt;
+&lt;p&gt;Standard body paragraph text with good readability.&lt;/p&gt;
+&lt;h3&gt;Subsection Heading&lt;/h3&gt;
+&lt;h4&gt;Minor Heading&lt;/h4&gt;
+&lt;p class="text-small"&gt;Small text for captions or metadata.&lt;/p&gt;</code>
+        </div>
+
+        <h3 class="subsection-title">Component Best Practices</h3>
+
+        <h4 style="font-size: 16px; margin: var(--spacing-md) 0">Buttons</h4>
+        <ul
+          style="
+            line-height: 2;
+            padding-left: 24px;
+            margin-bottom: var(--spacing-md);
+            list-style-type: disc;
+            color: #333;
+          "
+        >
+          <li>
+            Use <code>.btn-primary</code> for main actions (Submit, Add to Cart)
+          </li>
+          <li>
+            Use <code>.btn-secondary</code> for secondary actions (Cancel, Learn
+            More)
+          </li>
+          <li>Always include hover states for visual feedback</li>
+          <li>Make buttons large enough for touch targets (minimum 44x44px)</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin: var(--spacing-md) 0">Cards:includes HTML Structure showing the complete card markup with image, body, and footer sections
+        CSS Styles for all card components (.card, .card-img, .card-body, .card-title, .card-text, .card-footer, .price)
+        Hover effects with transform and box-shadow transitions
+        Card Grid Layout using CSS Grid with responsive auto-fill columns.
+        <ul
+          style="
+            line-height: 2;
+            padding-left: 24px;
+            margin-bottom: var(--spacing-md);
+            list-style-type: disc;
+          "
+        ></h4>
+          <li>Keep card heights consistent within the same grid</li>
+          <li>
+            Use <code>object-fit: cover</code> for images to maintain aspect
+            ratio
+          </li>
+          <li>Include hover effects to indicate interactivity</li>
+          <li>Always use card-footer for pricing and actions</li>
+        </ul>
+
+        <div class="code-block">
+          <code>/* Card Component CSS */
+
+/* HTML Structure */
+&lt;div class="card"&gt;
+  &lt;img src="artwork.jpg" alt="Artwork" class="card-img"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h4 class="card-title"&gt;The Warrior&lt;/h4&gt;
+    &lt;p class="card-text"&gt;Phyllis Ferguson&lt;/p&gt;
+    &lt;p class="card-text"&gt;Description of Artwork...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card-footer"&gt;
+    &lt;span class="price"&gt;$100.00&lt;/span&gt;
+    &lt;button class="btn btn-primary btn-sm"&gt;Add to Cart&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+/* CSS Styles */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Maintains aspect ratio */
+}
+
+.card-body {
+  padding: var(--spacing-md);
+}
+
+.card-title {
+  font-size: var(--font-size-h4);
+  margin-bottom: var(--spacing-sm);
+  color: var(--primary-color);
+}
+
+.card-text {
+  color: #666;
+  margin-bottom: var(--spacing-md);
+}
+
+.card-footer {
+  padding: var(--spacing-md);
+  background: #f8f9fa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-weight: 700;
+  font-size: var(--font-size-h4);
+  color: var(--primary-color);
+}
+
+/* Card Grid Layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+}</code>
+        </div>
+
+        <h4 style="font-size: 16px; margin: var(--spacing-md) 0">
+          Responsive Design: includes Mobile-first Approach, Testing on Devices,
+          Touch Targets, Flexible Units.
+        
+        <ul
+          style="
+            line-height: 2;
+            padding-left: 24px;
+            margin-bottom: var(--spacing-md);
+            list-style-type: disc;
+          "
+        ></h4>
+          <li>
+            <strong>Mobile-first approach:</strong> All grids collapse to single
+            column below 768px
+          </li>
+          <li>Test on actual devices, not just browser dev tools</li>
+          <li>Ensure touch targets are large enough (44x44px minimum)</li>
+          <li>Use flexible units (%, vh, vw) instead of fixed pixel widths</li>
+        </ul>
+
+        <div class="code-block">
+          <code
+            >/* Responsive Design CSS */ /* Mobile-first Grid System */
+            .card-grid { display: grid; grid-template-columns: repeat(auto-fill,
+            minmax(250px, 1fr)); gap: var(--spacing-lg); } /* Breakpoint at
+            768px */ @media (max-width: 768px) { /* Collapse multi-column grids
+            to single column */ .grid-2, .grid-3, .grid-4 {
+            grid-template-columns: 1fr; } /* Reduce padding on mobile */
+            .style-guide-container { padding: var(--spacing-md); } /* Stack
+            navigation vertically */ .nav-menu { flex-direction: column; gap:
+            var(--spacing-sm); } /* Adjust font sizes for mobile */
+            .style-guide-header h1 { font-size: 32px; } /* Full-width cards on
+            mobile */ .card-grid { grid-template-columns: 1fr; } } /* Flexible
+            units instead of fixed pixels */ .container { width: 100%;
+            max-width: 1200px; margin: 0 auto; padding: 0 5%; /*
+            Percentage-based padding */ } /* Responsive images */ img {
+            max-width: 100%; height: auto; } /* Touch-friendly buttons (minimum
+            44x44px) */ .btn { min-height: 44px; min-width: 44px; padding: 10px
+            20px; }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Component Composition</h3>
+        <p style="margin-bottom: var(--spacing-md)">
+          <strong>Building complex layouts:</strong> Components are designed to
+          work together. Combine cards with grids, buttons with forms, and
+          headers with navigation to create complete page layouts.
+        </p>
+
+        <div class="code-block">
+          <code
+            >/* Example: Featured Products Section */ &lt;section
+            class="featured-products"&gt; &lt;div class="container"&gt; &lt;h2
+            style="text-align: center; margin-bottom: var(--spacing-lg);"&gt;
+            Featured Artwork &lt;/h2&gt; &lt;div class="card-grid"&gt; &lt;div
+            class="card"&gt; &lt;img src="artwork.jpg" class="card-img"
+            alt="Artwork"&gt; &lt;div class="card-body"&gt; &lt;h4
+            class="card-title"&gt;The Warrior&lt;/h4&gt; &lt;p
+            class="card-text"&gt;Phyllis Ferguson&lt;/p&gt; &lt;/div&gt; &lt;div
+            class="card-footer"&gt; &lt;span
+            class="price"&gt;$100.00&lt;/span&gt; &lt;button class="btn
+            btn-primary btn-sm"&gt;Add to Cart&lt;/button&gt; &lt;/div&gt;
+            &lt;/div&gt; &lt;!-- More cards... --&gt; &lt;/div&gt; &lt;/div&gt;
+            &lt;/section&gt;</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Maintenance & Updates</h3>
+        <p style="margin-bottom: var(--spacing-md)">
+          <strong>Keeping your design system current:</strong> When adding new
+          components or updating existing ones, always check that they follow
+          these guidelines and use the established design tokens.
+        </p>
+        <div class="code-block">
+          <code
+            >/* When creating new components, use existing tokens */
+            .new-component {display: flex;
+            flex-direction: column; 
+            padding: var(--spacing-md); background:
+            var(--background-color); border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-sm); color: var(--text-color); font-family:
+            var(--font-family); } /* Update tokens in :root to affect all
+            components */ :root { --primary-color: #333333; /* Update here to
+            change everywhere */ }</code
+          ></div>
+          <div>
+            <h1 style="font-size: var(--font-size-h1); margin-bottom: 10px">
+              Phyllis Ferguson's Art Shop - Style Guide
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

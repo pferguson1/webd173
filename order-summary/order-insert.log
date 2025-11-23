@@ -1,0 +1,13 @@
+[2025-11-14 06:41:23] SUCCESS order_id=22 email=pferguson@mycolard-art.com total=1100 items=["Iphone (SKU: IPHO001) - Qty: 1 x $400.00 = $400","Camera (SKU: CAME001) - Qty: 1 x $700.00 = $700"]
+[2025-11-14 06:45:27] SUCCESS order_id=23 email=pferguson@mycolard-art.com total=0 items=[]
+[2025-11-14 06:46:09] SUCCESS order_id=24 email=pferguson8030@gmail.com total=1100 items=["Iphone (SKU: IPHO001) - Qty: 1 x $400.00 = $400","Camera (SKU: CAME001) - Qty: 1 x $700.00 = $700"]
+[2025-11-14 06:46:09] ITEM order_id=24 sku=IPHO001 qty=1 unit=400 line=400
+[2025-11-14 06:46:09] ITEM order_id=24 sku=CAME001 qty=1 unit=700 line=700
+[2025-11-18 03:54:18] SUCCESS order_id=25 email=pferguson@mycolard-art.com total=100 items=["Watch (SKU: WATC001) - Qty: 1 x $100.00 = $100"]
+[2025-11-18 03:54:18] ITEM order_id=25 sku=WATC001 qty=1 unit=100 line=100
+[2025-11-18 03:58:08] SUCCESS order_id=26 email=pferguson8269@outlook.com total=1100 items=["Iphone (SKU: IPHO001) - Qty: 1 x $400.00 = $400","Camera (SKU: CAME001) - Qty: 1 x $700.00 = $700"]
+[2025-11-18 03:58:08] ITEM order_id=26 sku=IPHO001 qty=1 unit=400 line=400
+[2025-11-18 03:58:08] ITEM order_id=26 sku=CAME001 qty=1 unit=700 line=700
+[2025-11-18 04:46:30] SUCCESS order_id=27 email=pferguson8030@gmail.com total=500 items=["Iphone (SKU: IPHO001) - Qty: 1 x $400.00 = $400","Watch (SKU: WATC001) - Qty: 1 x $100.00 = $100"]
+[2025-11-18 04:46:30] ITEM order_id=27 sku=IPHO001 qty=1 unit=400 line=400
+[2025-11-18 04:46:30] ITEM order_id=27 sku=WATC001 qty=1 unit=100 line=100
