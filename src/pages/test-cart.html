@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Cart Functionality</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+      }
+      .test-section {
+        background: #f0f0f0;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+      }
+      button {
+        background: #5383d3;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #4272b8;
+      }
+      #cart-status {
+        background: white;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+      }
+      .success {
+        color: green;
+        font-weight: bold;
+      }
+      .error {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Shopping Cart Test Page</h1>
+
+    <div class="test-section">
+      <h2>Step 1: Add Test Items</h2>
+      <button
+        onclick="addTestItem('WARR001', 'The Warrior', 100.00, './products/images/face 7.jpg')"
+      >
+        Add The Warrior
+      </button>
+      <button
+        onclick="addTestItem('BUSH001', 'The Bushman', 90.00, './products/images/bushman.jpg')"
+      >
+        Add The Bushman
+      </button>
+    </div>
+
+    <div class="test-section">
+      <h2>Step 2: Check Cart Status</h2>
+      <button onclick="checkCart()">Check Cart</button>
+      <button onclick="clearTestCart()">Clear Cart</button>
+      <div id="cart-status"></div>
+    </div>
+
+    <div class="test-section">
+      <h2>Step 3: Go to Cart Page</h2>
+      <a
+        href="cart.html"
+        style="
+          display: inline-block;
+          background: #5383d3;
+          color: white;
+          padding: 10px 20px;
+          text-decoration: none;
+          border-radius: 5px;
+        "
+      >
+        View Cart Page
+      </a>
+    </div>
+
+    <script>
+      function addTestItem(sku, name, price, image) {
+        const cart = getCart();
+
+        if (cart[sku]) {
+          cart[sku].qty += 1;
+        } else {
+          cart[sku] = {
+            name: name,
+            price: price,
+            image: image,
+            qty: 1,
+          };
+        }
+
+        localStorage.setItem("artshop_cart", JSON.stringify(cart));
+        showMessage(`✓ Added "${name}" to cart!`, "success");
+        checkCart();
+      }
+
+      function getCart() {
+        const cart = localStorage.getItem("artshop_cart");
+        return cart ? JSON.parse(cart) : {};
+      }
+
+      function checkCart() {
+        const cart = getCart();
+        const items = Object.entries(cart);
+        const statusDiv = document.getElementById("cart-status");
+
+        if (items.length === 0) {
+          statusDiv.innerHTML = '<p class="error">Cart is empty!</p>';
+        } else {
+          let html =
+            '<p class="success">Cart contains ' +
+            items.length +
+            " item(s):</p><ul>";
+          items.forEach(([sku, item]) => {
+            html += `<li><strong>${item.name}</strong> - $${item.price} x ${
+              item.qty
+            } = $${(item.price * item.qty).toFixed(2)}</li>`;
+          });
+          html += "</ul>";
+          html +=
+            '<p><strong>Raw localStorage data:</strong><br><code style="word-break: break-all;">' +
+            localStorage.getItem("artshop_cart") +
+            "</code></p>";
+          statusDiv.innerHTML = html;
+        }
+      }
+
+      function clearTestCart() {
+        localStorage.removeItem("artshop_cart");
+        showMessage("Cart cleared!", "error");
+        checkCart();
+      }
+
+      function showMessage(msg, type) {
+        alert(msg);
+      }
+
+      // Check cart on load
+      window.onload = function () {
+        checkCart();
+      };
+    </script>
+  </body>
+</html>

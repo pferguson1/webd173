@@ -1,0 +1,141 @@
+/* about.css - Styles for the ArtShop About Page
+   Created: November 26, 2025
+   Purpose: Dedicated styles for about.html and about-related UI components.
+   Usage: Link this file in about.html and any other page with about-specific features.
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
+
+body {
+  font-family: "Manrope", sans-serif;
+  background: #f8f9fa;
+}
+
+/* Shopping Cart Notification Badge */
+#cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #e14942;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+  display: none;
+}
+
+/* Shopping Cart Icon and Badge Styles for About Page */
+#fa-shopping-cart {
+  position: relative;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#fa-shopping-cart a {
+  font-size: 32px;
+  color: #ffffff !important;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#fa-shopping-cart .iconify {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: #5383d3;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  display: none;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.error-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.error-content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.error-code {
+  font-size: 120px;
+  font-weight: 700;
+  color: #5383d3;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.error-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.error-message {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.btn-home {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #5383d3;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+/* Search Button Styles */
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn-icon {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 900;
+  filter: brightness(1.2);
+}

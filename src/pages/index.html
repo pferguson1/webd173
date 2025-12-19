@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Products - ArtShop Inc.</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/styles.min.css" />
+    <link rel="stylesheet" href="../../assets/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../assets/css/product.css" />
+    <link rel="stylesheet" href="../../assets/css/index.css" />
+    <!-- <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script> -->
+    <style>
+      .visually-hidden {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+      }
+      
+      /* Out of stock button styling */
+      button:disabled {
+        opacity: 0.6 !important;
+        cursor: not-allowed !important;
+      }
+      
+      .stock-out {
+        color: #dc3545 !important;
+        font-weight: bold !important;
+        font-size: 0.9em;
+      }
+      
+      .low-stock {
+        color: #ffc107 !important;
+        font-weight: bold !important;
+      }
+      
+      /* Add visual feedback for disabled state */
+      .btn:disabled:hover {
+        transform: none !important;
+        box-shadow: none !important;
+      }
+    </style>
+  </head>
+
+  <body data-new-gr-c-s-check-loaded="14.1127.0" data-gr-ext-installed="">
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-notification"></div>
+
+    <!-- Header -->
+
+    <header class="bg-dark  header">
+      <div id="header" class="#logo">
+        <div class="logo">
+          <img
+            class="logo-img rounded-circle object-fit-contain border visible"
+            width="188"
+            height="96"
+            id="logo"
+            src="../../assets/images/Artshop-Logo@1.25x.jpg"
+            alt="ArtShop Inc."
+          />
+        </div>
+      </div>
+       <!-- Menu and Nav -->
+      <nav id="menu" class="#nav">
+        <ul class="text-center nav-center">
+          <li class="me-2 index" id="home">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="ms-0 me-2 #about" id="about">
+            <a href="about.html">About</a>
+          </li>
+          <li class="me-2 #gallery" id="gallery">
+            <a href="gallery.html">Gallery</a>
+          </li>
+          <li id="products" class="products">
+            <a href="products.html">Products</a>
+          </li>
+          <li id="contact" class="contact">
+            <a href="contact.html">Contact</a>
+          </li>
+          <!-- Shopping Cart Icon -->
+          <li
+            id="fa-shopping-cart"
+            class="ms-0 ps-3 me-0 pe-0 shopping-cart cart-icon-container"
+          >
+            <a
+              href="cart.html"
+              class="cart-link"
+            >
+              <span
+                class="cart-icon iconify"
+                data-icon="mdi-light:cart"
+              ></span>
+              <span id="cart-count">0</span>
+            </a>
+          </li>
+ <!-- End of Shopping Cart Icon -->
+
+          <li class="bg-dark border rounded-3 search-bar" id="search-bar">
+            <div class="search-input">
+              <form
+                action="https://www.google.com/search"
+                method="GET"
+                target="_blank"
+                id="search-form"
+              >
+                <input
+                  type="text"
+                  name="q"
+                  placeholder="Search the web..."
+                  required
+                />
+                <button
+                  type="submit"
+                  class="search-btn"
+                >
+                  <span
+                    class="search-btn-icon iconify"
+                    data-icon="arcticons:pixel-search"
+                  ></span>
+                </button>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Products Section -->
+   
+      
+    <div class="row products-section">
+      <h1 class="visually-hidden">MyColard Art Gallery - Premium Artwork Collection</h1>
+      <h2 class="page-title">Our Featured Artwork Collection</h2>
+      <div class="1product-catalog">
+     
+      <!-- Products Grid -->
+
+      <div class="row">
+              <!-- Row 1: First 3 products -->
+              <div class="row mb-4 justify-content-center">
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+
+                  <div class="artwork text-center" data-category="Abstract" data-stock="25" data-sku="WARR001">
+                    <img 
+                      class="img-fluid rounded-3 artwork-img-featured clickable-artwork" 
+                      src="../../assets/images/warrior.jpg" 
+                      alt="The Warrior" 
+                      onclick="showThumbnail('../../assets/images/warrior.jpg', 'The Warrior', 'Phyllis Ferguson')"
+                      title="Click to view thumbnail"
+                    />
+                    <div class="artwork-content">
+                      <h4><strong>The Warrior</strong></h4>
+                      <p>&nbsp;<sm>🎨 Phyllis Ferguson</sm></p>
+                      <p>Description of Artwork... <a href="warrior-detail.html" class="read-more">READ MORE</a></p>
+                      <p class="price">$100.00</p>
+                      <p class="stock-info" id="stock-WARR001">
+                        In Stock: <span class="stock-count">25</span> available
+                      </p>
+                    </div>
+                    <div class="artwork-button-container">
+                      <button
+                        class="btn btn-primary"
+                        onclick="addToCart('WARR001', 'The Warrior', 100.00, 'warrior.jpg')"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                  <div class="artwork text-center" data-category="Graphic" data-stock="20" data-sku="BUSH001">
+                    <img 
+                      class="img-fluid rounded-3 artwork-img clickable-artwork" 
+                      src="../../assets/images/bushman.jpg" 
+                      alt="The Bushman" 
+                      onclick="showThumbnail('../../assets/images/bushman.jpg', 'The Bushman', 'Phyllis Ferguson')"
+                      title="Click to view thumbnail"
+                    />
+                    <div class="artwork-content">
+                      <h4><strong>The Bushman</strong></h4>
+                      <p>&nbsp;<sm>🎨 Phyllis Ferguson</sm></p>
+                      <p>Description of Artwork... <a href="#" class="read-more">READ MORE</a></p>
+                      <p class="price">$90.00</p>
+                      <p class="stock-info" id="stock-BUSH001">
+                        In Stock: <span class="stock-count">20</span> available
+                      </p>
+                    </div>
+                    <div class="artwork-button-container">
+                      <button
+                        class="btn btn-primary"
+                        onclick="addToCart('BUSH001', 'The Bushman', 90.00, 'bushman.jpg')"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                  <div class="artwork text-center" data-category="Drawing" data-stock="30" data-sku="THIN001">
+                    <img 
+                      class="img-fluid rounded-3 artwork-img clickable-artwork" 
+                      src="../../assets/images/thinking-man.jpg" 
+                      alt="Thinking Man" 
+                      onclick="showThumbnail('../../assets/images/thinking-man.jpg', 'Thinking Man', 'Phyllis Ferguson')"
+                      title="Click to view thumbnail"
+                    />
+                    <div class="artwork-content">
+                      <h4><strong>Thinking Man</strong></h4>
+                      <p>&nbsp;<sm>🎨 Phyllis Ferguson</sm></p>
+                      <p>Description of Artwork... <a href="#" class="read-more">READ MORE</a></p>
+                      <p class="price">$75.00</p>
+                      <p class="stock-info" id="stock-THIN001">
+                        In Stock: <span class="stock-count">30</span> available
+                      </p>
+                    </div>
+                    <div class="artwork-button-container">
+                      <button
+                        class="btn btn-primary"
+                        onclick="addToCart('THIN001', 'Thinking Man', 75.00, 'thinking-man.jpg')"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Row 2: Next 3 products -->
+              <div class="row mb-4 justify-content-center">
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                  <div class="artwork text-center" data-category="Portraits" data-stock="15" data-sku="SOUL001">
+                    <img 
+                      class="img-fluid rounded-3 artwork-img clickable-artwork" 
+                      src="../../assets/images/soul.jpg" 
+                      alt="Beautiful Soul" 
+                      onclick="showThumbnail('../../assets/images/soul.jpg', 'Beautiful Soul', 'Phyllis Ferguson')"
+                      title="Click to view thumbnail"
+                    />
+                    <div class="artwork-content">
+                      <h4><strong>Beautiful Soul</strong></h4>
+                      <p>&nbsp;<sm>🎨 Phyllis Ferguson</sm></p>
+                      <p>Description of Artwork... <a href="#" class="read-more">READ MORE</a></p>
+                      <p class="price">$100.00</p>
+                      <p class="stock-info low-stock" id="stock-SOUL001">
+                        In Stock: <span class="stock-count">15</span> available
+                      </p>
+                    </div>
+                    <div class="artwork-button-container">
+                      <button
+                        class="btn btn-primary"
+                        onclick="addToCart('SOUL001', 'Beautiful Soul', 100.00, 'soul.jpg')"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                  <div class="artwork text-center" data-category="Portraits" data-stock="18" data-sku="PATR001">
+                    <img
+                      class="img-fluid rounded-3 artwork-img clickable-artwork"
+                      src="../../assets/images/an-american-patriot.jpg"
+                      alt="An American Patriot"
+                      onclick="showThumbnail('../../assets/images/an-american-patriot.jpg', 'An American Patriot', 'Phyllis Ferguson')"
+                      title="Click to view thumbnail"
+                    />
+                    <div class="artwork-content">
+                      <h4><strong>An American Patriot</strong></h4>
+                      <p>&nbsp;<sm>🎨 Phyllis Ferguson</sm></p>
+                      <p>Description of Artwork... <a href="#" class="read-more">READ MORE</a></p>
+                      <p class="price">$100.00</p>
+                      <p class="stock-info" id="stock-PATR001">
+                        In Stock: <span class="stock-count">18</span> available
+                      </p>
+                    </div>
+                    <div class="artwork-button-container">
+                      <button
+                        class="btn btn-primary"
+                        onclick="addToCart('PATR001', 'An American Patriot', 100.00, 'an-american-patriot.jpg')"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                  <div class="artwork text-center" data-category="Portraits" data-stock="22" data-sku="RAIL001">
+                    <img
+                      class="img-fluid rounded-3 artwork-img clickable-artwork"
+                      src="../../assets/images/railway-worker.jpg"
+                      alt="The Railway Worker"
+                      onclick="showThumbnail('../../assets/images/railway-worker.jpg', 'The Railway Worker', 'Phyllis Ferguson')"
+                      title="Click to view thumbnail"
+                    />
+                    <div class="artwork-content">
+                      <h4><strong>The Railway Worker</strong></h4>
+                      <p>&nbsp;<sm>🎨 Phyllis Ferguson</sm></p>
+                      <p>Description of Artwork... <a href="#" class="read-more">READ MORE</a></p>
+                      <p class="price">$100.00</p>
+                      <p class="stock-info" id="stock-RAIL001">
+                        In Stock: <span class="stock-count">22</span> available
+                      </p>
+                    </div>
+                    <div class="artwork-button-container">
+                      <button
+                        class="btn btn-primary"
+                        onclick="addToCart('RAIL001', 'The Railway Worker', 100.00, 'railway-worker.jpg')"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Row 3: Last 3 products -->
+              <div class="row mb-4 justify-content-center">
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                  <div class="artwork text-center" data-category="Abstract" data-stock="20" data-sku="GARD001">
+                    <img
+                      class="img-fluid rounded-3 artwork-img clickable-artwork"
+                      src="../../assets/images/woman-in-garden.jpeg"
+                      alt="Woman in the Garden"
+                      onclick="showThumbnail('../../assets/images/woman-in-garden.jpeg', 'Woman in the Garden', 'Phyllis Ferguson')"
+                      title="Click to view thumbnail"
+                    />
+                    <div class="artwork-content">
+                      <h4><strong>Woman in the Garden</strong></h4>
+                      <p>&nbsp;<sm>🎨 Phyllis Ferguson</sm></p>
+                      <p>Description of Artwork... <a href="#" class="read-more">READ MORE</a></p>
+                      <p class="price">$100.00</p>
+                      <p class="stock-info" id="stock-GARD001">
+                        In Stock: <span class="stock-count">20</span> available
+                      </p>
+                    </div>
+                    <div class="artwork-button-container">
+                      <button
+                        class="btn btn-primary"
+                        onclick="addToCart('GARD001', 'Woman in the Garden', 100.00, 'woman-in-garden.jpeg')"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                  <div class="artwork text-center" data-category="Abstract" data-stock="20" data-sku="GODD001">
+                    <img
+                      class="img-fluid rounded-3 artwork-img clickable-artwork"
+                      src="../../assets/images/black-goddess.jpg"
+                      alt="Black Goddess"
+                      onclick="showThumbnail('../../assets/images/black-goddess.jpg', 'Black Goddess', 'Phyllis Ferguson')"
+                      title="Click to view thumbnail"
+                    />
+                    <div class="artwork-content">
+                      <h4><strong>Black Goddess</strong></h4>
+                      <p>&nbsp;<sm>🎨 Phyllis Ferguson</sm></p>
+                      <p>Description of Artwork... <a href="#" class="read-more">READ MORE</a></p>
+                      <p class="price">$100.00</p>
+                      <p class="stock-info" id="stock-GODD001">
+                        In Stock: <span class="stock-count">20</span> available
+                      </p>
+                    </div>
+                    <div class="artwork-button-container">
+                      <button
+                        class="btn btn-primary"
+                        onclick="addToCart('GODD001', 'Black Goddess', 100.00, 'black-goddess.jpg')"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                  <div class="artwork text-center" data-category="Cartoons" data-stock="20" data-sku="ELEC001">
+                    <img
+                      class="img-fluid rounded-3 artwork-img clickable-artwork"
+                      src="../../assets/images/elected-black-women.jpg"
+                      alt="Elected Black Women"
+                      onclick="showThumbnail('../../assets/images/elected-black-women.jpg', 'Elected Leaders', 'Phyllis Ferguson')"
+                      title="Click to view thumbnail"
+                    />
+                    <div class="artwork-content">
+                      <h4><strong>Elected Leaders</strong></h4>
+                      <p>&nbsp;<sm>🎨 Phyllis Ferguson</sm></p>
+                      <p>Description of Artwork... <a href="#" class="read-more">READ MORE</a></p>
+                      <p class="price">$50.00</p>
+                      <p class="stock-info" id="stock-ELEC001">
+                        In Stock: <span class="stock-count">20</span> available
+                      </p>
+                    </div>
+                    <div class="artwork-button-container">
+                      <button
+                        class="btn btn-primary"
+                        onclick="addToCart('ELEC001', 'Elected Black Women', 50.00, 'elected-black-women.jpg')"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+</section>
+    <!-- Footer moved outside container for full width -->
+    <footer class="bg-dark footer">
+      <div class="container-fluid px-0">
+        <div id="footer-logo" class="footer-logo, color:white;">
+          <div class="footerlogo">
+            <h3 href="#" class="footerlogo-title">
+              Art<span
+                id="footer-logo-span"
+                class="footer-logo-span"
+                >Shop<span> Inc.</span></span
+              >
+            </h3>
+            <p class="footerlogo-desc">
+              <a
+                href="https://wakatime.com/"
+                target="_blank"
+                class="footerlogo-link"
+                >https://wakatime.com/</a
+              >
+            </p>
+          </div>
+        </div>
+        <section id="footer" class="footer-nav-links">
+        <a href="index.html" class="footer-link">Home</a>
+        <strong> · </strong>
+        <a href="products.html" class="footer-link">Products</a>
+        <strong> · </strong>
+        <a href="pricing.html" class="footer-link">Pricing</a>
+        <strong> · </strong>
+        <a href="help.html" class="footer-link">Help</a>
+        <strong> · </strong>
+        <a href="faq.html" class="footer-link">Faq</a>
+        <strong> · </strong>
+        <a href="contact.html" class="footer-link">Contact</a>
+        <div></div>
+        <div class="row align-middle">
+          <div class="col">
+            <p
+              class="text-xl-center align-items-center p-copyright"
+              id="p-copyright"
+            >
+              Copyright
+              <span>
+                ©
+                <span>
+                  2025
+                  <span>
+                    -
+                    <span>
+                      All Rights
+                      <span>
+                        Reserved&nbsp;<span>
+                          by <span> the <span>ArtShop</span></span></span
+                        ></span
+                      ></span
+                    ></span
+                  ></span
+                ></span
+              >
+            </p>
+          </div>
+        </div>
+        <div class="copyright-container"></div>
+      </section>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <!-- <script src="../../assets/js/jquery.min.js"></script> -->
+    <!-- Bootstrap JS from CDN since local file is missing -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <script>
+      // Initialize inventory from product cards
+      function initializeInventory() {
+        const inventory = localStorage.getItem("artshop_inventory");
+        if (!inventory) {
+          const initialInventory = {};
+          document
+            .querySelectorAll(".product-card[data-sku]")
+            .forEach((card) => {
+              const sku = card.dataset.sku;
+              const stock = parseInt(card.dataset.stock);
+              initialInventory[sku] = stock;
+            });
+          localStorage.setItem(
+            "artshop_inventory",
+            JSON.stringify(initialInventory)
+          );
+        }
+      }
+
+      function getInventory() {
+        const inventory = localStorage.getItem("artshop_inventory");
+        return inventory ? JSON.parse(inventory) : {};
+      }
+
+      function saveInventory(inventory) {
+        localStorage.setItem("artshop_inventory", JSON.stringify(inventory));
+      }
+
+      function updateStockDisplay() {
+        const inventory = getInventory();
+        Object.keys(inventory).forEach((sku) => {
+          const stockElement = document.querySelector(
+            `#stock-${sku} .stock-count`
+          );
+          const stockInfo = document.getElementById(`stock-${sku}`);
+          const button = document.querySelector(`button[onclick*="${sku}"]`);
+
+          if (stockElement && stockInfo) {
+            stockElement.textContent = inventory[sku];
+
+            // Add low-stock class if stock is 15 or below
+            if (inventory[sku] <= 15) {
+              stockInfo.classList.add("low-stock");
+            } else {
+              stockInfo.classList.remove("low-stock");
+            }
+
+            // Handle out of stock buttons
+            if (button) {
+              if (inventory[sku] <= 0) {
+                button.disabled = true;
+                button.textContent = "Out of Stock";
+                button.style.backgroundColor = "#dc3545";
+                button.style.cursor = "not-allowed";
+                stockInfo.innerHTML =
+                  '<span class="stock-out" style="color: red; font-weight: bold;">Out of Stock</span>';
+              } else {
+                button.disabled = false;
+                button.textContent = "Add to Cart";
+                button.style.backgroundColor = "";
+                button.style.cursor = "pointer";
+                if (inventory[sku] <= 15) {
+                  stockInfo.innerHTML = 
+                    `<span style="color: orange; font-weight: bold;">Low Stock: ${inventory[sku]} available</span>`;
+                } else {
+                  stockInfo.innerHTML = 
+                    `In Stock: <span class="stock-count">${inventory[sku]}</span> available`;
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // Shopping Cart Management (using localStorage)
+      function getCart() {
+        const cart = localStorage.getItem("artshop_cart");
+        return cart ? JSON.parse(cart) : {};
+      }
+
+      function saveCart(cart) {
+        localStorage.setItem("artshop_cart", JSON.stringify(cart));
+        updateCartDisplay();
+      }
+
+      function addToCart(sku, name, price, image) {
+        const inventory = getInventory();
+
+        // Check if item is in stock
+        if (inventory[sku] <= 0) {
+          showToast("Sorry, " + name + " is out of stock!");
+          return;
+        }
+
+        const cart = getCart();
+        console.log("Current cart before adding:", cart);
+
+        if (cart[sku]) {
+          cart[sku].qty += 1;
+        } else {
+          cart[sku] = {
+            name: name,
+            price: price,
+            image: image,
+            qty: 1,
+          };
+        }
+
+        // Decrease inventory
+        inventory[sku] -= 1;
+        saveInventory(inventory);
+        updateStockDisplay();
+
+        console.log("Cart after adding item:", cart);
+        saveCart(cart);
+        showToast(name + " added to cart!");
+      }
+
+      function updateCartDisplay() {
+        const cart = getCart();
+        const itemCount = Object.values(cart).reduce(
+          (sum, item) => sum + item.qty,
+          0
+        );
+
+        const cartCountElem = document.getElementById("cart-count");
+
+        if (itemCount > 0) {
+          cartCountElem.textContent = itemCount;
+          cartCountElem.style.display = "block";
+        } else {
+          cartCountElem.style.display = "none";
+        }
+      }
+
+      function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.textContent = message;
+        toast.style.display = "block";
+
+        setTimeout(() => {
+          toast.style.display = "none";
+        }, 3000);
+      }
+
+      // Initialize cart display on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeInventory();
+        updateStockDisplay();
+        updateCartDisplay();
+      });
+
+      // Category Filter Functionality
+      function filterCategory(category) {
+        const products = document.querySelectorAll(".product-card");
+        const buttons = document.querySelectorAll(".category-btn");
+
+        // Update active button
+        buttons.forEach((btn) => btn.classList.remove("active"));
+        event.target.classList.add("active");
+
+        // Show all products if "All" is selected
+        if (category === "all") {
+          products.forEach((product) => {
+            product.parentElement.style.display = "block";
+          });
+          return;
+        }
+
+        // Filter products by data-category attribute
+        products.forEach((product) => {
+          const productCategory = product.dataset.category || "";
+
+          if (productCategory === category) {
+            product.parentElement.style.display = "block";
+          } else {
+            product.parentElement.style.display = "none";
+          }
+        });
+      }
+
+      // Reset Inventory Function
+      function resetInventory() {
+        if (!confirm("Are you sure you want to reset all stock to default levels (25)?")) {
+          return;
+        }
+        
+        try {
+          // Reset local inventory using localStorage only
+          const initialInventory = {};
+          document.querySelectorAll(".artwork[data-sku]").forEach((card) => {
+            const sku = card.dataset.sku;
+            initialInventory[sku] = 25; // Reset to default stock
+          });
+          
+          localStorage.setItem("artshop_inventory", JSON.stringify(initialInventory));
+          updateStockDisplay();
+          showToast('Stock reset successful! All items reset to 25 units.', 'success');
+        } catch (error) {
+          console.error('Error:', error);
+          showToast('Error resetting stock. Please try again.', 'error');
+        }
+      }
+    </script>
+
+    <!-- Thumbnail Modal -->
+    <div id="artworkThumbnailModal" class="artwork-thumbnail-modal" onclick="closeThumbnail()">
+      <div class="artwork-thumbnail-content" onclick="event.stopPropagation()">
+        <span class="artwork-close-thumbnail" onclick="closeThumbnail()">&times;</span>
+        <img id="artworkThumbnailImage" class="artwork-thumbnail-image" src="../../assets/images/warrior.jpg" alt="The Warrior">
+        <h4 id="artworkThumbnailTitle" class="artwork-thumbnail-title"></h4>
+        <p id="artworkThumbnailInfo" class="artwork-thumbnail-info"></p>
+      </div>
+    </div>
+
+    <script>
+      // Thumbnail Modal Functions
+      function showThumbnail(imageSrc, title, artist) {
+        console.log('showThumbnail called:', imageSrc, title, artist);
+        
+        // Debug: Check if modal exists in DOM
+        console.log('All elements with artwork in ID:', document.querySelectorAll('[id*="artwork"]'));
+        console.log('Modal element by ID:', document.getElementById('artworkThumbnailModal'));
+        
+        const modal = document.getElementById('artworkThumbnailModal');
+        const image = document.getElementById('artworkThumbnailImage');
+        const titleElement = document.getElementById('artworkThumbnailTitle');
+        const infoElement = document.getElementById('artworkThumbnailInfo');
+        
+        console.log('Modal elements found:', {
+          modal: modal, 
+          image: image, 
+          titleElement: titleElement, 
+          infoElement: infoElement
+        });
+        
+        if (!modal) {
+          console.error('Modal element not found!');
+          alert('ERROR: Modal not found. Check browser console for details.');
+          return;
+        }
+        
+        image.src = imageSrc;
+        image.alt = title;
+        titleElement.textContent = title;
+        infoElement.textContent = `🎨 ${artist}`;
+        
+        console.log('Adding show class to modal...');
+        modal.classList.add('show');
+        console.log('Modal classes after adding show:', modal.className);
+        console.log('Modal style display:', window.getComputedStyle(modal).display);
+        
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      }
+      
+      function closeThumbnail() {
+        const modal = document.getElementById('artworkThumbnailModal');
+        modal.classList.remove('show');
+        document.body.style.overflow = ''; // Restore scrolling
+      }
+      
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeThumbnail();
+        }
+      });
+    </script>
+
+    <!-- WakaTime Embed (Hidden) -->
+    <!-- <figure style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin: 0;">
+      <figcaption style="font-size: 14px; font-weight: 600; color: #333; margin-bottom: 10px; text-align: center;">Coding Activity</figcaption>
+      <embed src="https://wakatime.com/share/@3bcf95df-7735-42c7-a44f-1b2b08900915/5d37e8c5-c79a-499f-9bd4-952c533d1d19.svg" width="200" height="150">
+    </figure> -->
+  </body>
+</html>

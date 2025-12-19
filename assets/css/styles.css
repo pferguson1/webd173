@@ -1,0 +1,388 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+/* Container System */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Row and Column System */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 0 15px;
+}
+
+/* Navigation */
+.nav-back {
+  background-color: #fff;
+  border-bottom: 1px solid #e9ecef;
+  padding: 15px 0;
+  margin-bottom: 30px;
+}
+
+.back-link {
+  font-size: 1rem;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #0056b3;
+}
+
+.back-link i {
+  margin-right: 8px;
+}
+
+/* Artwork Image Section */
+.artwork-image-section {
+  position: sticky;
+  top: 20px;
+}
+
+.artwork-image {
+  width: 100%;
+  margin-top: 20px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Title and Heading Section */
+.title-heading-section {
+  margin-bottom: 25px;
+}
+
+.artwork-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.artist-credit {
+  font-size: 1rem;
+  color: #6c757d;
+  font-style: italic;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Content Sections */
+section {
+  margin-bottom: 30px;
+}
+
+section h3 {
+  font-size: 1.25rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* About Artwork Section */
+.artwork-description {
+  color: #495057;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* Technical Details Section */
+.details-list {
+  margin: 0;
+}
+
+.detail-item {
+  display: block;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #495057;
+}
+
+.detail-value {
+  color: #6c757d;
+}
+
+/* About Artist Section */
+.artist-bio {
+  color: #495057;
+  line-height: 1.7;
+}
+
+/* Print Size Section */
+.size-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.size-card {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.size-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.size-info {
+  text-align: center;
+  padding: 20px 10px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.size-card:hover .size-info {
+  border-color: #007bff;
+  background-color: #f8f9ff;
+}
+
+.size-card input[type="radio"]:checked + .size-info {
+  border-color: #007bff;
+  background-color: #f8f9ff;
+}
+
+.size-dimensions {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 5px;
+}
+
+.size-price {
+  color: #dc3545;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Rating Section */
+.rating-overview {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stars-large {
+  color: #ffc107;
+  font-size: 1.4rem;
+}
+
+.rating-summary {
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
+.rating-breakdown {
+  margin-top: 15px;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.star-count {
+  font-size: 0.9rem;
+  color: #495057;
+  min-width: 15px;
+}
+
+.rating-bar {
+  flex: 1;
+  height: 8px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.rating-fill {
+  height: 100%;
+  background-color: #ffc107;
+  transition: width 0.3s ease;
+}
+
+/* Price and Stock Section */
+.price-stock-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  margin-bottom: 25px;
+}
+
+.price-display {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.current-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #28a745;
+}
+
+.original-price {
+  font-size: 1.2rem;
+  color: #6c757d;
+  text-decoration: line-through;
+}
+
+.stock-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stock-status i {
+  color: #28a745;
+}
+
+.in-stock {
+  color: #28a745;
+  font-weight: 500;
+}
+
+/* Action Buttons */
+.action-buttons-section {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #333;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-secondary {
+  background-color: #fff;
+  color: #333;
+  border: 2px solid #e9ecef;
+}
+
+.btn-secondary:hover {
+  background-color: #f8f9fa;
+  border-color: #333;
+  color: #007bff;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .artwork-title {
+    font-size: 2rem;
+  }
+
+  .size-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .action-buttons-section {
+    flex-direction: column;
+  }
+
+  .current-price {
+    font-size: 1.5rem;
+  }
+
+  .artwork-image-section {
+    position: static;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .artwork-title {
+    font-size: 1.5rem;
+  }
+
+  .size-option {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .price-display {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .size-grid {
+    grid-template-columns: 1fr;
+  }
+}

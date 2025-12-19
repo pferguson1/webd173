@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .paypal-button-container {
+        max-width: 400px;
+        margin: 20px auto;
+      }
+      .payment-message {
+        text-align: center;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 5px;
+      }
+      .success {
+        background: #d4edda;
+        color: #155724;
+      }
+      .error {
+        background: #f8d7da;
+        color: #721c24;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="checkout-container">
+      <h1>Complete Your Order</h1>
+
+      <div id="cart-summary">
+        <!-- Your cart summary here -->
+      </div>
+
+      <div id="payment-message"></div>
+
+      <!-- PayPal Button Container -->
+      <div id="paypal-button-container" class="paypal-button-container"></div>
+    </div>
+
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD&intent=capture&vault=true"></script>
+
+    <script>
+      // Initialize PayPal Button
+      paypal
+        .Buttons({
+          // Set up the transaction
+          createOrder: function () {
+            return fetch("/create-order.php", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+              .then(function (response) {
+                return response.json();
+              })
+              .then(function (data) {
+                if (data.error) {
+                  throw new Error(data.error);
+                }
+                return data.id;
+              })
+              .catch(function (error) {
+                console.error("Error creating order:", error);
+                showMessage(
+                  "Failed to initialize payment. Please try again.",
+                  "error"
+                );
+              });
+          },
+
+          // Finalize the transaction
+          onApprove: function (data) {
+            return fetch("/capture-order.php", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                orderID: data.orderID,
+              }),
+            })
+              .then(function (response) {
+                return response.json();
+              })
+              .then(function (details) {
+                if (details.error) {
+                  throw new Error(details.error);
+                }
+
+                // Payment successful
+                showMessage(
+                  "Payment successful! Check your email for confirmation.",
+                  "success"
+                );
+
+                // Redirect to success page after 2 seconds
+                setTimeout(function () {
+                  window.location.href =
+                    "/payment-success.php?order=" + details.orderID;
+                }, 2000);
+              })
+              .catch(function (error) {
+                console.error("Error capturing payment:", error);
+                showMessage(
+                  "Payment processing failed. Please contact support.",
+                  "error"
+                );
+              });
+          },
+
+          // Handle errors
+          onError: function (err) {
+            console.error("PayPal error:", err);
+            showMessage(
+              "An error occurred during payment. Please try again.",
+              "error"
+            );
+          },
+
+          // Handle cancellation
+          onCancel: function (data) {
+            showMessage(
+              "Payment cancelled. You can try again when ready.",
+              "error"
+            );
+          },
+
+          // Button style customization
+          style: {
+            layout: "vertical",
+            color: "gold",
+            shape: "rect",
+            label: "paypal",
+            height: 45,
+          },
+        })
+        .render("#paypal-button-container");
+
+      // Helper function to show messages
+      function showMessage(message, type) {
+        const messageDiv = document.getElementById("payment-message");
+        messageDiv.textContent = message;
+        messageDiv.className = "payment-message " + type;
+      }
+    </script>
+  </body>
+</html>

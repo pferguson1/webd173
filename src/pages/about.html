@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>About - ArtShop Inc.</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/styles.min.css" />
+    <link rel="stylesheet" href="../../assets/css/all.min.css" />
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="stylesheet" href="../../assets/css/about.css" />
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1127.0" data-gr-ext-installed="">
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-notification"></div>
+
+    <header class="bg-dark rounded header">
+      <div id="header" class="#logo">
+        <div class="logo">
+          <img
+            class="rounded-circle object-fit-contain border visible #logo font-size:24px;"
+            width="188"
+            height="96"
+            id="logo"
+            src="../../assets/images/Artshop-Logo@1.25x.jpg"
+            alt="ArtShop Inc."
+            style="
+              background: #333333;
+              opacity: 1;
+              filter: blur(0px);
+              overflow: hidden;
+              border-width: 1px;
+            "
+          />
+        </div>
+      </div>
+      <nav id="menu" class="#nav">
+        <ul class="text-center" style="text-align: center">
+          <li class="me-2 index" id="home">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="ms-0 me-2 #about" id="about">
+            <a href="about.html">About</a>
+          </li>
+          <li class="me-2 #gallery" id="gallery">
+            <a href="gallery.html">Gallery</a>
+          </li>
+          <li id="products" class="products">
+            <a href="products.html">Products</a>
+          </li>
+          <li id="contact" class="contact">
+            <a href="contact.html">Contact</a>
+          </li>
+          <li
+            id="fa-shopping-cart"
+            class="ms-0 ps-3 me-0 pe-0 shopping-cart"
+          >
+            <a
+              href="cart.html"
+            >
+              <span
+                class="iconify"
+                data-icon="mdi-light:cart"
+              ></span>
+              <span id="cart-count">0</span>
+            </a>
+          </li>
+
+          <li class="bg-dark border rounded-3 search-bar" id="search-bar">
+            <div class="search-input">
+              <form
+                action="https://www.google.com/search"
+                method="GET"
+                target="_blank"
+                id="search-form"
+              >
+                <input
+                  type="text"
+                  name="q"
+                  placeholder="Search the web..."
+                  required
+                <button
+                  type="submit"
+                  class="search-btn"
+                >
+                  <span
+                    class="search-btn-icon iconify"
+                    data-icon="arcticons:pixel-search"
+                  ></span>
+                </button>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="error-container">
+      <div class="error-content">
+        <div class="error-code">404</div>
+        <h1 class="error-title">About Page Not Found</h1>
+        <p class="error-message">
+          The About page you're looking for doesn't exist yet. We're working on
+          creating amazing content to share our story with you.
+        </p>
+        <a href="index.html" class="btn-home">Return to Home</a>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="./website_files/bootstrap.min.js"></script>
+    <script>
+      // Shopping Cart Display Update
+      function updateCartDisplay() {
+        const cart = localStorage.getItem("artshop_cart");
+        const cartData = cart ? JSON.parse(cart) : {};
+        const itemCount = Object.values(cartData).reduce(
+          (sum, item) => sum + item.qty,
+          0
+        );
+
+        const cartCountElem = document.getElementById("cart-count");
+
+        if (itemCount > 0) {
+          cartCountElem.textContent = itemCount;
+          cartCountElem.style.display = "block";
+        } else {
+          cartCountElem.style.display = "none";
+        }
+      }
+
+      // Initialize cart display on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        updateCartDisplay();
+      });
+    </script>
+  </body>
+</html>

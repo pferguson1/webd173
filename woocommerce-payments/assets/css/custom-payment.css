@@ -1,0 +1,189 @@
+/**
+ * Custom Payment Method Styles
+ */
+
+/* Payment form container */
+#custom-payment-form {
+  margin: 15px 0;
+  padding: 15px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Form rows */
+#custom-payment-form .form-row {
+  margin-bottom: 15px;
+}
+
+#custom-payment-form .form-row:last-child {
+  margin-bottom: 0;
+}
+
+/* Input fields */
+#custom-payment-form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+#custom-payment-form input[type="text"]:focus {
+  outline: none;
+  border-color: #007cba;
+  box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.2);
+}
+
+/* Invalid field styling */
+#custom-payment-form input.woocommerce-invalid {
+  border-color: #d63638;
+  box-shadow: 0 0 0 2px rgba(214, 54, 56, 0.2);
+}
+
+/* Labels */
+#custom-payment-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Required indicator */
+#custom-payment-form .required {
+  color: #d63638;
+}
+
+/* Error messages */
+#custom-payment-form .woocommerce-error {
+  display: block;
+  margin-top: 5px;
+  padding: 5px 10px;
+  background-color: #d63638;
+  color: white;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+/* Payment method icon */
+.payment_method_woocommerce_payments_custom img {
+  height: 24px;
+  width: auto;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* Payment method title */
+.payment_method_woocommerce_payments_custom label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Loading states */
+.woocommerce-checkout.processing #custom-payment-form {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #custom-payment-form {
+    margin: 10px 0;
+    padding: 10px;
+  }
+
+  #custom-payment-form input[type="text"] {
+    padding: 8px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Payment method description */
+.payment_method_woocommerce_payments_custom .payment_box {
+  background: #f9f9f9;
+  padding: 15px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Success states */
+#custom-payment-form .success {
+  border-color: #00a32a;
+  box-shadow: 0 0 0 2px rgba(0, 163, 42, 0.2);
+}
+
+/* Test mode styling */
+.woocommerce-payments-test-mode #custom-payment-form {
+  border-left: 4px solid #ffb900;
+}
+
+.woocommerce-payments-test-mode #custom-payment-form::before {
+  content: "TEST MODE";
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px 8px;
+  background: #ffb900;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 2px;
+  width: fit-content;
+}
+
+/* Payment method selection */
+.payment_method_woocommerce_payments_custom {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.payment_method_woocommerce_payments_custom input[type="radio"] {
+  margin-right: 10px;
+}
+
+.payment_method_woocommerce_payments_custom:hover {
+  background-color: #f5f5f5;
+}
+
+.payment_method_woocommerce_payments_custom
+  input[type="radio"]:checked
+  + label {
+  font-weight: bold;
+}
+
+/* Form validation feedback */
+#custom-payment-form .validation-message {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+#custom-payment-form .validation-message.success {
+  color: #00a32a;
+}
+
+#custom-payment-form .validation-message.error {
+  color: #d63638;
+}
+
+/* Loading spinner for AJAX operations */
+#custom-payment-form .loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #007cba;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

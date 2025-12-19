@@ -1,0 +1,913 @@
+/* Center navigation list */
+.nav-center {
+  text-align: center;
+}
+/* Footer Styles */
+.footer.bg-dark {
+  box-sizing: border-box;
+  background: #333;
+  text-align: center;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  width: 100%;
+  font: bold 16px sans-serif;
+}
+/* Footer Logo Styles */
+.footerlogo-title {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.footer-logo-span {
+  color: #5383d3;
+}
+
+.footerlogo-desc {
+  color: #ffffff;
+  font-size: 14px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.footerlogo-link {
+  color: #5383d3;
+  text-decoration: none;
+}
+/* Footer Nav Links - Link Styles */
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+}
+/* Footer Nav Links Styles */
+.footer-nav-links {
+  width: 100%;
+}
+@media screen {
+}
+/* Cart Icon Styles */
+.cart-icon.iconify {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: bold;
+}
+/* Cart Link Styles */
+.cart-link {
+  font-size: 32px;
+  color: #ffffff !important;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Search Button Styles */
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn-icon.iconify {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 900;
+  filter: brightness(1.2);
+}
+/* Cart icon container styles moved from products.html */
+.cart-icon-container {
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Logo image styles moved from products.html */
+.logo-img {
+  background: #333333;
+  opacity: 1;
+  filter: blur(0px);
+  overflow: hidden;
+  border-width: 1px;
+}
+/* Product Page Styles (migrated from products.html)
+   Created: November 26, 2025
+   All styles below were moved from products.html for modularity and maintainability.
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
+
+body {
+  font-family: "Georgia", sans-serif;
+  background: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Shopping Cart Notification Badge */
+#cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #e14942;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+  display: none;
+}
+
+#fa-shopping-cart {
+  position: relative;
+}
+
+/* Product Cards Styling */
+.product-card {
+  background: transparent;
+  max-width: 100%;
+  border-radius: 8px;
+  padding: 5px;
+  margin-bottom: 30px;
+  box-shadow: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: none;
+}
+
+.product-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.product-card h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.product-card .artist {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.product-card .price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.product-card .stock-info {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.product-card .stock-info.low-stock {
+  color: #e14942;
+  font-weight: 600;
+}
+
+.product-card button {
+  width: 100%;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: center;
+  transition: background 0.3s;
+}
+
+.product-card button:hover {
+  background-color: #6495ed;
+}
+
+.product-card button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Products Section */
+.products-section {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: #f8f9fa;
+}
+
+.products-section .page-title {
+  width: 100%;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.products-section .product-catalog {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.products-section .text-center {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+}
+
+.products-section .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+/* Space around columns */
+.products-section .col-md-4 {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+
+/* Footer Styling */
+footer {
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #333;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  width: 100%;
+  font: bold 16px sans-serif;
+  padding: 50px 0;
+  margin-top: auto;
+  margin-left: 0;
+  margin-right: 0;
+  bottom: 0;
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (max-width: 992px) {
+  .products-section .col-md-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+@media (min-width: 768px) {
+  .col-md-4 {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+  }
+}
+@media (max-width: 576px) {
+  .products-section .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .products-section .page-title {
+    font-size: 28px;
+  }
+
+  .products-section .text-center {
+    font-size: 24px;
+  }
+}
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: #5383d3;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  display: none;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Artwork Image Styles */
+.artwork-img-featured {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  margin: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.artwork-img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  margin: 1.5rem;
+  display: block;
+}
+
+/* Copyright Paragraph Styles */
+.p-copyright {
+  padding-top: 10px;
+}
+
+/* Stock Status Styles */
+.stock-out {
+  color: #e14942;
+  font-weight: 600;
+}
+
+/* Category Filter Buttons */
+.category-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+}
+
+.category-btn {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.category-btn:hover {
+  background-color: #6495ed;
+}
+
+.category-btn.active {
+  background-color: #6495ed;
+}
+
+/* Artwork Thumbnail Modal Styles */
+.artwork-thumbnail-modal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  display: none !important;
+  justify-content: center !important;
+  align-items: center !important;
+  z-index: 9999 !important;
+  cursor: pointer !important;
+}
+
+.artwork-thumbnail-modal.show {
+  display: flex !important;
+}
+
+.artwork-thumbnail-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow: auto;
+  position: relative;
+  cursor: default;
+}
+
+.artwork-thumbnail-image {
+  width: 512px;
+  height: 512px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.artwork-thumbnail-title {
+  margin: 10px 0 5px 0;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.artwork-thumbnail-info {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}
+
+.artwork-close-thumbnail {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #0c13e2;
+}
+
+.artwork-close-thumbnail:hover {
+  color: #b70f0f;
+}
+
+.clickable-artwork {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.clickable-artwork:hover {
+  opacity: 0.9;
+}
+
+/* Read More Link Styles */
+.read-more {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.read-more:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* ==============================================
+   ARTWORK CARD ALIGNMENT STYLES
+   ============================================== */
+
+/* Main Artwork Card Container - Flexbox for Button Alignment */
+.artwork {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 550px;
+  justify-content: space-between;
+}
+
+/* Artwork Content Area - Flexible Growth */
+.artwork-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Artwork Button Container - Always at Bottom */
+.artwork-button-container {
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+/* Artwork Info Block - Centered Card */
+.artwork-info-block {
+  margin: 0 auto;
+  width: fit-content;
+  text-align: center;
+}
+
+/* Art Detail Page Styles
+   Created: December 17, 2025
+   Purpose: Comprehensive styling for individual artwork detail pages
+   Features: Responsive layout, image hover effects, purchase section, and mobile optimization
+   Used by: warrior-detail.html and other artwork detail pages
+*/
+.art-detail-image-container {
+  text-align: center;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.art-detail-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.art-detail-image:hover {
+  transform: scale(1.02);
+}
+
+.art-detail-info {
+  padding: 2rem;
+}
+
+.art-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.artist-name {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.art-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.technical-details,
+.artist-bio {
+  margin-bottom: 2rem;
+}
+
+.technical-details h4,
+.artist-bio h4 {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.technical-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.technical-details li {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.purchase-section {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.price-info .price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e74c3c;
+  margin-bottom: 0.5rem;
+}
+
+.purchase-buttons {
+  margin-top: 1.5rem;
+}
+
+.purchase-buttons .btn {
+  margin-bottom: 0.5rem;
+}
+
+/* Size Selection Grid Styles */
+.size-selection h4 {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: rem;
+}
+
+.size-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 1rem;
+}
+
+.size-option {
+  position: relative;
+}
+
+.size-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.size-option label {
+  display: block;
+  padding: 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  background: white;
+}
+
+.size-option label:hover {
+  border-color: #007bff;
+  background: #f8f9fa;
+}
+
+.size-option input[type="radio"]:checked + label {
+  border-color: #007bff;
+  background: #e3f2fd;
+  color: #0066cc;
+}
+
+.size-label {
+  display: block;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.size-price {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #e74c3c;
+}
+
+/* Rating Styles */
+.artwork-rating h4 {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.rating-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  font-size: 18px;
+  color: #ddd;
+}
+
+.star.filled {
+  color: #ffc107;
+}
+
+.star.half {
+  color: #ffc107;
+}
+
+.rating-text {
+  font-weight: 600;
+  color: #333;
+}
+
+.rating-count {
+  color: #666;
+  font-size: 14px;
+}
+
+.rating-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rating-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.rating-label {
+  width: 25px;
+  color: #666;
+}
+
+.bar-container {
+  flex: 1;
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffc107, #ff9800);
+  transition: width 0.3s ease;
+}
+
+.rating-percent {
+  width: 30px;
+  text-align: right;
+  color: #666;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .art-detail-info {
+    padding: 1rem;
+  }
+
+  .art-title {
+    font-size: 2rem;
+  }
+
+  .purchase-buttons .btn {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .size-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rating-display {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
+
+/* Centered Art Detail Layout
+   Created: December 17, 2025
+   Purpose: Full viewport width and height layout for artwork detail pages
+   Features: 
+   - 100vw width: Stretches completely across viewport width
+   - 100vh min-height: Takes full viewport height
+   - Edge-to-edge display: Zero padding/margins for maximum coverage
+   - Viewport positioning: Breaks out of parent containers using negative margins
+   - Overflow control: Prevents horizontal scrollbars
+   Used by: warrior-detail.html and other artwork detail pages
+*/
+.centered-art-detail {
+  width: 100vw;
+  min-height: 100vh;
+  margin-left: 10px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.centered-art-detail .art-detail-image-container {
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-art-detail .art-detail-image {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+}
+
+.centered-art-detail .art-detail-info {
+  padding: 0;
+  text-align: center;
+}
+
+.centered-art-detail .art-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.centered-art-detail .artist-name {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.centered-art-detail .art-description {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.centered-art-detail .technical-details,
+.centered-art-detail .artist-bio {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+}
+
+.centered-art-detail .technical-details ul {
+  text-align: left;
+  display: inline-block;
+}
+
+.centered-art-detail .size-selection,
+.centered-art-detail .artwork-rating {
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+
+.centered-art-detail .purchase-section {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .centered-art-detail {
+    padding: 20px;
+    margin: 20px;
+    max-width: calc(100% - 40px);
+  }
+
+  .centered-art-detail .art-detail-image {
+    max-width: 350px;
+  }
+
+  .centered-art-detail .art-title {
+    font-size: 2rem;
+  }
+
+  .centered-art-detail .artist-name {
+    font-size: 1rem;
+  }
+
+  .centered-art-detail .size-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Back to Gallery Navigation Styles */
+.nav-back {
+  background: #f8f9fa;
+  padding: 15px 0;
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 20px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #6c757d;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  color: #495057;
+  background: rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+}
+
+.back-link i {
+  font-size: 12px;
+}

@@ -1,0 +1,2908 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArtShop Development Instructions</title>
+    <link rel="stylesheet" href="./website_files/bootstrap.min.css" />
+    <link rel="stylesheet" href="./website_files/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="./website_files/styles.min.css" />
+    <link rel="stylesheet" href="./website_files/all.min.css" />
+    <link rel="stylesheet" href="./website_files/font-awesome.min.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
+
+      :root {
+        --primary-color: #333333;
+        --secondary-color: #5383d3;
+        --background-color: #ffffff;
+        --text-color: #000000;
+        --accent-color: cornflowerblue;
+        --border-color: #e0e0e0;
+        --hover-color: #f4f4f4;
+        --font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        --font-size-base: 16px;
+        --font-size-small: 14px;
+        --font-size-h1: 32px;
+        --font-size-h2: 24px;
+        --font-size-h3: 20px;
+        --font-size-h4: 18px;
+        --spacing-xs: 4px;
+        --spacing-sm: 8px;
+        --spacing-md: 16px;
+        --spacing-lg: 24px;
+        --spacing-xl: 32px;
+        --spacing-2xl: 48px;
+        --border-radius-sm: 4px;
+        --border-radius-md: 8px;
+        --border-radius-lg: 12px;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-family);
+        font-size: var(--font-size-base);
+        color: var(--text-color);
+        line-height: 1.6;
+        background-color: #f8f9fa;
+      }
+
+      .guide-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--spacing-xl);
+      }
+
+      .guide-header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #1a1a1a 100%
+        );
+        color: white;
+        padding: var(--spacing-2xl) var(--spacing-xl);
+        margin: -var(--spacing-xl) -var(--spacing-xl) var(--spacing-2xl);
+        border-radius: var(--border-radius-md);
+      }
+
+      .guide-header h1 {
+        font-size: 48px;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .guide-header .subtitle {
+        font-size: var(--font-size-h4);
+        opacity: 0.9;
+      }
+
+      .section {
+        background: white;
+        color: black;
+        padding: var(--spacing-xl);
+        margin-bottom: var(--spacing-xl);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-md);
+      }
+
+      .section-title {
+        color: black;
+        background: white;
+        font-size: var(--font-size-h2);
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--secondary-color);
+        padding-bottom: var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .subsection-title {
+        color: black;
+        font-size: var(--font-size-h3);
+        color: var(--primary-color);
+        margin: var(--spacing-lg) 0 var(--spacing-md);
+      }
+
+      .code-block {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: var(--spacing-md);
+        border-radius: var(--border-radius-md);
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+        font-size: var(--font-size-small);
+        margin: var(--spacing-md) 0;
+        border-left: 4px solid var(--secondary-color);
+      }
+
+      .code-block code {
+        display: block;
+        white-space: pre;
+      }
+
+      .info-box {
+        background: #e8f4fd;
+        border-left: 4px solid var(--secondary-color);
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+        border-radius: var(--border-radius-sm);
+      }
+
+      .warning-box {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+        border-radius: var(--border-radius-sm);
+      }
+
+      .success-box {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: var(--spacing-md);
+        margin: var(--spacing-md) 0;
+        border-radius: var(--border-radius-sm);
+      }
+      /* Page text */
+      ul {
+        line-height: 2;
+        color: black;
+        padding-left: 24px;
+        margin-bottom: var(--spacing-md);
+        list-style-type: disc;
+      }
+
+      strong {
+        color: var(--primary-color);
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 4px 12px;
+        background: var(--secondary-color);
+        color: white;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 8px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: var(--spacing-md) 0;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      th {
+        background: #f8f9fa;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      @media (max-width: 768px) {
+        .guide-container {
+          padding: var(--spacing-md);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="guide-container">
+      <header class="guide-header">
+        <h1>🎨 ArtShop Development Guide</h1>
+        <p class="subtitle">
+          Complete Implementation Instructions & Technical Documentation
+        </p>
+      </header>
+
+      <!-- Project Overview -->
+      <section class="section" id="overview">
+        <h2 class="section-title">📋 Project Overview</h2>
+
+        <div class="info-box">
+          <strong>Project Name:</strong> ArtShop Inc. - E-commerce Art
+          Gallery<br />
+          <strong>Development Period:</strong> November 2025<br />
+          <strong>Technology Stack:</strong> HTML5, CSS3, JavaScript ES6,
+          Bootstrap 4.6.2, jQuery 3.6.0<br />
+          <strong>Server:</strong> XAMPP Apache Server<br />
+          <strong>Database:</strong> MySQL (available but not yet fully
+          integrated)
+        </div>
+
+        <h3 class="subsection-title">Project Structure</h3>
+        <ul>
+          <li>
+            <strong>Main Pages:</strong> index.html, products.html, cart.html,
+            about.html, contact.html, gallery.html, help.html, faq.html,
+            pricing.html
+          </li>
+          <li>
+            <strong>Directories:</strong> credit-card/, order-summary/,
+            products/, styles/, website_files/
+          </li>
+          <li>
+            <strong>Key Features:</strong> Shopping cart system, inventory
+            tracking, category filtering, responsive design
+          </li>
+        </ul>
+      </section>
+
+      <!-- Environment Setup -->
+      <section class="section" id="setup">
+        <h2 class="section-title">⚙️ Environment Setup</h2>
+
+        <h3 class="subsection-title">1. XAMPP Server Installation</h3>
+        <div class="warning-box">
+          <strong>⚠️ Important:</strong> localStorage requires HTTP/HTTPS
+          protocol. The file:// protocol will not work for cart and inventory
+          persistence.
+        </div>
+
+        <p><strong>Installation Path:</strong></p>
+        <div class="code-block">
+          <code
+            >XAMPP Root: D:\xampp\ Website Directory: D:\xampp\htdocs\website\
+            Source Files: d:\assign-web173\website\</code
+          >
+        </div>
+
+        <p><strong>Deployment Commands:</strong></p>
+        <div class="code-block">
+          <code
+            ># Copy files to XAMPP server Copy-Item
+            "d:\assign-web173\website\products.html" -Destination
+            "D:\xampp\htdocs\website\" -Force Copy-Item
+            "d:\assign-web173\website\index.html" -Destination
+            "D:\xampp\htdocs\website\" -Force Copy-Item
+            "d:\assign-web173\website\cart.html" -Destination
+            "D:\xampp\htdocs\website\" -Force # Start XAMPP Apache Server #
+            Access via: http://localhost/website/</code
+          >
+        </div>
+
+        <h3 class="subsection-title">2. Required Technologies</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Technology</th>
+              <th>Version</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bootstrap</td>
+              <td>4.6.2</td>
+              <td>CSS framework for responsive design</td>
+            </tr>
+            <tr>
+              <td>jQuery</td>
+              <td>3.6.0</td>
+              <td>JavaScript library for DOM manipulation</td>
+            </tr>
+            <tr>
+              <td>Font Awesome</td>
+              <td>Latest</td>
+              <td>Icon library</td>
+            </tr>
+            <tr>
+              <td>Iconify</td>
+              <td>Latest</td>
+              <td>Additional icon library</td>
+            </tr>
+            <tr>
+              <td>MySQL</td>
+              <td>8.x</td>
+              <td>Database (via XAMPP)</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Shopping Cart Implementation -->
+      <section class="section" id="cart">
+        <h2 class="section-title">🛒 Shopping Cart System</h2>
+
+        <h3 class="subsection-title">localStorage Structure</h3>
+        <div class="code-block">
+          <code
+            >// Cart Data Structure localStorage key: "artshop_cart" {
+            "WARR001": { "name": "The Warrior", "price": 100, "image":
+            "the-warrior.jpg", "qty": 2 }, "BUSH001": { "name": "The Bushman",
+            "price": 90, "image": "bushman.jpg", "qty": 1 } }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Add to Cart Function</h3>
+        <div class="code-block">
+          <code
+            >function addToCart(sku, name, price, image) { // Get current cart
+            let cart = JSON.parse(localStorage.getItem('artshop_cart')) || {};
+            // Check if item already exists if (cart[sku]) { cart[sku].qty += 1;
+            } else { cart[sku] = { name: name, price: price, image: image, qty:
+            1 }; } // Save back to localStorage
+            localStorage.setItem('artshop_cart', JSON.stringify(cart)); //
+            Update cart badge updateCartBadge(); // Show notification
+            showToast(name + ' added to cart!'); }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Cart Badge Update</h3>
+        <div class="code-block">
+          <code
+            >function updateCartBadge() { const cart =
+            JSON.parse(localStorage.getItem('artshop_cart')) || {}; let
+            totalItems = 0; for (let sku in cart) { totalItems += cart[sku].qty;
+            } const badge = document.getElementById('cart-badge'); if (badge) {
+            badge.textContent = totalItems; badge.style.display = totalItems > 0
+            ? 'inline-block' : 'none'; } }</code
+          >
+        </div>
+
+        <div class="success-box">
+          <strong>✅ Implementation Status:</strong> Shopping cart fully
+          functional across index.html, products.html, and cart.html with
+          synchronized localStorage.
+        </div>
+      </section>
+
+      <!-- Inventory Tracking -->
+      <section class="section" id="inventory">
+        <h2 class="section-title">📦 Inventory Tracking System</h2>
+
+        <h3 class="subsection-title">Inventory Data Structure</h3>
+        <div class="code-block">
+          <code
+            >// Inventory Data Structure localStorage key: "artshop_inventory" {
+            "WARR001": 25, "BUSH001": 20, "THIN001": 30, "SOUL001": 15,
+            "PATR001": 18, "RAIL001": 22, "GARD001": 20, "GODD001": 20,
+            "ELEC001": 20 }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Initial Stock Levels</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>SKU</th>
+              <th>Product Name</th>
+              <th>Initial Stock</th>
+              <th>Category</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>WARR001</td>
+              <td>The Warrior</td>
+              <td>25</td>
+              <td>Abstract</td>
+            </tr>
+            <tr>
+              <td>BUSH001</td>
+              <td>The Bushman</td>
+              <td>20</td>
+              <td>Abstract</td>
+            </tr>
+            <tr>
+              <td>THIN001</td>
+              <td>Thinking Man</td>
+              <td>30</td>
+              <td>Portraits</td>
+            </tr>
+            <tr>
+              <td>SOUL001</td>
+              <td>Soul Man</td>
+              <td>15</td>
+              <td>Portraits</td>
+            </tr>
+            <tr>
+              <td>PATR001</td>
+              <td>Patriot Man</td>
+              <td>18</td>
+              <td>Portraits</td>
+            </tr>
+            <tr>
+              <td>RAIL001</td>
+              <td>Railroad Man</td>
+              <td>22</td>
+              <td>Portraits</td>
+            </tr>
+            <tr>
+              <td>GARD001</td>
+              <td>Guardian of the Galaxy</td>
+              <td>20</td>
+              <td>Cartoons</td>
+            </tr>
+            <tr>
+              <td>GODD001</td>
+              <td>Goddess of Fertility</td>
+              <td>20</td>
+              <td>Drawing</td>
+            </tr>
+            <tr>
+              <td>ELEC001</td>
+              <td>Electric Smile</td>
+              <td>20</td>
+              <td>Graphic</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="subsection-title">Inventory Management Functions</h3>
+        <div class="code-block">
+          <code
+            >// Initialize inventory from data-stock attributes function
+            initializeInventory() { let inventory =
+            JSON.parse(localStorage.getItem('artshop_inventory')); if
+            (!inventory) { inventory = {};
+            document.querySelectorAll('[data-stock]').forEach(card => { const
+            sku = card.getAttribute('data-sku'); const stock =
+            parseInt(card.getAttribute('data-stock')); inventory[sku] = stock;
+            }); localStorage.setItem('artshop_inventory',
+            JSON.stringify(inventory)); } } // Get current inventory function
+            getInventory() { return
+            JSON.parse(localStorage.getItem('artshop_inventory')) || {}; } //
+            Save inventory function saveInventory(inventory) {
+            localStorage.setItem('artshop_inventory',
+            JSON.stringify(inventory)); } // Update stock display function
+            updateStockDisplay() { const inventory = getInventory(); for (let
+            sku in inventory) { const stockSpan =
+            document.getElementById('stock-' + sku); const addButton =
+            document.querySelector('[data-sku="' + sku + '"] .add-to-cart-btn');
+            const stock = inventory[sku]; if (stockSpan) { stockSpan.textContent
+            = stock; // Apply low stock styling if (stock <= 15 && stock > 0) {
+            stockSpan.classList.add('low-stock'); } else {
+            stockSpan.classList.remove('low-stock'); } // Handle out of stock if
+            (stock === 0) { stockSpan.textContent = 'Out of Stock';
+            stockSpan.style.color = 'red'; if (addButton) { addButton.disabled =
+            true; addButton.textContent = 'Out of Stock'; } } } } }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">
+          Modified Add to Cart with Inventory Check
+        </h3>
+        <div class="code-block">
+          <code
+            >function addToCart(sku, name, price, image) { // Check inventory
+            first let inventory = getInventory(); if (!inventory[sku] ||
+            inventory[sku] <= 0) { showToast('Sorry, ' + name + ' is out of
+            stock!', 'error'); return; } // Decrease inventory inventory[sku] -=
+            1; saveInventory(inventory); // Update display updateStockDisplay();
+            // Add to cart (existing logic) let cart =
+            JSON.parse(localStorage.getItem('artshop_cart')) || {}; if
+            (cart[sku]) { cart[sku].qty += 1; } else { cart[sku] = { name,
+            price, image, qty: 1 }; } localStorage.setItem('artshop_cart',
+            JSON.stringify(cart)); updateCartBadge(); showToast(name + ' added
+            to cart!'); }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">
+          HTML Product Card with Inventory Attributes
+        </h3>
+        <div class="code-block">
+          <code
+            >&lt;div class="product-card" data-sku="WARR001" data-stock="25"
+            data-category="Abstract"&gt; &lt;img src="the-warrior.jpg" alt="The
+            Warrior"&gt; &lt;h3&gt;The Warrior&lt;/h3&gt; &lt;p&gt;In Stock:
+            &lt;span id="stock-WARR001"
+            class="stock-count"&gt;25&lt;/span&gt;&lt;/p&gt; &lt;p
+            class="price"&gt;$100.00&lt;/p&gt; &lt;button
+            class="add-to-cart-btn" onclick="addToCart('WARR001', 'The Warrior',
+            100, 'the-warrior.jpg')"&gt; Add to Cart &lt;/button&gt;
+            &lt;/div&gt;</code
+          >
+        </div>
+
+        <div class="success-box">
+          <strong>✅ Features Implemented:</strong>
+          <ul style="margin-bottom: 0">
+            <li>
+              Real-time stock counting that decreases with each cart addition
+            </li>
+            <li>Low stock warnings (red text for items ≤15)</li>
+            <li>
+              Out of stock handling (disabled buttons, "Out of Stock" message)
+            </li>
+            <li>localStorage persistence across page reloads</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Category Filtering -->
+      <section class="section" id="filtering">
+        <h2 class="section-title">🔍 Category Filtering System</h2>
+
+        <h3 class="subsection-title">Category Filter Buttons</h3>
+        <div class="code-block">
+          <code
+            >&lt;div class="category-filters"&gt; &lt;button class="filter-btn
+            active" onclick="filterCategory('all')"&gt;All&lt;/button&gt;
+            &lt;button class="filter-btn"
+            onclick="filterCategory('Abstract')"&gt;Abstract&lt;/button&gt;
+            &lt;button class="filter-btn"
+            onclick="filterCategory('Portraits')"&gt;Portraits&lt;/button&gt;
+            &lt;button class="filter-btn"
+            onclick="filterCategory('Cartoons')"&gt;Cartoons&lt;/button&gt;
+            &lt;button class="filter-btn"
+            onclick="filterCategory('Drawing')"&gt;Drawing&lt;/button&gt;
+            &lt;button class="filter-btn"
+            onclick="filterCategory('Graphic')"&gt;Graphic&lt;/button&gt;
+            &lt;/div&gt;</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Filter Function Implementation</h3>
+        <div class="code-block">
+          <code
+            >function filterCategory(category) { const cards =
+            document.querySelectorAll('.product-card'); const buttons =
+            document.querySelectorAll('.filter-btn'); // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active'); // Filter products
+            cards.forEach(card => { if (category === 'all') { card.style.display
+            = 'block'; } else { const cardCategory =
+            card.getAttribute('data-category'); card.style.display =
+            cardCategory === category ? 'block' : 'none'; } }); }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Button Styling</h3>
+        <div class="code-block">
+          <code
+            >.category-filters { display: flex; gap: 5px; margin-bottom: 20px;
+            flex-wrap: wrap; } .filter-btn { padding: 10px 20px; background:
+            #333; color: white; border: none; border-radius: 4px; cursor:
+            pointer; transition: all 0.3s ease; } .filter-btn:hover {
+            background: #6495ed; } .filter-btn.active { background: #6495ed;
+            }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Category Distribution</h3>
+        <ul>
+          <li>
+            <strong>Abstract:</strong> 3 products (The Warrior, The Bushman, and
+            one more)
+          </li>
+          <li>
+            <strong>Portraits:</strong> 4 products (Thinking Man, Soul Man,
+            Patriot Man, Railroad Man)
+          </li>
+          <li><strong>Cartoons:</strong> 1 product (Guardian of the Galaxy)</li>
+          <li><strong>Drawing:</strong> 1 product (Goddess of Fertility)</li>
+          <li><strong>Graphic:</strong> 1 product (Electric Smile)</li>
+        </ul>
+      </section>
+
+      <!-- Styling Guidelines -->
+      <section class="section" id="styling">
+        <h2 class="section-title">🎨 Styling & Design Standards</h2>
+
+        <h3 class="subsection-title">Color Palette</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Color Name</th>
+              <th>Hex Value</th>
+              <th>Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary Dark</td>
+              <td>#333333</td>
+              <td>Headers, buttons, main text</td>
+            </tr>
+            <tr>
+              <td>Secondary Blue</td>
+              <td>#5383d3 or #6495ed</td>
+              <td>Hover states, accents, links</td>
+            </tr>
+            <tr>
+              <td>Background</td>
+              <td>#ffffff</td>
+              <td>Page backgrounds, cards</td>
+            </tr>
+            <tr>
+              <td>Text Color</td>
+              <td>#000000</td>
+              <td>Primary text (especially prices)</td>
+            </tr>
+            <tr>
+              <td>Secondary Text</td>
+              <td>#666666</td>
+              <td>Metadata, captions</td>
+            </tr>
+            <tr>
+              <td>Error/Warning</td>
+              <td>#ff0000</td>
+              <td>Out of stock, low stock alerts</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="subsection-title">Button States</h3>
+        <div class="code-block">
+          <code
+            >/* Primary Button */ .btn-primary { background: #333; color: white;
+            border: none; padding: 10px 20px; border-radius: 4px; cursor:
+            pointer; transition: all 0.3s ease; } .btn-primary:hover {
+            background: #6495ed; } .btn-primary:active { background: #6495ed; }
+            .btn-primary:disabled { background: #ccc; cursor: not-allowed;
+            }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Price Styling</h3>
+        <div class="code-block">
+          <code
+            >.product-card .price { color: #000; font-weight: 700; font-size:
+            18px; }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Footer Styling</h3>
+        <div class="code-block">
+          <code
+            >.footer { background: #333; color: white; padding: 50px 0; width:
+            100%; text-align: center; } .footer-links a { color: white;
+            text-decoration: none; margin: 0 15px; } .footer-links a:hover {
+            color: #6495ed; }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Low Stock Styling</h3>
+        <div class="code-block">
+          <code
+            >.stock-count { font-weight: 600; } .stock-count.low-stock { color:
+            #ff0000; animation: pulse 2s infinite; } @keyframes pulse { 0%, 100%
+            { opacity: 1; } 50% { opacity: 0.6; } }</code
+          >
+        </div>
+      </section>
+
+      <!-- Gallery Styles -->
+      <section class="section" id="gallery-styles">
+        <h2 class="section-title">🖼️ Gallery Page Styles</h2>
+        <div class="info-box">
+          <strong>File:</strong> <code>gallery.css</code><br />
+          <strong>Purpose:</strong> Contains all custom styles for
+          <code>gallery.html</code>, including layout, error message, and cart
+          icon/badge styling.
+          <br />
+          <strong>Location:</strong> <code>/website/gallery.css</code>
+        </div>
+        <h3 class="subsection-title">Key Style Features</h3>
+        <ul>
+          <li>Body font and background</li>
+          <li>Toast notification for messages</li>
+          <li>Error message container and typography</li>
+          <li>Return to Home button styling</li>
+          <li>Cart icon and notification badge (cart-count)</li>
+          <li>Header logo image styles</li>
+          <li>Search bar and search button styles</li>
+        </ul>
+        <h3 class="subsection-title">Sample CSS (gallery.css)</h3>
+        <div class="code-block">
+          <code>
+            body { font-family: "Manrope", sans-serif; background: #f8f9fa; }
+            .toast-notification { position: fixed; top: 100px; right: 20px;
+            background: #5383d3; color: white; padding: 15px 25px;
+            border-radius: 5px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 9999; display: none; animation: slideIn 0.3s ease-out; }
+            @keyframes slideIn { from { transform: translateX(400px); opacity:
+            0; } to { transform: translateX(0); opacity: 1; } } .error-container
+            { min-height: 100vh; display: flex; align-items: center;
+            justify-content: center; padding: 20px; } .error-content {
+            text-align: center; max-width: 600px; } .error-code { font-size:
+            120px; font-weight: 700; color: #5383d3; line-height: 1;
+            margin-bottom: 20px; } .error-title { font-size: 32px; font-weight:
+            600; color: #333; margin-bottom: 15px; } .error-message { font-size:
+            18px; color: #666; margin-bottom: 30px; line-height: 1.6; }
+            .btn-home { display: inline-block; padding: 12px 30px; background:
+            #5383d3; color: white; text-decoration: none; border-radius: 5px;
+            font-weight: 500; transition: background 0.3s; } .btn-home:hover {
+            background: #4272b8; color: white; } #fa-shopping-cart { position:
+            relative; padding-right: 0px; padding-left: 0px; margin-left: 0px;
+            margin-right: 0px; display: flex; align-items: center;
+            justify-content: center; } #fa-shopping-cart a { font-size: 32px;
+            color: #ffffff !important; font-weight: bold; display: flex;
+            align-items: center; justify-content: center; } #fa-shopping-cart
+            .iconify { color: #ffffff; font-size: 32px; font-weight: bold; }
+            #cart-count { position: absolute; top: -5px; right: -5px;
+            background: #e14942; color: white; border-radius: 50%; padding: 2px
+            6px; font-size: 12px; font-weight: bold; min-width: 20px;
+            text-align: center; display: none; } #header .logo img { background:
+
+            <!-- Modular CSS Refactor Documentation -->
+            <section class="section" id="modular-css-refactor">
+              <h2 class="section-title">🗂️ Modular CSS Refactor (Nov 2025)</h2>
+              <div class="info-box">
+                <strong>Update:</strong> All page-specific styles have been
+                moved to dedicated external CSS files for maintainability and
+                clarity.<br />
+                <strong>Files Created:</strong>
+                <ul style="margin-bottom: 0">
+                  <li>
+                    <code>styles/gallery.css</code> – for
+                    <code>gallery.html</code>
+                  </li>
+                  <li>
+                    <code>styles/cart.css</code> – for <code>cart.html</code>
+                  </li>
+                  <li>
+                    <code>styles/about.css</code> – for <code>about.html</code>
+                  </li>
+                  <li>
+                    <code>styles/contact.css</code> – for
+                    <code>contact.html</code>
+                  </li>
+                </ul>
+                <strong>What Changed:</strong>
+                <ul style="margin-bottom: 0">
+                  <li>
+                    All inline and internal &lt;style&gt; blocks removed from
+                    HTML files
+                  </li>
+                  <li>
+                    Each page now links only its own CSS file (plus shared
+                    frameworks)
+                  </li>
+                  <li>
+                    Navigation, search bar, and shopping cart icon styles are
+                    now externalized
+                  </li>
+                  <li>
+                    Consistent class names and modular structure for easier
+                    updates
+                  </li>
+                </ul>
+                <strong>How to Update Styles:</strong>
+                <ul style="margin-bottom: 0">
+                  <li>
+                    Edit the relevant CSS file in <code>styles/</code> for
+                    page-specific changes
+                  </li>
+                  <li>
+                    Do <strong>not</strong> add inline or internal styles to
+                    HTML files
+                  </li>
+                  <li>
+                    For navigation/search/cart icon changes, update the CSS in
+                    the relevant page’s stylesheet
+                  </li>
+                </ul>
+              </div>
+              <h3 class="subsection-title">Testing & Verification</h3>
+              <ul>
+                <li>
+                  ✅ All pages tested after refactor – no loss of structure or
+                  functionality
+                </li>
+                <li>
+                  ✅ Navigation, search bar, and cart icon styles consistent
+                  across all pages
+                </li>
+                <li>✅ Documentation updated to reflect new CSS structure</li>
+              </ul>
+              <div class="success-box">
+                <strong>Result:</strong> The codebase is now modular,
+                maintainable, and easy to extend. All styles are externalized
+                for best practices.
+              </div>
+            </section>
+            #333333; opacity: 1; filter: blur(0px); overflow: hidden;
+            border-width: 1px; } .search-btn { display: flex; align-items:
+            center; justify-content: center; } .search-btn-icon { color:
+            #ffffff; font-size: 28px; font-weight: 900; filter: brightness(1.2);
+            }
+          </code>
+        </div>
+        <h3 class="subsection-title">How to Update</h3>
+        <ul>
+          <li>
+            Edit <code>gallery.css</code> to change gallery-specific styles.
+          </li>
+          <li>
+            All cart icon and badge styles are now managed in
+            <code>gallery.css</code>.
+          </li>
+          <li>
+            Remove or avoid inline styles in <code>gallery.html</code> for
+            maintainability.
+          </li>
+        </ul>
+        <div class="success-box">
+          <strong>Update (Nov 25, 2025):</strong> All gallery and cart styles
+          moved to <code>styles/gallery.css</code> for modularity and easier
+          maintenance.
+        </div>
+      </section>
+
+      <!-- Database Integration -->
+      <section class="section" id="database">
+        <h2 class="section-title">💾 Database Integration (Optional)</h2>
+
+        <div class="warning-box">
+          <strong>⚠️ Note:</strong> The current system uses localStorage for
+          inventory. For production with multiple users, consider migrating to a
+          MySQL database.
+        </div>
+
+        <h3 class="subsection-title">Existing Database Tables</h3>
+        <div class="code-block">
+          <code
+            >-- Products Table CREATE TABLE IF NOT EXISTS products ( id INT
+            AUTO_INCREMENT PRIMARY KEY, sku VARCHAR(50) UNIQUE NOT NULL, name
+            VARCHAR(255) NOT NULL, description TEXT, price DECIMAL(10, 2) NOT
+            NULL, image VARCHAR(255), stock INT DEFAULT 0, category VARCHAR(50),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ); -- Orders Table
+            CREATE TABLE IF NOT EXISTS orders ( id INT AUTO_INCREMENT PRIMARY
+            KEY, customer_name VARCHAR(255), customer_email VARCHAR(255),
+            total_amount DECIMAL(10, 2), status VARCHAR(50) DEFAULT 'pending',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ); -- Order Items
+            Table CREATE TABLE IF NOT EXISTS order_items ( id INT AUTO_INCREMENT
+            PRIMARY KEY, order_id INT, product_sku VARCHAR(50), quantity INT,
+            price DECIMAL(10, 2), FOREIGN KEY (order_id) REFERENCES orders(id)
+            );</code
+          >
+        </div>
+
+        <h3 class="subsection-title">
+          Migration Path: localStorage to Database
+        </h3>
+        <p>To integrate database inventory tracking:</p>
+        <ul>
+          <li>
+            <strong>Step 1:</strong> Update products table with current stock
+            levels
+          </li>
+          <li>
+            <strong>Step 2:</strong> Create PHP API endpoints (get-stock.php,
+            update-stock.php)
+          </li>
+          <li>
+            <strong>Step 3:</strong> Replace localStorage functions with AJAX
+            calls
+          </li>
+          <li>
+            <strong>Step 4:</strong> Implement server-side validation and
+            transactions
+          </li>
+          <li><strong>Step 5:</strong> Add inventory history tracking</li>
+        </ul>
+
+        <h3 class="subsection-title">Sample PHP API Endpoint</h3>
+        <div class="code-block">
+          <code
+            >&lt;?php // get-stock.php header('Content-Type: application/json');
+            include 'config.php'; $sku = $_GET['sku'] ?? null; if ($sku) { $stmt
+            = $conn->prepare("SELECT stock FROM products WHERE sku = ?");
+            $stmt->bind_param("s", $sku); $stmt->execute(); $result =
+            $stmt->get_result(); $row = $result->fetch_assoc(); echo
+            json_encode(['stock' => $row['stock'] ?? 0]); } else { echo
+            json_encode(['error' => 'SKU required']); } ?&gt;</code
+          >
+        </div>
+      </section>
+
+      <!-- Toast Notifications -->
+      <section class="section" id="notifications">
+        <h2 class="section-title">🔔 Toast Notification System</h2>
+
+        <h3 class="subsection-title">Toast HTML Structure</h3>
+        <div class="code-block">
+          <code>&lt;div id="toast" class="toast"&gt;&lt;/div&gt;</code>
+        </div>
+
+        <h3 class="subsection-title">Toast CSS</h3>
+        <div class="code-block">
+          <code
+            >.toast { position: fixed; bottom: 30px; right: 30px; background:
+            #333; color: white; padding: 15px 25px; border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); opacity: 0; transform:
+            translateY(20px); transition: all 0.3s ease; z-index: 9999; }
+            .toast.show { opacity: 1; transform: translateY(0); } .toast.error {
+            background: #dc3545; }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Toast JavaScript Function</h3>
+        <div class="code-block">
+          <code
+            >function showToast(message, type = 'success') { const toast =
+            document.getElementById('toast'); toast.textContent = message;
+            toast.className = 'toast show'; if (type === 'error') {
+            toast.classList.add('error'); } setTimeout(() => {
+            toast.classList.remove('show'); }, 3000); }</code
+          >
+        </div>
+      </section>
+
+      <!-- Common Issues -->
+      <section class="section" id="troubleshooting">
+        <h2 class="section-title">🔧 Troubleshooting & Common Issues</h2>
+
+        <h3 class="subsection-title">Issue 1: localStorage Not Persisting</h3>
+        <div class="warning-box">
+          <strong>Problem:</strong> Cart items disappear when navigating between
+          pages.<br />
+          <strong>Cause:</strong> Using file:// protocol instead of HTTP
+          server.<br />
+          <strong>Solution:</strong> Deploy to XAMPP server and access via
+          http://localhost/
+        </div>
+
+        <h3 class="subsection-title">Issue 2: Cart Badge Not Updating</h3>
+        <div class="warning-box">
+          <strong>Problem:</strong> Cart badge shows incorrect count or doesn't
+          update.<br />
+          <strong>Cause:</strong> updateCartBadge() not called after cart
+          operations.<br />
+          <strong>Solution:</strong> Call updateCartBadge() in addToCart(),
+          removeItem(), and on page load.
+        </div>
+
+        <h3 class="subsection-title">Issue 3: Category Filter Not Working</h3>
+        <div class="warning-box">
+          <strong>Problem:</strong> Products don't filter when clicking category
+          buttons.<br />
+          <strong>Cause:</strong> Missing data-category attributes on product
+          cards.<br />
+          <strong>Solution:</strong> Add data-category="CategoryName" to each
+          product card div.
+        </div>
+
+        <h3 class="subsection-title">Issue 4: Stock Count Not Decreasing</h3>
+        <div class="warning-box">
+          <strong>Problem:</strong> Stock display doesn't update after adding
+          items to cart.<br />
+          <strong>Cause:</strong> updateStockDisplay() not called or missing
+          data-sku attributes.<br />
+          <strong>Solution:</strong> Ensure all products have data-sku and
+          data-stock attributes, call updateStockDisplay() after inventory
+          changes.
+        </div>
+
+        <h3 class="subsection-title">Debugging Tips</h3>
+        <ul>
+          <li>Check browser console for JavaScript errors (F12)</li>
+          <li>
+            Inspect localStorage:
+            <code>localStorage.getItem('artshop_cart')</code>
+          </li>
+          <li>
+            Verify XAMPP Apache is running (green status in XAMPP Control Panel)
+          </li>
+          <li>
+            Clear localStorage to reset: <code>localStorage.clear()</code>
+          </li>
+          <li>Test on actual devices, not just browser dev tools</li>
+        </ul>
+      </section>
+
+      <!-- Testing Checklist -->
+      <section class="section" id="testing">
+        <h2 class="section-title">✅ Testing Checklist</h2>
+
+        <h3 class="subsection-title">Shopping Cart Tests</h3>
+        <ul>
+          <li>✅ Add item to cart from products.html</li>
+          <li>✅ Verify cart badge updates correctly</li>
+          <li>✅ Navigate to cart.html and verify items appear</li>
+          <li>✅ Update quantity in cart</li>
+          <li>✅ Remove item from cart</li>
+          <li>✅ Clear entire cart</li>
+          <li>✅ Verify cart persists after page reload</li>
+          <li>✅ Test cart across index.html and products.html</li>
+        </ul>
+
+        <h3 class="subsection-title">Inventory Tests</h3>
+        <ul>
+          <li>✅ Add item to cart and verify stock decreases</li>
+          <li>✅ Check low stock warning appears (≤15 items)</li>
+          <li>✅ Verify "Out of Stock" message when stock = 0</li>
+          <li>✅ Confirm Add to Cart button disables at 0 stock</li>
+          <li>✅ Test inventory persistence across page reloads</li>
+        </ul>
+
+        <h3 class="subsection-title">Category Filter Tests</h3>
+        <ul>
+          <li>✅ Click "All" button - shows all products</li>
+          <li>✅ Click "Abstract" - shows only Abstract products</li>
+          <li>✅ Click "Portraits" - shows only Portraits products</li>
+          <li>✅ Click "Cartoons" - shows only Cartoons products</li>
+          <li>✅ Click "Drawing" - shows only Drawing products</li>
+          <li>✅ Click "Graphic" - shows only Graphic products</li>
+          <li>✅ Verify active button styling changes</li>
+        </ul>
+
+        <h3 class="subsection-title">Responsive Design Tests</h3>
+        <ul>
+          <li>✅ Test on desktop (1920x1080)</li>
+          <li>✅ Test on tablet (768x1024)</li>
+          <li>✅ Test on mobile (375x667)</li>
+          <li>✅ Verify navigation collapses properly</li>
+          <li>✅ Check button touch targets (minimum 44x44px)</li>
+        </ul>
+      </section>
+
+      <!-- Deployment -->
+      <section class="section" id="deployment">
+        <h2 class="section-title">🚀 Deployment Instructions</h2>
+
+        <h3 class="subsection-title">Local Development (XAMPP)</h3>
+        <div class="code-block">
+          <code
+            ># 1. Start XAMPP Apache Server # Open XAMPP Control Panel and click
+            "Start" for Apache # 2. Copy files to htdocs Copy-Item
+            "d:\assign-web173\website\*" -Destination "D:\xampp\htdocs\website\"
+            -Recurse -Force # 3. Access website # Open browser:
+            http://localhost/website/index.html</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Production Deployment Considerations</h3>
+        <ul>
+          <li>
+            <strong>Security:</strong> Implement HTTPS, sanitize user inputs,
+            prevent SQL injection
+          </li>
+          <li>
+            <strong>Performance:</strong> Minify CSS/JS, optimize images, enable
+            caching
+          </li>
+          <li>
+            <strong>Database:</strong> Migrate from localStorage to MySQL for
+            persistence
+          </li>
+          <li>
+            <strong>Backup:</strong> Regular database backups, version control
+            with Git
+          </li>
+          <li>
+            <strong>Monitoring:</strong> Error logging, analytics tracking
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">File Permissions</h3>
+        <div class="code-block">
+          <code
+            ># Recommended permissions for production # Files: 644 (rw-r--r--) #
+            Directories: 755 (rwxr-xr-x) # Config files: 600 (rw-------) #
+            Windows XAMPP typically handles this automatically</code
+          >
+        </div>
+      </section>
+
+      <!-- Footer Implementation -->
+      <section class="section" id="footer-guide">
+        <h2 class="section-title">📄 Footer Implementation</h2>
+
+        <h3 class="subsection-title">Footer HTML Structure</h3>
+        <div class="code-block">
+          <code
+            >&lt;footer style="background: #333; color: white; padding: 50px 0;
+            width: 100%; text-align: center;"&gt; &lt;div&gt; &lt;h3
+            style="font-size: 24px; margin-bottom: 20px;"&gt; Art&lt;span
+            style="color: #5383d3;"&gt;Shop&lt;/span&gt; Inc. &lt;/h3&gt;
+            &lt;div style="margin: 20px 0;"&gt; &lt;a href="index.html"
+            style="color: white; margin: 0 15px;"&gt;Home&lt;/a&gt; &lt;a
+            href="products.html" style="color: white; margin: 0
+            15px;"&gt;Products&lt;/a&gt; &lt;a href="pricing.html" style="color:
+            white; margin: 0 15px;"&gt;Pricing&lt;/a&gt; &lt;a href="help.html"
+            style="color: white; margin: 0 15px;"&gt;Help&lt;/a&gt; &lt;a
+            href="faq.html" style="color: white; margin: 0
+            15px;"&gt;FAQ&lt;/a&gt; &lt;a href="contact.html" style="color:
+            white; margin: 0 15px;"&gt;Contact&lt;/a&gt; &lt;/div&gt; &lt;p
+            style="margin-top: 20px;"&gt; &lt;span&gt;Copyright © &lt;/span&gt;
+            &lt;span&gt;2025&lt;/span&gt; &lt;span&gt; - All Rights Reserved by
+            the ArtShop Inc.&lt;/span&gt; &lt;/p&gt; &lt;p&gt; &lt;a
+            href="https://wakatime.com/" target="_blank" style="color:
+            #6495ed;"&gt;WakaTime&lt;/a&gt; &lt;/p&gt; &lt;/div&gt;
+            &lt;/footer&gt;</code
+          >
+        </div>
+
+        <div class="info-box">
+          <strong>Footer Standards:</strong>
+          <ul style="margin-bottom: 0">
+            <li>Background: #333 (dark primary color)</li>
+            <li>Width: 100% (full width across page)</li>
+            <li>Padding: 50px 0 (vertical spacing)</li>
+            <li>
+              All navigation links must point to actual pages (no #
+              placeholders)
+            </li>
+            <li>Include WakaTime link in cornflowerblue (#6495ed)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Final Notes -->
+      <section class="section" id="notes">
+        <h2 class="section-title">📝 Additional Notes & Best Practices</h2>
+
+        <h3 class="subsection-title">Code Organization</h3>
+        <ul>
+          <li>Keep JavaScript functions modular and reusable</li>
+          <li>
+            Use consistent naming conventions (camelCase for functions,
+            kebab-case for CSS)
+          </li>
+          <li>Comment complex logic for future reference</li>
+          <li>
+            Separate concerns: HTML structure, CSS styling, JavaScript behavior
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Performance Optimization</h3>
+        <ul>
+          <li>Minimize DOM manipulations - batch updates when possible</li>
+          <li>Use event delegation for dynamically added elements</li>
+          <li>Debounce expensive operations (search, filter)</li>
+          <li>Lazy load images below the fold</li>
+        </ul>
+
+        <h3 class="subsection-title">Accessibility</h3>
+        <ul>
+          <li>Include alt text for all images</li>
+          <li>
+            Ensure sufficient color contrast (WCAG AA: 4.5:1 for normal text)
+          </li>
+          <li>Make all interactive elements keyboard accessible</li>
+          <li>Use semantic HTML (header, nav, main, footer)</li>
+          <li>Add ARIA labels where necessary</li>
+        </ul>
+
+        <h3 class="subsection-title">Version Control</h3>
+        <div class="code-block">
+          <code
+            ># Initialize Git repository git init # Add all files git add . #
+            Commit changes git commit -m "Initial commit: ArtShop e-commerce
+            site with cart and inventory" # Create .gitignore echo "config.php"
+            >> .gitignore echo "vendor/" >> .gitignore</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Future Enhancements</h3>
+        <ul>
+          <li>User authentication and accounts</li>
+          <li>Payment gateway integration (PayPal, Stripe)</li>
+          <li>Order history and tracking</li>
+          <li>Product reviews and ratings</li>
+          <li>Wishlist functionality</li>
+          <li>Email notifications for order confirmations</li>
+          <li>Admin panel for inventory management</li>
+          <li>Search functionality with autocomplete</li>
+        </ul>
+
+        <div class="success-box">
+          <strong>🎉 Project Status:</strong> All core features successfully
+          implemented and tested. Ready for production deployment with optional
+          database integration.
+        </div>
+      </section>
+
+      <!-- Quick Reference -->
+      <section class="section" id="reference">
+        <h2 class="section-title">📚 Quick Reference</h2>
+
+        <h3 class="subsection-title">localStorage Keys</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Key</th>
+              <th>Purpose</th>
+              <th>Data Structure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>artshop_cart</td>
+              <td>Shopping cart items</td>
+              <td>Object: {SKU: {name, price, image, qty}}</td>
+            </tr>
+            <tr>
+              <td>artshop_inventory</td>
+              <td>Current stock levels</td>
+              <td>Object: {SKU: stock_count}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="subsection-title">Key Functions Reference</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Function</th>
+              <th>Purpose</th>
+              <th>Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>addToCart()</td>
+              <td>Add item to cart with inventory check</td>
+              <td>products.html, index.html</td>
+            </tr>
+            <tr>
+              <td>updateCartBadge()</td>
+              <td>Update cart item count display</td>
+              <td>All pages with cart</td>
+            </tr>
+            <tr>
+              <td>initializeInventory()</td>
+              <td>Create inventory from data attributes</td>
+              <td>products.html</td>
+            </tr>
+            <tr>
+              <td>updateStockDisplay()</td>
+              <td>Refresh stock counts and styling</td>
+              <td>products.html</td>
+            </tr>
+            <tr>
+              <td>filterCategory()</td>
+              <td>Filter products by category</td>
+              <td>products.html</td>
+            </tr>
+            <tr>
+              <td>showToast()</td>
+              <td>Display notification messages</td>
+              <td>All pages</td>
+            </tr>
+            <tr>
+              <td>renderCart()</td>
+              <td>Display cart items on cart page</td>
+              <td>cart.html</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="subsection-title">Important URLs</h3>
+        <ul>
+          <li><strong>Local Development:</strong> http://localhost/website/</li>
+          <li>
+            <strong>Products Page:</strong>
+            http://localhost/website/products.html
+          </li>
+          <li>
+            <strong>Shopping Cart:</strong> http://localhost/website/cart.html
+          </li>
+          <li><strong>XAMPP Control:</strong> http://localhost/dashboard/</li>
+        </ul>
+      </section>
+
+      <!-- Search Functionality -->
+      <section class="section" id="search">
+        <h2 class="section-title">🔍 Live Internet Search Integration</h2>
+
+        <div class="info-box">
+          <strong>Feature Added:</strong> November 23, 2025<br />
+          <strong>Purpose:</strong> Enable users to search the internet directly
+          from the website navigation bar<br />
+          <strong>Search Engine:</strong> Google (with alternatives available)
+        </div>
+
+        <h3 class="subsection-title">Search Bar HTML Structure</h3>
+        <div class="code-block">
+          <code
+            >&lt;li class="bg-dark border rounded-3 search-bar"
+            id="search-bar"&gt; &lt;div class="search-input"&gt; &lt;form
+            action="https://www.google.com/search" method="GET" target="_blank"
+            id="search-form"&gt; &lt;input type="text" name="q"
+            id="search-input" placeholder="Search the web..." required /&gt;
+            &lt;button type="submit" class="search-btn"&gt; &lt;span
+            class="search-btn-icon iconify"
+            data-icon="arcticons:pixel-search"&gt;&lt;/span&gt; &lt;/button&gt;
+            &lt;/form&gt; &lt;/div&gt; &lt;/li&gt;</code
+          >
+        </div>
+
+        <h3 class="subsection-title">JavaScript Implementation</h3>
+        <div class="code-block">
+          <code
+            >// Initialize search functionality
+            document.addEventListener("DOMContentLoaded", function () { const
+            searchForm = document.getElementById('search-form'); const
+            searchInput = document.getElementById('search-input'); if
+            (searchForm && searchInput) { searchForm.addEventListener('submit',
+            function(e) { const query = searchInput.value.trim(); if (query) {
+            // Form will submit naturally to Google search
+            console.log('Searching for:', query); } else { e.preventDefault();
+            alert('Please enter a search term'); } }); // Make search input more
+            visible searchInput.style.minWidth = '150px';
+            searchInput.style.padding = '5px 10px'; } });</code
+          >
+        </div>
+
+        <h3 class="subsection-title">How It Works</h3>
+        <ul>
+          <li>
+            <strong>Action URL:</strong> Points to https://www.google.com/search
+          </li>
+          <li><strong>Method:</strong> GET request with query parameter "q"</li>
+          <li><strong>Target:</strong> Opens results in new tab (_blank)</li>
+          <li>
+            <strong>Validation:</strong> Required attribute ensures non-empty
+            searches
+          </li>
+          <li>
+            <strong>User Experience:</strong> Seamless integration without
+            leaving the site context
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Alternative Search Engines</h3>
+        <p>
+          You can easily switch to different search engines by changing the form
+          action:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Search Engine</th>
+              <th>Form Action URL</th>
+              <th>Query Parameter</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Google (Default)</td>
+              <td>https://www.google.com/search</td>
+              <td>name="q"</td>
+            </tr>
+            <tr>
+              <td>Bing</td>
+              <td>https://www.bing.com/search</td>
+              <td>name="q"</td>
+            </tr>
+            <tr>
+              <td>DuckDuckGo</td>
+              <td>https://duckduckgo.com/</td>
+              <td>name="q"</td>
+            </tr>
+            <tr>
+              <td>Yahoo</td>
+              <td>https://search.yahoo.com/search</td>
+              <td>name="p"</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="subsection-title">Testing the Search Feature</h3>
+        <div class="code-block">
+          <code
+            >// Test Page Created: test-search.html // Location:
+            d:\assign-web173\website\test-search.html // Open test page in
+            browser: Start-Process "d:\assign-web173\website\test-search.html"
+            // Test procedure: 1. Enter a search term (e.g., "ArtShop
+            paintings") 2. Click the search button 3. Verify new tab opens with
+            Google search results 4. Confirm the search term appears in the
+            results</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Implementation Files</h3>
+        <ul>
+          <li>
+            <strong>index.html:</strong> Search bar added to header navigation
+            (Line ~173-200)
+          </li>
+          <li>
+            <strong>products.html:</strong> Search bar added to header
+            navigation (Line ~305-332)
+          </li>
+          <li>
+            <strong>test-search.html:</strong> Standalone test page with
+            multiple search engine examples
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Customization Options</h3>
+        <div class="code-block">
+          <code
+            >/* Change search placeholder text */ placeholder="Search the
+            web..." /* Change to search only your site (Google Custom Search) */
+            action="https://www.google.com/search" &lt;input type="hidden"
+            name="sitesearch" value="localhost/website"&gt; /* For production,
+            use your actual domain */ name="sitesearch"
+            value="yourdomain.com"&gt; /* Add search suggestions (requires
+            JavaScript library) */ &lt;script
+            src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"&gt;&lt;/script&gt;
+            /* Style the search input */ #search-input { min-width: 150px;
+            padding: 5px 10px; border: 1px solid #ddd; border-radius: 4px;
+            background: white; color: #333; }</code
+          >
+        </div>
+
+        <div class="success-box">
+          <strong>✅ Search Feature Status:</strong> Fully functional live
+          internet search integrated into index.html and products.html. Opens
+          results in new tab without disrupting user's browsing session.
+        </div>
+
+        <h3 class="subsection-title">
+          Implementation Update - November 25, 2025
+        </h3>
+        <div class="info-box">
+          <strong>Latest Changes:</strong> Search bars have been updated across
+          all main pages<br />
+          <strong>Pages Updated:</strong> index.html, products.html<br />
+          <strong>Changes Made:</strong>
+          <ul style="margin-bottom: 0; margin-top: 8px">
+            <li>
+              Changed form action from "#" to "https://www.google.com/search"
+            </li>
+            <li>
+              Changed input name from "search" to "q" (Google query parameter)
+            </li>
+            <li>Updated placeholder text to "Search the web..."</li>
+            <li>Added target="_blank" to open results in new tab</li>
+            <li>Added required attribute for form validation</li>
+            <li>Added id="search-form" for JavaScript hooks</li>
+          </ul>
+        </div>
+
+        <div class="info-box" style="margin-top: 20px">
+          <strong>UI Update:</strong> Artist name styling refined<br />
+          <strong>Date:</strong> November 25, 2025<br />
+          <strong>Page Updated:</strong> products.html<br />
+          <strong>Change:</strong> Artist name font size reduced from 14px to
+          12px (.product-card .artist) for better visual hierarchy and cleaner
+          product card design
+        </div>
+
+        <!-- change domain to mywebsite.com -->
+        <h3 class="subsection-title">Verification Steps</h3>
+        <ol style="line-height: 1.8; padding-left: 24px">
+          <li>Navigate to <code>http://localhost/website/index.html</code></li>
+          <li>Locate the search icon in the top navigation bar</li>
+          <li>Enter a test search term (e.g., "ArtShop paintings")</li>
+          <li>Click the search button or press Enter</li>
+          <li>Verify that Google search results open in a new tab</li>
+          <li>
+            Repeat test on <code>http://localhost/website/products.html</code>
+          </li>
+        </ol>
+
+        <h3 class="subsection-title">Troubleshooting Search Issues</h3>
+        <div class="warning-box">
+          <strong>Issue:</strong> Search button doesn't respond<br />
+          <strong>Solution:</strong> Check that form action URL is correct and
+          input has name="q" attribute
+        </div>
+
+        <div class="warning-box">
+          <strong>Issue:</strong> Search opens in same tab<br />
+          <strong>Solution:</strong> Add target="_blank" to form element
+        </div>
+
+        <div class="warning-box">
+          <strong>Issue:</strong> Empty searches submit<br />
+          <strong>Solution:</strong> Add required attribute to input element and
+          JavaScript validation
+        </div>
+      </section>
+
+      <!-- Checkout Page Redesign -->
+      <section class="section" id="checkout">
+        <h2 class="section-title">💳 Checkout Page Redesign</h2>
+
+        <div class="info-box">
+          <strong>Updated:</strong> November 24, 2025<br />
+          <strong>File:</strong> credit-card/index.html<br />
+          <strong>Status:</strong> Completely redesigned with modern UI matching
+          client specifications<br />
+          <strong>Key Fix:</strong> localStorage key corrected from
+          "shoppingCart" to "artshop_cart"
+        </div>
+
+        <h3 class="subsection-title">Design Overview</h3>
+        <p>
+          The checkout page has been completely redesigned to provide a clean,
+          modern payment experience with improved usability and visual appeal.
+        </p>
+
+        <h3 class="subsection-title">New Features</h3>
+        <ul>
+          <li>
+            <strong>Modern Card Layout:</strong> Clean white card with subtle
+            shadow on gray background
+          </li>
+          <li>
+            <strong>Interactive Payment Methods:</strong> Three clickable
+            buttons for Credit Card, Paypal, and Bank Transfer
+          </li>
+          <li>
+            <strong>Visual Feedback:</strong> Active payment method highlighted
+            in blue (#007bff)
+          </li>
+          <li>
+            <strong>Improved Form Layout:</strong> Side-by-side expiration and
+            CVV fields for better UX
+          </li>
+          <li>
+            <strong>Card Number Formatting:</strong> Automatic space insertion
+            every 4 digits
+          </li>
+          <li>
+            <strong>Visual Card Icons:</strong> Visa, Amex, and Mastercard logos
+            displayed in input field
+          </li>
+          <li>
+            <strong>Order Summary:</strong> Clear display of cart items with
+            individual and total pricing
+          </li>
+          <li>
+            <strong>Responsive Design:</strong> Works seamlessly on desktop,
+            tablet, and mobile devices
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Critical Bug Fix</h3>
+        <div class="success-box">
+          <strong>🐛 Bug Fixed:</strong> Checkout page now correctly reads cart
+          data from localStorage<br />
+          <strong>Before:</strong>
+          <code>localStorage.getItem("shoppingCart")</code> (wrong key)<br />
+          <strong>After:</strong>
+          <code>localStorage.getItem("artshop_cart")</code> (correct key)<br />
+          <strong>Impact:</strong> Order summary now displays actual cart items
+          instead of showing empty
+        </div>
+
+        <h3 class="subsection-title">New HTML Structure</h3>
+        <div class="code-block">
+          <code
+            >&lt;div class="checkout-container"&gt; &lt;a href="../cart.html"
+            class="back-link"&gt; &lt;i class="fa fa-arrow-left"&gt;&lt;/i&gt;
+            Back to Cart &lt;/a&gt; &lt;div class="checkout-card"&gt; &lt;!--
+            Order Summary --&gt; &lt;h1 class="order-summary-header"&gt;Order
+            Summary&lt;/h1&gt; &lt;div id="orderItems"
+            class="order-items-text"&gt; No items in cart &lt;/div&gt; &lt;div
+            class="total-amount-section"&gt; &lt;span&gt;Total
+            Amount:&lt;/span&gt; &lt;span class="amount"
+            id="totalAmount"&gt;$0.00&lt;/span&gt; &lt;/div&gt; &lt;!-- Payment
+            Method Buttons --&gt; &lt;div class="payment-methods"&gt; &lt;button
+            class="payment-method-btn active" id="creditCardBtn"&gt; &lt;i
+            class="fa fa-credit-card"&gt;&lt;/i&gt; Credit Card &lt;/button&gt;
+            &lt;button class="payment-method-btn" id="paypalBtn"&gt; &lt;i
+            class="fa fa-paypal"&gt;&lt;/i&gt; Paypal &lt;/button&gt; &lt;button
+            class="payment-method-btn" id="bankBtn"&gt; &lt;i class="fa
+            fa-university"&gt;&lt;/i&gt; Bank Transfer &lt;/button&gt;
+            &lt;/div&gt; &lt;!-- Payment Form --&gt; &lt;form
+            id="paymentForm"&gt; &lt;!-- Form fields --&gt; &lt;/form&gt;
+            &lt;/div&gt; &lt;/div&gt;</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Updated JavaScript - Cart Loading</h3>
+        <div class="code-block">
+          <code
+            >window.onload = function () { // FIXED: Use correct localStorage
+            key const cartData = localStorage.getItem("artshop_cart"); const
+            cart = cartData ? JSON.parse(cartData) : {}; // Calculate total from
+            cart let total = 0; const cartItems = Object.entries(cart); const
+            orderItemsDiv = document.getElementById("orderItems"); const
+            totalAmountSpan = document.getElementById("totalAmount"); if
+            (cartItems.length > 0) { const itemsHTML = cartItems.map(([sku,
+            item]) => { const itemTotal = item.price * item.qty; total +=
+            itemTotal; return ` &lt;div style="display: flex; justify-content:
+            space-between; margin-bottom: 15px;"&gt; &lt;div&gt; &lt;div
+            style="font-weight: 600;"&gt;${item.name}&lt;/div&gt; &lt;div
+            style="color: #999; font-size: 14px;"&gt; Qty: ${item.qty} ×
+            $${item.price.toFixed(2)} &lt;/div&gt; &lt;/div&gt; &lt;div
+            style="font-weight: 600;"&gt;$${itemTotal.toFixed(2)}&lt;/div&gt;
+            &lt;/div&gt; `; }).join(''); orderItemsDiv.innerHTML = itemsHTML; }
+            else { orderItemsDiv.innerHTML = '&lt;div style="color: #999;"&gt;No
+            items in cart&lt;/div&gt;'; } totalAmountSpan.textContent = "$" +
+            total.toFixed(2); };</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Payment Method Toggle</h3>
+        <div class="code-block">
+          <code
+            >// Payment method button switching
+            document.querySelectorAll('.payment-method-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+            document.querySelectorAll('.payment-method-btn').forEach(b =>
+            b.classList.remove('active') ); this.classList.add('active'); });
+            });</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Card Number Auto-Formatting</h3>
+        <div class="code-block">
+          <code
+            >// Format card number with spaces every 4 digits
+            document.querySelector('input[placeholder="Your card number"]')
+            .addEventListener('input', function(e) { let value =
+            e.target.value.replace(/\s/g, ''); let formattedValue =
+            value.match(/.{1,4}/g)?.join(' ') || value; e.target.value =
+            formattedValue; });</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Styling Enhancements</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Element</th>
+              <th>Style</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>.checkout-card</td>
+              <td>max-width: 700px, white background, rounded corners</td>
+              <td>Clean, centered card layout</td>
+            </tr>
+            <tr>
+              <td>.payment-method-btn</td>
+              <td>Flex layout with icons, border transitions</td>
+              <td>Interactive payment selection</td>
+            </tr>
+            <tr>
+              <td>.payment-method-btn.active</td>
+              <td>background: #007bff, white text</td>
+              <td>Visual feedback for selected method</td>
+            </tr>
+            <tr>
+              <td>.card-icons</td>
+              <td>Positioned inside card number input</td>
+              <td>Show accepted card types</td>
+            </tr>
+            <tr>
+              <td>.confirm-btn</td>
+              <td>Full width, rounded pill, blue background</td>
+              <td>Prominent call-to-action</td>
+            </tr>
+            <tr>
+              <td>.expiration-cvv-row</td>
+              <td>Flexbox layout, proper gap spacing</td>
+              <td>Side-by-side field arrangement</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="subsection-title">Color Scheme</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Color</th>
+              <th>Hex Value</th>
+              <th>Usage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary Blue</td>
+              <td>#007bff</td>
+              <td>Active buttons, confirm button, links</td>
+            </tr>
+            <tr>
+              <td>Dark Blue Hover</td>
+              <td>#0056b3</td>
+              <td>Button hover states</td>
+            </tr>
+            <tr>
+              <td>Background Gray</td>
+              <td>#f5f5f5</td>
+              <td>Page background</td>
+            </tr>
+            <tr>
+              <td>Card White</td>
+              <td>#ffffff</td>
+              <td>Card background</td>
+            </tr>
+            <tr>
+              <td>Text Dark</td>
+              <td>#333</td>
+              <td>Headings and primary text</td>
+            </tr>
+            <tr>
+              <td>Text Gray</td>
+              <td>#999</td>
+              <td>Secondary text, "No items in cart"</td>
+            </tr>
+            <tr>
+              <td>Border Gray</td>
+              <td>#e0e0e0</td>
+              <td>Borders and dividers</td>
+            </tr>
+            <tr>
+              <td>Success Green</td>
+              <td>#d4edda (bg), #155724 (text)</td>
+              <td>Alert message box</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="subsection-title">Form Validation</h3>
+        <div class="code-block">
+          <code
+            >&lt;!-- All form fields have validation --&gt; &lt;input
+            type="text" class="form-control" required /&gt; &lt;input
+            type="text" maxlength="19" required /&gt; &lt;!-- Card number --&gt;
+            &lt;input type="text" maxlength="2" required /&gt; &lt;!-- MM --&gt;
+            &lt;input type="text" maxlength="2" required /&gt; &lt;!-- YY --&gt;
+            &lt;input type="text" maxlength="3" required /&gt; &lt;!-- CVV
+            --&gt;</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Payment Processing</h3>
+        <div class="code-block">
+          <code
+            >document.getElementById("paymentForm").addEventListener("submit",
+            function (e) { e.preventDefault(); const activeMethod =
+            document.querySelector('.payment-method-btn.active')
+            .textContent.trim(); alert(`Payment processed successfully via
+            ${activeMethod}! (This is a demo)`); // Clear cart after successful
+            payment localStorage.removeItem("artshop_cart");
+            localStorage.removeItem("checkoutTotal"); // Redirect to products
+            page setTimeout(() => { window.location.href = "../products.html";
+            }, 1500); });</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Responsive Breakpoints</h3>
+        <ul>
+          <li>
+            <strong>Desktop (>1200px):</strong> Full 700px width card, all
+            features visible
+          </li>
+          <li>
+            <strong>Tablet (768px-1199px):</strong> Slightly narrower card,
+            maintains layout
+          </li>
+          <li>
+            <strong>Mobile (<768px):</strong> Full width card, stacked payment
+            buttons, vertical form fields
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">User Experience Improvements</h3>
+        <ul>
+          <li>
+            ✅ <strong>Back to Cart Link:</strong> Easy navigation back to
+            shopping cart
+          </li>
+          <li>
+            ✅ <strong>Visual Payment Selection:</strong> Clear indication of
+            selected payment method
+          </li>
+          <li>
+            ✅ <strong>Inline Card Icons:</strong> Users instantly see accepted
+            card types
+          </li>
+          <li>
+            ✅ <strong>Auto-formatting:</strong> Card number spaces added
+            automatically
+          </li>
+          <li>
+            ✅ <strong>Help Icons:</strong> CVV field includes tooltip for
+            clarification
+          </li>
+          <li>
+            ✅ <strong>Prominent CTA:</strong> Large, rounded "Confirm Payment"
+            button
+          </li>
+          <li>
+            ✅ <strong>Order Summary Display:</strong> Clear breakdown of items
+            and pricing
+          </li>
+          <li>
+            ✅ <strong>Success Feedback:</strong> Alert confirmation before cart
+            clearing
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Testing Checklist</h3>
+        <ul>
+          <li>✅ Add items to cart from products.html</li>
+          <li>✅ Navigate to cart and click "Proceed to Checkout"</li>
+          <li>✅ Verify order summary displays all cart items</li>
+          <li>✅ Verify total amount is calculated correctly</li>
+          <li>
+            ✅ Click each payment method button - verify active state changes
+          </li>
+          <li>✅ Enter card details - verify auto-formatting works</li>
+          <li>✅ Submit form - verify success message appears</li>
+          <li>✅ Verify cart is cleared after successful payment</li>
+          <li>✅ Test responsive design on different screen sizes</li>
+          <li>✅ Verify "Back to Cart" link works</li>
+        </ul>
+
+        <h3 class="subsection-title">Dependencies</h3>
+        <div class="code-block">
+          <code
+            >&lt;!-- CDN Resources - No local files required --&gt; &lt;link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            /&gt; &lt;link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+            /&gt; &lt;script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+            &lt;script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code
+          >
+        </div>
+
+        <div class="success-box">
+          <strong>✅ Checkout Page Status:</strong> Fully functional with modern
+          UI design. All critical bugs fixed. Cart data correctly loads from
+          localStorage. Payment methods are interactive. Form validation works.
+          Ready for production use with demo payment processing.
+        </div>
+
+        <h3 class="subsection-title">Future Enhancements for Checkout</h3>
+        <ul>
+          <li>
+            <strong>Real Payment Gateway:</strong> Integrate Stripe, PayPal, or
+            Square API
+          </li>
+          <li>
+            <strong>Address Validation:</strong> Add shipping and billing
+            address fields
+          </li>
+          <li>
+            <strong>Save Card Option:</strong> Allow users to save payment
+            methods (with PCI compliance)
+          </li>
+          <li>
+            <strong>Multiple Currencies:</strong> Support international payments
+          </li>
+          <li>
+            <strong>Order Confirmation Email:</strong> Send receipt after
+            successful payment
+          </li>
+          <li>
+            <strong>Promo Codes:</strong> Add discount code input and validation
+          </li>
+          <li>
+            <strong>Shipping Options:</strong> Display and select delivery
+            methods
+          </li>
+          <li>
+            <strong>Tax Calculation:</strong> Compute sales tax based on
+            location
+          </li>
+          <li>
+            <strong>Gift Options:</strong> Add gift wrap and message
+            capabilities
+          </li>
+        </ul>
+
+        <div class="info-box">
+          <strong>📁 File Location:</strong>
+          d:\XAMPP\htdocs\website\credit-card\index.html<br />
+          <strong>🔗 Access URL:</strong>
+          http://localhost/website/credit-card/index.html<br />
+          <strong>📄 Lines of Code:</strong> ~350 (HTML + CSS + JavaScript
+          combined)<br />
+          <strong>⚡ Load Time:</strong> <0.5 seconds (using CDN resources)
+        </div>
+      </section>
+
+      <!-- CSS Style Guide Updates -->
+      <section class="section" id="css-style-guide-updates">
+        <h2 class="section-title">🎨 CSS Style Guide Updates</h2>
+
+        <div class="info-box">
+          <strong>Updated:</strong> November 25, 2025<br />
+          <strong>File:</strong> css-style-guide.html<br />
+          <strong>New Section:</strong> Complete checkout page styling
+          documentation added<br />
+          <strong>Purpose:</strong> Comprehensive design system reference for
+          all components
+        </div>
+
+        <h3 class="subsection-title">Overview of CSS Style Guide</h3>
+        <p>
+          The CSS Style Guide (css-style-guide.html) serves as the complete
+          design system documentation for the ArtShop website. It provides
+          visual examples, code snippets, and best practices for all UI
+          components.
+        </p>
+
+        <h3 class="subsection-title">Sections Included in Style Guide</h3>
+        <ul>
+          <li>
+            <strong>Design Tokens:</strong> CSS variables for colors, spacing,
+            typography, borders, and shadows
+          </li>
+          <li>
+            <strong>Typography:</strong> Font families, heading hierarchy, body
+            text styling
+          </li>
+          <li>
+            <strong>Buttons:</strong> Primary, secondary, outline styles with
+            size variations
+          </li>
+          <li>
+            <strong>Cards:</strong> Product card layouts with hover effects and
+            grid systems
+          </li>
+          <li>
+            <strong>Forms & Search:</strong> Input fields, live internet search
+            integration, alternative search engines
+          </li>
+          <li>
+            <strong>Header & Navigation:</strong> Navigation menu structure and
+            styling
+          </li>
+          <li>
+            <strong>Footer:</strong> Footer layout with links and branding
+          </li>
+          <li>
+            <strong>Layout Grid:</strong> 2, 3, and 4 column grid examples
+          </li>
+          <li>
+            <strong>Shadows & Effects:</strong> Box shadow variants and
+            transition effects
+          </li>
+          <li>
+            <strong>Usage Guidelines:</strong> Best practices for design
+            consistency
+          </li>
+          <li>
+            <strong>Checkout Page Styling:</strong> Complete payment form design
+            system (NEW)
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">New: Checkout Page Styling Section</h3>
+        <p>
+          A comprehensive section dedicated to the checkout/payment page design
+          has been added, including:
+        </p>
+
+        <h4 style="font-size: 16px; margin: var(--spacing-md) 0">
+          Color Scheme
+        </h4>
+        <ul>
+          <li>
+            <strong>Primary Blue (#007bff):</strong> Active buttons, primary
+            actions
+          </li>
+          <li>
+            <strong>Dark Blue Hover (#0056b3):</strong> Button hover states
+          </li>
+          <li><strong>Background Gray (#f5f5f5):</strong> Page background</li>
+          <li><strong>Success Green (#d4edda):</strong> Alert messages</li>
+          <li><strong>Text Gray (#999):</strong> Secondary text</li>
+          <li><strong>Border Gray (#e0e0e0):</strong> Borders and dividers</li>
+        </ul>
+
+        <h4 style="font-size: 16px; margin: var(--spacing-md) 0">
+          Components Documented
+        </h4>
+        <div class="code-block">
+          <code
+            >/* Checkout Components Covered */ 1. Checkout Card Container -
+            .checkout-container (max-width: 700px) - .checkout-card (white card
+            with shadow) - .order-summary-header (28px heading) -
+            .total-amount-section (flex layout) 2. Payment Method Buttons -
+            .payment-methods (flex container) - .payment-method-btn (inactive
+            state) - .payment-method-btn.active (blue active state) -
+            .payment-method-btn:hover (border highlight) 3. Form Input Styling -
+            .form-control (standard input) - .form-control:focus (blue border) -
+            .card-number-wrapper (relative positioning) - .card-icons (credit
+            card logos) 4. Expiration and CVV Layout - .expiration-cvv-row
+            (flexbox layout) - .expiration-group (flex: 1) - .cvv-group (flex: 0
+            0 180px) - .cvv-label (with help icon) 5. Confirm Payment Button -
+            .confirm-btn (full width, rounded pill) - Blue background with hover
+            effect - 16px font, 600 weight 6. Alert Message Box -
+            .alert-success-custom (green background) - Border and text styling -
+            Used for success/error messages 7. Responsive Design - Mobile
+            breakpoint at 768px - Stacked payment buttons - Vertical form fields
+            - Adjusted padding and font sizes</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Code Examples Provided</h3>
+        <p>Each component in the style guide includes:</p>
+        <ul>
+          <li>
+            <strong>Live Visual Example:</strong> Interactive demonstration of
+            the component
+          </li>
+          <li>
+            <strong>HTML Structure:</strong> Complete markup with proper
+            semantic tags
+          </li>
+          <li>
+            <strong>CSS Code:</strong> All styles needed to implement the
+            component
+          </li>
+          <li>
+            <strong>JavaScript (if applicable):</strong> Functionality code for
+            interactive elements
+          </li>
+          <li>
+            <strong>Usage Notes:</strong> Best practices and common pitfalls
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">JavaScript Features Documented</h3>
+        <div class="code-block">
+          <code
+            >/* JavaScript Examples in Style Guide */ 1. Payment Method Toggle -
+            Click handler to switch active button - Remove/add .active class -
+            Visual feedback on selection 2. Card Number Auto-Formatting - Input
+            event listener - Automatic space insertion every 4 digits -
+            Real-time formatting as user types 3. Form Validation - Required
+            field checking - Maxlength enforcement - Submit prevention on
+            invalid data 4. Live Internet Search - Form submission to Google -
+            Opens in new tab - Alternative search engine options</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Best Practices Section</h3>
+        <p>
+          The style guide includes comprehensive best practices for checkout
+          design:
+        </p>
+        <ul>
+          <li>
+            <strong>Clear Visual Hierarchy:</strong> Large headings, clear
+            sections, prominent total
+          </li>
+          <li>
+            <strong>Progressive Disclosure:</strong> Show payment form after
+            method selection
+          </li>
+          <li>
+            <strong>Visual Feedback:</strong> Active states on buttons, focus
+            states on inputs
+          </li>
+          <li>
+            <strong>Accessibility:</strong> Labels for inputs, tooltips,
+            keyboard navigation
+          </li>
+          <li>
+            <strong>Mobile Responsive:</strong> Stack elements vertically on
+            small screens
+          </li>
+          <li>
+            <strong>Security Indicators:</strong> Show card type icons, SSL
+            indicators
+          </li>
+          <li>
+            <strong>Error Prevention:</strong> Input validation, maxlength
+            attributes
+          </li>
+          <li>
+            <strong>User Confidence:</strong> Clear total display, order
+            summary, back link
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Responsive Design Guidelines</h3>
+        <div class="code-block">
+          <code
+            >/* Mobile Responsive Checkout (@media max-width: 768px) */
+            .checkout-container { padding: 10px; /* Reduced padding */ }
+            .checkout-card { padding: 20px; /* Reduced from 40px */ }
+            .order-summary-header { font-size: 24px; /* Reduced from 28px */ }
+            .payment-methods { flex-direction: column; /* Stack vertically */ }
+            .payment-method-btn { width: 100%; /* Full width buttons */ }
+            .expiration-cvv-row { flex-direction: column; /* Stack fields */ }
+            .cvv-group { flex: 1; width: 100%; /* Full width on mobile */ }
+            .total-amount-section { font-size: 16px; /* Smaller text */ }
+            .total-amount-section .amount { font-size: 20px; /* Smaller amount
+            */ }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Design Token System</h3>
+        <p>The style guide emphasizes using CSS variables for consistency:</p>
+        <div class="code-block">
+          <code
+            >/* CSS Variables Usage */ :root { /* Colors */ --primary-color:
+            #333333; --secondary-color: #5383d3; --checkout-blue: #007bff;
+            --checkout-blue-hover: #0056b3; /* Spacing */ --spacing-xs: 4px;
+            --spacing-sm: 8px; --spacing-md: 16px; --spacing-lg: 24px;
+            --spacing-xl: 32px; /* Typography */ --font-family: "Manrope",
+            sans-serif; --font-size-base: 16px; --font-size-h1: 32px; /* Borders
+            */ --border-radius-sm: 4px; --border-radius-md: 8px;
+            --border-radius-pill: 25px; /* Shadows */ --shadow-sm: 0 1px 3px
+            rgba(0, 0, 0, 0.1); --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1); } /*
+            Usage in Components */ .checkout-card { padding: var(--spacing-xl);
+            border-radius: var(--border-radius-md); box-shadow:
+            var(--shadow-md); } .confirm-btn { background: var(--checkout-blue);
+            border-radius: var(--border-radius-pill); font-family:
+            var(--font-family); }</code
+          >
+        </div>
+
+        <h3 class="subsection-title">How to Use the Style Guide</h3>
+        <p><strong>For Developers:</strong></p>
+        <ul>
+          <li>Open css-style-guide.html in browser to view all components</li>
+          <li>Copy the HTML structure for any component you need</li>
+          <li>Copy the corresponding CSS code to your stylesheet</li>
+          <li>Customize colors using CSS variables in :root</li>
+          <li>Test responsive behavior at different screen sizes</li>
+        </ul>
+
+        <p><strong>For Designers:</strong></p>
+        <ul>
+          <li>Reference the color palette for consistent branding</li>
+          <li>Use the spacing scale for layout consistency</li>
+          <li>Follow typography hierarchy for proper content structure</li>
+          <li>Review button styles for different use cases</li>
+          <li>Check accessibility guidelines for contrast ratios</li>
+        </ul>
+
+        <h3 class="subsection-title">Style Guide File Structure</h3>
+        <div class="code-block">
+          <code
+            >/* Style Guide Organization */ 1. Header Section - Title and
+            subtitle - Dark background with white text 2. Design Tokens Section
+            - Color swatches with hex values - Spacing scale visualization -
+            Shadow examples 3. Component Sections - Each component in separate
+            section - Live example at top - Code block with HTML + CSS - Usage
+            notes and best practices 4. Guidelines Section - Design system
+            philosophy - Best practices for consistency - Accessibility
+            considerations - Responsive design patterns 5. Checkout Section
+            (NEW) - Complete payment form documentation - All styling variations
+            - JavaScript functionality - Mobile responsive examples</code
+          >
+        </div>
+
+        <h3 class="subsection-title">Integration with Main Website</h3>
+        <p>The style guide is synchronized with actual website components:</p>
+        <ul>
+          <li>
+            <strong>index.html:</strong> Uses card components from style guide
+          </li>
+          <li>
+            <strong>products.html:</strong> Product cards follow style guide
+            patterns
+          </li>
+          <li><strong>cart.html:</strong> Button styles from style guide</li>
+          <li>
+            <strong>credit-card/index.html:</strong> Complete checkout styling
+            documented
+          </li>
+          <li>
+            <strong>All pages:</strong> Use same CSS variables and design tokens
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Maintenance and Updates</h3>
+        <p>When updating the style guide:</p>
+        <ul>
+          <li>Add new components as they're created</li>
+          <li>Update color swatches if palette changes</li>
+          <li>Document new JavaScript functionality</li>
+          <li>Include responsive breakpoints for new components</li>
+          <li>Add usage examples and edge cases</li>
+          <li>Update version date and changelog</li>
+        </ul>
+
+        <h3 class="subsection-title">Access Information</h3>
+        <div class="info-box">
+          <strong>📁 File Location:</strong>
+          d:\XAMPP\htdocs\website\css-style-guide.html<br />
+          <strong>🔗 Access URL:</strong>
+          http://localhost/website/css-style-guide.html<br />
+          <strong>📄 Total Sections:</strong> 11 major sections<br />
+          <strong>📊 Components Documented:</strong> 20+ UI components<br />
+          <strong>🎨 Color Swatches:</strong> 10+ color definitions<br />
+          <strong>💻 Code Examples:</strong> 30+ copy-paste ready snippets<br />
+          <strong>📱 Responsive Demos:</strong> Mobile breakpoint examples
+          included<br />
+          <strong>⏱️ Last Updated:</strong> November 25, 2025
+        </div>
+
+        <h3 class="subsection-title">Quick Reference Links</h3>
+        <ul>
+          <li>
+            <strong>Style Guide:</strong>
+            <code>http://localhost/website/css-style-guide.html</code>
+          </li>
+          <li>
+            <strong>Component Test:</strong>
+            <code
+              >http://localhost/website/css-style-guide.html#checkout-styling</code
+            >
+          </li>
+          <li>
+            <strong>Color Palette:</strong>
+            <code
+              >http://localhost/website/css-style-guide.html#design-tokens</code
+            >
+          </li>
+          <li>
+            <strong>Forms Section:</strong>
+            <code>http://localhost/website/css-style-guide.html#forms</code>
+          </li>
+          <li>
+            <strong>Buttons Section:</strong>
+            <code>http://localhost/website/css-style-guide.html#buttons</code>
+          </li>
+          <li>
+            <strong>Cards Section:</strong>
+            <code>http://localhost/website/css-style-guide.html#cards</code>
+          </li>
+        </ul>
+
+        <div class="success-box">
+          <strong>✅ CSS Style Guide Status:</strong> Fully updated with
+          checkout page styling. All components documented with live examples
+          and code. Design system complete and ready for development reference.
+          Responsive patterns included for mobile devices.
+        </div>
+      </section>
+
+      <!-- CSS Externalization Section -->
+      <section class="section" id="css-externalization">
+        <h2 class="section-title">🎨 CSS Externalization</h2>
+
+        <h3 class="subsection-title">Overview</h3>
+        <p>
+          All inline styles and internal style blocks have been successfully
+          externalized to dedicated CSS files, achieving a clean separation
+          of structure (HTML) and presentation (CSS).
+        </p>
+
+        <h3 class="subsection-title">Files Modified</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>HTML File</th>
+              <th>CSS File</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>index.html</td>
+              <td>styles/index.css</td>
+              <td><span class="badge">✓ Complete</span></td>
+              <td>December 1, 2025</td>
+            </tr>
+            <tr>
+              <td>cart.html</td>
+              <td>styles/cart.css</td>
+              <td><span class="badge">✓ Complete</span></td>
+              <td>December 2, 2025</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="subsection-title">index.html Externalization</h3>
+        <div class="info-box">
+          <strong>📁 CSS File:</strong> styles/index.css (8,440+ lines)<br />
+          <strong>🎯 Goal:</strong> Complete removal of all user-defined inline
+          styles<br />
+          <strong>✅ Completion Date:</strong> December 1, 2025
+        </div>
+
+        <h4>Styles Externalized:</h4>
+        <ul>
+          <li>
+            <strong>Header & Navigation:</strong> Logo background, opacity,
+            filter effects, menu alignment
+          </li>
+          <li>
+            <strong>Shopping Cart Icon:</strong> Flexbox layout, padding,
+            margin, display properties, icon colors
+          </li>
+          <li>
+            <strong>Search Button:</strong> Flexbox alignment, icon brightness,
+            color specifications
+          </li>
+          <li>
+            <strong>Page Layout:</strong> Column widths, section margins, grid
+            display properties
+          </li>
+          <li>
+            <strong>Artwork Grid:</strong> Container backgrounds, image
+            overflow, heading alignment
+          </li>
+          <li>
+            <strong>Product Cards:</strong> Width specifications, background
+            colors (CSS variables)
+          </li>
+          <li>
+            <strong>Buttons:</strong> Height, padding, margin specifications for
+            "Add to Cart" buttons
+          </li>
+          <li>
+            <strong>Footer:</strong> Background colors, logo colors, navigation
+            link styles
+          </li>
+          <li>
+            <strong>Typography:</strong> Heading padding, text alignment,
+            copyright spacing
+          </li>
+        </ul>
+
+        <h4>CSS Rules Added (168 lines):</h4>
+        <pre><code>/* Header Logo Styles */
+#logo {
+  background: #333333;
+  opacity: 1;
+  filter: blur(0px);
+  overflow: hidden;
+  border-width: 1px;
+}
+
+/* Navigation Menu */
+#menu ul.text-center {
+  text-align: center;
+}
+
+/* Shopping Cart Icon */
+#fa-shopping-cart {
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Artwork Containers */
+.artwork {
+  width: 100vh;
+  background: var(--bs-white);
+}
+
+/* Footer Styles */
+footer {
+  background: #333;
+  text-align: center;
+}
+
+#footer-logo-span {
+  color: #5383d3;
+}
+
+/* And many more... */</code></pre>
+
+        <h4>Third-Party Styles Preserved:</h4>
+        <ul>
+          <li>
+            <strong>project-io--shadow-root:</strong> Shadow DOM template styles
+          </li>
+          <li>
+            <strong>react-query-tools:</strong> Developer tools styling
+          </li>
+          <li>
+            <strong>UMS tracking elements:</strong> Analytics/tracking styles
+          </li>
+          <li>
+            <strong>Grammarly extension:</strong> Browser extension styles
+          </li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>⚠️ Important:</strong> Third-party library styles are
+          dynamically injected and should NOT be removed as they are required
+          for functionality.
+        </div>
+
+        <h3 class="subsection-title">cart.html Styling Updates</h3>
+        <div class="info-box">
+          <strong>📁 CSS File:</strong> styles/cart.css (170+ lines)<br />
+          <strong>🎯 Updates:</strong> Remove button styling and trash icon
+          spacing<br />
+          <strong>✅ Completion Date:</strong> December 2, 2025
+        </div>
+
+        <h4>Enhancements Made:</h4>
+        <ul>
+          <li>
+            <strong>Trash Icon Styling:</strong> Added vertical margin spacing
+            (3px top and bottom)
+          </li>
+          <li>
+            <strong>Remove Button:</strong> Custom width, border-radius, and
+            padding adjustments
+          </li>
+          <li>
+            <strong>Quantity Controls:</strong> Improved flexbox layout with
+            proper gap spacing
+          </li>
+        </ul>
+
+        <h4>CSS Rules Added:</h4>
+        <pre><code>/* Remove Button Styling */
+.quantity-control .btn-outline-danger {
+  width: auto;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+/* Trash Icon Spacing */
+.quantity-control .fa-trash {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}</code></pre>
+
+        <h3 class="subsection-title">Benefits Achieved</h3>
+        <ul>
+          <li>
+            <strong>✅ Clean HTML:</strong> No inline styles cluttering markup
+          </li>
+          <li>
+            <strong>✅ Maintainability:</strong> All styles centralized in CSS
+            files
+          </li>
+          <li>
+            <strong>✅ Reusability:</strong> Styles can be shared across pages
+          </li>
+          <li>
+            <strong>✅ Performance:</strong> CSS files can be cached by browsers
+          </li>
+          <li>
+            <strong>✅ Consistency:</strong> Uniform styling across the
+            application
+          </li>
+          <li>
+            <strong>✅ Best Practices:</strong> Follows web standards and modern
+            development patterns
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Verification Commands</h3>
+        <pre><code># Check for remaining inline styles in index.html
+Select-String -Path "d:\XAMPP\htdocs\website\index.html" -Pattern 'style=' | 
+  Where-Object { $_.Line -notmatch 'project-io|UMS|grammarly|react-query' }
+
+# Verify CSS file line counts
+Get-Content "d:\XAMPP\htdocs\website\styles\index.css" | Measure-Object -Line
+Get-Content "d:\XAMPP\htdocs\website\styles\cart.css" | Measure-Object -Line</code></pre>
+
+        <div class="success-box">
+          <strong>✅ CSS Externalization Status:</strong> Complete. All
+          user-defined inline styles successfully moved to external CSS files.
+          HTML structure now clean and maintainable. Only third-party library
+          styles remain inline as required for functionality.
+        </div>
+      </section>
+
+      <!-- PayPal Integration Section -->
+      <section class="section" id="paypal-integration">
+        <h2 class="section-title">💳 PayPal Payment Integration</h2>
+
+        <h3 class="subsection-title">Overview</h3>
+        <p>
+          Complete PayPal integration implementation for one-time checkout with
+          immediate payment capture, customer payment method storage (vaulting),
+          and automated order confirmation emails.
+        </p>
+
+        <div class="info-box">
+          <strong>🎯 Integration Type:</strong> PayPal REST API v2<br />
+          <strong>💰 Payment Flow:</strong> One-time checkout with immediate
+          capture<br />
+          <strong>🔐 Vault Support:</strong> Customer payment methods stored for
+          future use<br />
+          <strong>📧 Email Notifications:</strong> Automated order confirmations<br />
+          <strong>🖥️ Backend:</strong> PHP with cURL<br />
+          <strong>📅 Implementation Date:</strong> December 2, 2025
+        </div>
+
+        <h3 class="subsection-title">Required Files</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>File</th>
+              <th>Purpose</th>
+              <th>Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>paypal-config.php</td>
+              <td>API credentials & configuration</td>
+              <td>Root directory (secure)</td>
+            </tr>
+            <tr>
+              <td>create-order.php</td>
+              <td>Server-side order creation</td>
+              <td>Root directory</td>
+            </tr>
+            <tr>
+              <td>capture-order.php</td>
+              <td>Payment capture & processing</td>
+              <td>Root directory</td>
+            </tr>
+            <tr>
+              <td>email-functions.php</td>
+              <td>Order confirmation emails</td>
+              <td>Root directory</td>
+            </tr>
+            <tr>
+              <td>credit-card/index.html</td>
+              <td>Checkout page with PayPal button</td>
+              <td>credit-card/ directory</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="subsection-title">PayPal Account Setup</h3>
+        <h4>Step 1: Create PayPal Business Account</h4>
+        <ul>
+          <li>Sign up at: <code>https://www.paypal.com/bizsignup</code></li>
+          <li>Complete business verification process</li>
+          <li>Enable "Accept Payments" feature</li>
+        </ul>
+
+        <h4>Step 2: Get API Credentials</h4>
+        <ul>
+          <li>Log into: <code>https://developer.paypal.com/dashboard/</code></li>
+          <li>Navigate to "My Apps & Credentials"</li>
+          <li>Create new REST API app (or use default)</li>
+          <li>
+            Copy credentials:
+            <ul>
+              <li>
+                <strong>Sandbox Client ID</strong> - For testing environment
+              </li>
+              <li>
+                <strong>Sandbox Secret</strong> - For testing authentication
+              </li>
+              <li><strong>Live Client ID</strong> - For production</li>
+              <li><strong>Live Secret</strong> - For production</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Configuration (paypal-config.php)</h3>
+        <pre><code>// Environment Settings
+PAYPAL_MODE: 'sandbox' or 'live'
+PAYPAL_SANDBOX_CLIENT_ID: Your sandbox client ID
+PAYPAL_SANDBOX_SECRET: Your sandbox secret
+PAYPAL_LIVE_CLIENT_ID: Your production client ID
+PAYPAL_LIVE_SECRET: Your production secret
+
+// API Endpoints
+Sandbox: https://api-m.sandbox.paypal.com
+Live: https://api-m.paypal.com</code></pre>
+
+        <h3 class="subsection-title">Key Features Implemented</h3>
+        <h4>1. Immediate Payment Capture</h4>
+        <ul>
+          <li>
+            <strong>Intent:</strong> CAPTURE - Customer charged immediately upon
+            approval
+          </li>
+          <li>No authorization hold - funds transferred instantly</li>
+          <li>Ideal for digital goods and immediate fulfillment</li>
+        </ul>
+
+        <h4>2. Payment Method Vaulting</h4>
+        <ul>
+          <li>Stores customer PayPal account for future purchases</li>
+          <li>Vault ID saved in database with order record</li>
+          <li>Enables one-click checkout for returning customers</li>
+          <li>
+            Configuration: <code>store_in_vault: 'ON_SUCCESS'</code>
+          </li>
+        </ul>
+
+        <h4>3. Order Processing Flow</h4>
+        <pre><code>1. Customer clicks PayPal button
+2. create-order.php creates PayPal order with cart data
+3. Customer logs into PayPal and approves payment
+4. capture-order.php captures payment immediately
+5. Order saved to database with vault ID
+6. Confirmation email sent to customer
+7. Cart cleared, customer redirected to success page</code></pre>
+
+        <h4>4. Email Confirmation System</h4>
+        <ul>
+          <li>
+            <strong>Trigger:</strong> Sent immediately after successful payment
+            capture
+          </li>
+          <li>
+            <strong>Content:</strong> Order ID, transaction ID, items list, total
+            amount
+          </li>
+          <li>
+            <strong>Format:</strong> HTML email with styled template
+          </li>
+          <li>
+            <strong>Delivery:</strong> PHP mail() function (upgradeable to SMTP)
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Database Schema</h3>
+        <pre><code>CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    paypal_order_id VARCHAR(100) NOT NULL UNIQUE,
+    paypal_capture_id VARCHAR(100),
+    paypal_payer_id VARCHAR(100),
+    paypal_vault_id VARCHAR(100),  -- Stored payment method
+    customer_email VARCHAR(255) NOT NULL,
+    customer_name VARCHAR(255),
+    amount DECIMAL(10, 2) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    cart_data TEXT,  -- JSON encoded cart items
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_paypal_order (paypal_order_id),
+    INDEX idx_customer_email (customer_email),
+    INDEX idx_vault_id (paypal_vault_id)
+);</code></pre>
+
+        <h3 class="subsection-title">Frontend Integration</h3>
+        <h4>PayPal SDK Script Tag</h4>
+        <pre><code>&lt;script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD&intent=capture&vault=true"&gt;&lt;/script&gt;</code></pre>
+
+        <h4>PayPal Button Configuration</h4>
+        <ul>
+          <li>
+            <strong>createOrder:</strong> Calls create-order.php to initialize
+            payment
+          </li>
+          <li>
+            <strong>onApprove:</strong> Calls capture-order.php to complete
+            payment
+          </li>
+          <li>
+            <strong>onError:</strong> Handles payment errors gracefully
+          </li>
+          <li>
+            <strong>onCancel:</strong> Manages customer cancellation
+          </li>
+          <li>
+            <strong>Style:</strong> Vertical layout, gold color, 45px height
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Testing Procedures</h3>
+        <h4>Sandbox Testing (Required Before Production)</h4>
+        <div class="warning-box">
+          <strong>⚠️ Important:</strong> Always test in sandbox environment
+          before going live!
+        </div>
+        <ul>
+          <li>Set <code>PAYPAL_MODE = 'sandbox'</code> in paypal-config.php</li>
+          <li>
+            Create test accounts:
+            <code>https://developer.paypal.com/dashboard/accounts</code>
+          </li>
+          <li>
+            Test scenarios:
+            <ul>
+              <li>✅ Successful payment completion</li>
+              <li>✅ Payment cancellation by customer</li>
+              <li>✅ Network/API errors</li>
+              <li>✅ Email delivery verification</li>
+              <li>✅ Database order storage</li>
+              <li>✅ Vault ID storage for future payments</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h4>Going Live Checklist</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Switch to live credentials in paypal-config.php</td>
+              <td><span class="badge">Required</span></td>
+            </tr>
+            <tr>
+              <td>Change PAYPAL_MODE to 'live'</td>
+              <td><span class="badge">Required</span></td>
+            </tr>
+            <tr>
+              <td>Update return URLs to production domain</td>
+              <td><span class="badge">Required</span></td>
+            </tr>
+            <tr>
+              <td>Enable HTTPS on production server</td>
+              <td><span class="badge">Required</span></td>
+            </tr>
+            <tr>
+              <td>Test with small real transaction ($0.01)</td>
+              <td><span class="badge">Recommended</span></td>
+            </tr>
+            <tr>
+              <td>Configure email SMTP for better delivery</td>
+              <td><span class="badge">Recommended</span></td>
+            </tr>
+            <tr>
+              <td>Set up error logging and monitoring</td>
+              <td><span class="badge">Recommended</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="subsection-title">Security Best Practices</h3>
+        <ul>
+          <li>
+            <strong>✅ Server-Side Validation:</strong> All payment processing
+            happens on server
+          </li>
+          <li>
+            <strong>✅ Credentials Protection:</strong> API secrets never exposed
+            to frontend
+          </li>
+          <li>
+            <strong>✅ HTTPS Required:</strong> Secure connection mandatory for
+            production
+          </li>
+          <li>
+            <strong>✅ Order Verification:</strong> Session-based order ID
+            validation
+          </li>
+          <li>
+            <strong>✅ Idempotency Keys:</strong> Prevents duplicate order
+            creation
+          </li>
+          <li>
+            <strong>✅ Data Encryption:</strong> Sensitive vault IDs should be
+            encrypted
+          </li>
+          <li>
+            <strong>✅ Error Logging:</strong> All API errors logged for debugging
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Email Delivery Enhancement</h3>
+        <h4>Option 1: PHPMailer with SMTP</h4>
+        <pre><code>composer require phpmailer/phpmailer
+
+// Configuration
+$mail = new PHPMailer\PHPMailer\PHPMailer();
+$mail->isSMTP();
+$mail->Host = 'smtp.gmail.com';
+$mail->SMTPAuth = true;
+$mail->Username = 'your-email@gmail.com';
+$mail->Password = 'your-app-password';
+$mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+$mail->Port = 587;</code></pre>
+
+        <h4>Option 2: Third-Party Email Services</h4>
+        <ul>
+          <li>
+            <strong>SendGrid:</strong> 100 emails/day free, easy integration
+          </li>
+          <li>
+            <strong>Mailgun:</strong> 5,000 emails/month free, API-based
+          </li>
+          <li>
+            <strong>Amazon SES:</strong> $0.10 per 1,000 emails, AWS integration
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">Troubleshooting Common Issues</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Issue</th>
+              <th>Solution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Button not rendering</td>
+              <td>Check client ID in SDK script tag, verify CORS settings</td>
+            </tr>
+            <tr>
+              <td>Order creation fails</td>
+              <td>
+                Verify credentials, check error logs, validate cart data format
+              </td>
+            </tr>
+            <tr>
+              <td>Capture fails after approval</td>
+              <td>
+                Check order ID matches session, verify access token is valid
+              </td>
+            </tr>
+            <tr>
+              <td>Email not received</td>
+              <td>Check spam folder, verify SMTP settings, test mail() function</td>
+            </tr>
+            <tr>
+              <td>Vault ID not saved</td>
+              <td>
+                Ensure vault=true in SDK, check capture response for vault object
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="subsection-title">Future Enhancements Available</h3>
+        <ul>
+          <li>
+            <strong>🔄 Refund Processing:</strong> Implement refund API for
+            customer returns
+          </li>
+          <li>
+            <strong>💳 Saved Payment Methods:</strong> One-click checkout using
+            stored vault IDs
+          </li>
+          <li>
+            <strong>🔔 Webhooks:</strong> Real-time payment notifications and
+            updates
+          </li>
+          <li>
+            <strong>📊 Transaction Dashboard:</strong> Admin panel for order
+            management
+          </li>
+          <li>
+            <strong>🔁 Recurring Payments:</strong> Subscription support using
+            vault
+          </li>
+          <li>
+            <strong>🌍 Multi-Currency:</strong> Support for international
+            customers
+          </li>
+        </ul>
+
+        <h3 class="subsection-title">API Documentation References</h3>
+        <ul>
+          <li>
+            <strong>PayPal REST API:</strong>
+            <code>https://developer.paypal.com/api/rest/</code>
+          </li>
+          <li>
+            <strong>Orders API v2:</strong>
+            <code
+              >https://developer.paypal.com/docs/api/orders/v2/</code
+            >
+          </li>
+          <li>
+            <strong>Payment Tokens (Vault):</strong>
+            <code
+              >https://developer.paypal.com/docs/api/payment-tokens/v3/</code
+            >
+          </li>
+          <li>
+            <strong>SDK Reference:</strong>
+            <code
+              >https://developer.paypal.com/sdk/js/reference/</code
+            >
+          </li>
+        </ul>
+
+        <div class="success-box">
+          <strong>✅ PayPal Integration Status:</strong> Complete implementation
+          ready for testing. All server-side processing, payment capture,
+          vaulting, and email confirmation features implemented. Follow testing
+          procedures before production deployment.
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

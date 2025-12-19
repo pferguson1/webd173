@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock API Test - ArtShop</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .test-section {
+        margin-bottom: 30px;
+        border: 1px solid #ddd;
+        padding: 15px;
+      }
+      button {
+        padding: 10px 15px;
+        margin: 5px;
+        background: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+      .result {
+        margin-top: 10px;
+        padding: 10px;
+        background: #f8f9fa;
+        border-left: 4px solid #007bff;
+      }
+      .error {
+        border-left-color: #dc3545;
+      }
+      .success {
+        border-left-color: #28a745;
+      }
+      input,
+      select {
+        padding: 5px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Stock Management API Test</h1>
+
+      <div class="test-section">
+        <h3>1. Reset All Stock</h3>
+        <label
+          >Default Stock Level:
+          <input type="number" id="defaultStock" value="100" min="0" />
+        </label>
+        <button onclick="resetAllStock()">Reset All Stock</button>
+        <div id="resetAllResult" class="result" style="display: none"></div>
+      </div>
+
+      <div class="test-section">
+        <h3>2. Reset Single Product Stock</h3>
+        <label
+          >Product SKU:
+          <select id="singleSku">
+            <option value="WARR001">WARR001 - The Warrior</option>
+            <option value="BUSH001">BUSH001 - The Bushman</option>
+            <option value="THIN001">THIN001 - Thinking Man</option>
+            <option value="SOUL001">SOUL001 - Beautiful Soul</option>
+            <option value="PATR001">PATR001 - An American Patriot</option>
+            <option value="RAIL001">RAIL001 - The Railway Worker</option>
+          </select>
+        </label>
+        <label
+          >Stock Level:
+          <input type="number" id="singleStock" value="50" min="0" />
+        </label>
+        <button onclick="resetSingleStock()">Reset Single Stock</button>
+        <div id="resetSingleResult" class="result" style="display: none"></div>
+      </div>
+
+      <div class="test-section">
+        <h3>3. Update Product Stock</h3>
+        <label
+          >Product SKU:
+          <select id="updateSku">
+            <option value="WARR001">WARR001 - The Warrior</option>
+            <option value="BUSH001">BUSH001 - The Bushman</option>
+            <option value="THIN001">THIN001 - Thinking Man</option>
+            <option value="SOUL001">SOUL001 - Beautiful Soul</option>
+            <option value="PATR001">PATR001 - An American Patriot</option>
+            <option value="RAIL001">RAIL001 - The Railway Worker</option>
+          </select>
+        </label>
+        <label
+          >New Stock:
+          <input type="number" id="updateStock" value="25" min="0" />
+        </label>
+        <button onclick="updateStock()">Update Stock</button>
+        <div id="updateResult" class="result" style="display: none"></div>
+      </div>
+
+      <div class="test-section">
+        <h3>4. Check Current Stock</h3>
+        <button onclick="checkAllStock()">Check All Stock</button>
+        <div id="stockCheckResult" class="result" style="display: none"></div>
+      </div>
+    </div>
+
+    <script>
+      // Product SKUs list
+      const PRODUCT_SKUS = [
+        "WARR001",
+        "BUSH001",
+        "THIN001",
+        "SOUL001",
+        "PATR001",
+        "ELEC001",
+        "RAIL001",
+        "GARD001",
+        "GODD001",
+      ];
+
+      function showResult(elementId, message, isError = false) {
+        const element = document.getElementById(elementId);
+        element.innerHTML = message;
+        element.className = `result ${isError ? "error" : "success"}`;
+        element.style.display = "block";
+      }
+
+      function getInventory() {
+        return JSON.parse(localStorage.getItem("artshop_inventory") || "{}");
+      }
+
+      function saveInventory(inventory) {
+        localStorage.setItem("artshop_inventory", JSON.stringify(inventory));
+      }
+
+      function resetAllStock() {
+        try {
+          const defaultStock = parseInt(
+            document.getElementById("defaultStock").value
+          );
+
+          if (defaultStock < 0) {
+            showResult(
+              "resetAllResult",
+              "❌ Error: Stock cannot be negative",
+              true
+            );
+            return;
+          }
+
+          const inventory = {};
+          PRODUCT_SKUS.forEach((sku) => {
+            inventory[sku] = defaultStock;
+          });
+
+          saveInventory(inventory);
+
+          showResult(
+            "resetAllResult",
+            `✅ Successfully reset stock for ${PRODUCT_SKUS.length} products to ${defaultStock} units`
+          );
+
+          // Update the current stock display if it exists
+          setTimeout(() => checkAllStock(), 500);
+        } catch (error) {
+          showResult("resetAllResult", `❌ Error: ${error.message}`, true);
+        }
+      }
+
+      function resetSingleStock() {
+        try {
+          const sku = document.getElementById("singleSku").value;
+          const stock = parseInt(document.getElementById("singleStock").value);
+
+          if (stock < 0) {
+            showResult(
+              "resetSingleResult",
+              "❌ Error: Stock cannot be negative",
+              true
+            );
+            return;
+          }
+
+          const inventory = getInventory();
+          inventory[sku] = stock;
+          saveInventory(inventory);
+
+          showResult(
+            "resetSingleResult",
+            `✅ Successfully reset ${sku} stock to ${stock} units`
+          );
+
+          // Update the current stock display if it exists
+          setTimeout(() => checkAllStock(), 500);
+        } catch (error) {
+          showResult("resetSingleResult", `❌ Error: ${error.message}`, true);
+        }
+      }
+
+      function updateStock() {
+        try {
+          const sku = document.getElementById("updateSku").value;
+          const stock = parseInt(document.getElementById("updateStock").value);
+
+          if (stock < 0) {
+            showResult(
+              "updateResult",
+              "❌ Error: Stock cannot be negative",
+              true
+            );
+            return;
+          }
+
+          const inventory = getInventory();
+          const oldStock = inventory[sku] || 0;
+          inventory[sku] = stock;
+          saveInventory(inventory);
+
+          showResult(
+            "updateResult",
+            `✅ Successfully updated ${sku} stock from ${oldStock} to ${stock} units`
+          );
+
+          // Update the current stock display if it exists
+          setTimeout(() => checkAllStock(), 500);
+        } catch (error) {
+          showResult("updateResult", `❌ Error: ${error.message}`, true);
+        }
+      }
+
+      function checkAllStock() {
+        try {
+          const inventory = getInventory();
+
+          if (Object.keys(inventory).length === 0) {
+            showResult(
+              "stockCheckResult",
+              "❌ No inventory data found. Please reset stock first.",
+              true
+            );
+            return;
+          }
+
+          let stockInfo = "<h4>Current Stock Levels:</h4><ul>";
+
+          PRODUCT_SKUS.forEach((sku) => {
+            const stock = inventory[sku] || 0;
+            const stockStatus =
+              stock === 0
+                ? "❌ Out of Stock"
+                : stock <= 15
+                ? "⚠️ Low Stock"
+                : "✅ In Stock";
+            stockInfo += `<li><strong>${sku}</strong>: ${stock} units ${stockStatus}</li>`;
+          });
+
+          stockInfo += "</ul>";
+          showResult("stockCheckResult", stockInfo);
+        } catch (error) {
+          showResult("stockCheckResult", `❌ Error: ${error.message}`, true);
+        }
+      }
+
+      // Initialize with default stock on page load
+      window.addEventListener("load", function () {
+        const inventory = getInventory();
+        if (Object.keys(inventory).length === 0) {
+          // Set default stock for all products
+          const defaultInventory = {};
+          PRODUCT_SKUS.forEach((sku) => {
+            defaultInventory[sku] = 25; // Default stock level
+          });
+          saveInventory(defaultInventory);
+          showResult(
+            "stockCheckResult",
+            "✅ Initialized default stock levels (25 units each)"
+          );
+        }
+      });
+    </script>
+  </body>
+</html>
